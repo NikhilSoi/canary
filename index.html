@@ -359,17 +359,13 @@ function renderPathwayTab(){
   if(!el)return;
   var gcses=Object.keys(CROSSWALK_UK.gcseToALevel);
   var pickerHtml=gcses.map(function(g){
-    var r=CROSSWALK_UK.gcseRisk[g],col=sC(r.exposure);
-    return "<button class='pw-gcse-btn' data-g='"+g+"' onclick='selectGCSE(this.dataset.g)'>
-      +g.replace("GCSE ","")
-      +" <span class='pw-pill' style='background:"+col+"22;color:"+col+"'>"+(r.exposure*100).toFixed(0)+"%</span>"
-      +"</button>";
-  }).join("");
-  el.innerHTML="<div style='margin-bottom:18px'><div style='font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:5px'>Pick a GCSE subject</div><p style='color:var(--text2);font-size:0.84rem;line-height:1.6;max-width:600px'>Follow the chain from GCSE to A-Level to degree and see the AI risk score compound at every stage.</p></div>"
-    +"<div class='pw-picker' id='pwPicker'>"+pickerHtml+"</div>"
-    +"<div id='pwChain' class='pw-chain'></div>";
-  setTimeout(function(){selectGCSE("GCSE English");},80);
-}
+  var r=CROSSWALK_UK.gcseRisk[g],col=sC(r.exposure);
+  var label=g.replace("GCSE ","");
+  var pct=(r.exposure*100).toFixed(0)+"%";
+  var btn="<button class='pw-gcse-btn' data-g='"+g+"' onclick='selectGCSE(this.dataset.g)'>";
+  var pill="<span class='pw-pill' style='background:"+col+"22;color:"+col+"'>"+pct+"</span>";
+  return btn+label+" "+pill+"</button>";
+}).join("");
 
 function selectGCSE(gcse){
   document.querySelectorAll(".pw-gcse-btn").forEach(function(b){
