@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "Canary: AI Risk Intelligence for Academic Programmes"
+authors:
+  - family-names: George
+    given-names: Babu
+    affiliation: "Hult International Business School"
+version: "2.0.0"
+license: MIT
+repository-code: "https://github.com/NikhilSoi/canary"
+url: "https://NikhilSoi.github.io/canary"
