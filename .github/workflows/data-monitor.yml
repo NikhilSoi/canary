@@ -1,0 +1,81 @@
+name: Data source monitor
+
+on:
+  schedule:
+    # Check weekly every Monday at 08:00 UTC
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check ILO ILOSTAT availability
+        id: ilo
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://ilostat.ilo.org/resources/ilostat-api/v1/data/EMP_TEMP_SEX_OCU_NB_A/GBR/SEX_T+OCU_ISCO88_24" || echo "000")
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+          if [ "$STATUS" = "200" ]; then echo "ilo_up=true" >> $GITHUB_OUTPUT; fi
+
+      - name: Check ONS ASHE availability
+        id: ons
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://api.ons.gov.uk/v1/dataset/EARN01/timeseries/KAI4/data" || echo "000")
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+          if [ "$STATUS" = "200" ]; then echo "ons_up=true" >> $GITHUB_OUTPUT; fi
+
+      - name: Check if JCQ results season (August)
+        id: jcq
+        run: |
+          MONTH=$(date +%-m)
+          if [ "$MONTH" = "8" ]; then echo "jcq_season=true" >> $GITHUB_OUTPUT; fi
+
+      - name: Check if HESA publish season (January)
+        id: hesa
+        run: |
+          MONTH=$(date +%-m)
+          if [ "$MONTH" = "1" ]; then echo "hesa_season=true" >> $GITHUB_OUTPUT; fi
+
+      - name: Post status summary
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const iloUp  = '${{ steps.ilo.outputs.ilo_up }}'   === 'true';
+            const onsUp  = '${{ steps.ons.outputs.ons_up }}'   === 'true';
+            const jcqSeason  = '${{ steps.jcq.outputs.jcq_season }}'  === 'true';
+            const hesaSeason = '${{ steps.hesa.outputs.hesa_season }}' === 'true';
+            const now = new Date().toISOString().split('T')[0];
+
+            // Only create issue if something needs attention
+            const needsAttention = !iloUp || !onsUp || jcqSeason || hesaSeason;
+            if (!needsAttention) {
+              console.log('All sources nominal — no issue needed');
+              return;
+            }
+
+            const lines = [];
+            if (!iloUp) lines.push('- ⚠️ **ILO ILOSTAT API is down** — employment outlook data may be stale. Check ilostat.ilo.org');
+            if (!onsUp) lines.push('- ⚠️ **ONS ASHE API is down** — UK pay data may be stale. Check api.ons.gov.uk');
+            if (jcqSeason) lines.push('- 📋 **JCQ August results season** — new GCSE/A-Level entry statistics are available. Download from jcq.org.uk and update schools data in index.html');
+            if (hesaSeason) lines.push('- 📋 **HESA January publish season** — new Student Record data likely available. Download from hesa.ac.uk/data-and-analysis and run: node fetch-all.js --hesa');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🔔 Data source alert — ${now}`,
+              body: `## Canary data source monitor
+
+**Check date:** ${now}
+
+### Alerts
+${lines.join('\n')}
+
+Close this issue once you have reviewed and taken any necessary action.`,
+              labels: ['data-alert']
+            });
