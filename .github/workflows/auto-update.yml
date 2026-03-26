@@ -1,0 +1,105 @@
+name: Auto-update live data sources
+
+on:
+  schedule:
+    # ILO data: run quarterly (1st Jan, Apr, Jul, Oct at 06:00 UTC)
+    - cron: '0 6 1 1,4,7,10 *'
+    # ONS ASHE: run in November after annual tables published
+    - cron: '0 6 15 11 *'
+  workflow_dispatch:
+    inputs:
+      notify_only:
+        description: 'Only check for updates and notify, do not commit'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  auto-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run data fetcher
+        id: fetch
+        run: |
+          node fetch-all.js --ci
+          echo "timestamp=$(date -u '+%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+          echo "changed=$(git diff --name-only output/ | wc -l | tr -d ' ')" >> $GITHUB_OUTPUT
+
+      - name: Inject live data into index.html
+        run: node scripts/inject-data.js
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet index.html || echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push updated data
+        if: steps.changes.outputs.has_changes == 'true' && github.event.inputs.notify_only != 'true'
+        run: |
+          git config user.name "Canary Data Bot"
+          git config user.email "canary-bot@users.noreply.github.com"
+          git add index.html output/
+          git commit -m "Auto-update: live data refresh ${{ steps.fetch.outputs.timestamp }}"
+          git push
+
+      - name: Open update summary issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const hasChanges = '${{ steps.changes.outputs.has_changes }}' === 'true';
+            const notifyOnly = '${{ github.event.inputs.notify_only }}' === 'true';
+            const timestamp = '${{ steps.fetch.outputs.timestamp }}';
+
+            const body = hasChanges
+              ? `## ✅ Canary data auto-updated
+
+**Run time:** ${timestamp}
+**Trigger:** ${{ github.event_name }}
+
+### What was updated automatically
+- ILO ILOSTAT employment trends (ARE/SAU/QAT/GBR) — live API
+- ONS ASHE median pay data — live API
+
+### Changes committed
+The following programmes had their \`empOut\` and half-life values updated with fresh API data. The site has been redeployed automatically.
+
+### What still needs manual update
+| Source | Next due | Action needed |
+|---|---|---|
+| HESA Student Record | January | Download CSV from hesa.ac.uk and run \`node fetch-all.js --hesa\` |
+| JCQ Entry Statistics | August | Download from jcq.org.uk and update schools data |
+| Eloundou β scores | When new paper publishes | Update soc-map.js manually |
+| Felten Princeton Index | Annual | Check aiindex.princeton.edu |
+| UAE/KSA Vision Plans | Quarterly | Check UAE MoE / GASTAT |
+
+Close this issue once you've reviewed the update.`
+              : `## ℹ️ Canary data check — no changes needed
+
+**Run time:** ${timestamp}
+**Result:** API data matches current values — no update committed.
+
+All live sources returned values consistent with current data. No action needed.`;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: hasChanges
+                ? `✅ Auto-update: data refreshed ${timestamp}`
+                : `ℹ️ Data check: no changes ${timestamp}`,
+              body,
+              labels: ['data-update']
+            });
