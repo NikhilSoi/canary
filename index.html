@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canary — AI Risk Intelligence for Academic Programmes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0f14;--bg2:#13161e;--bg3:#1a1e28;--bg4:#212633;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--text:#e8eaf0;--text2:#8b90a0;--text3:#555b6e;--accent:#5b8def;--accent2:#3d6fd4;--green:#3ecf8e;--green-bg:rgba(62,207,142,0.1);--amber:#f59e0b;--amber-bg:rgba(245,158,11,0.1);--red:#ef4444;--red-bg:rgba(239,68,68,0.1);--purple:#a78bfa;--purple-bg:rgba(167,139,250,0.1);--coral:#fb7185;--coral-bg:rgba(251,113,133,0.1);--teal:#2dd4bf;--teal-bg:rgba(45,212,191,0.1);--font-display:'DM Serif Display',Georgia,serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--r:10px;--r-sm:6px;--shadow:0 4px 24px rgba(0,0,0,0.4)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+header{position:sticky;top:0;z-index:100;background:rgba(13,15,20,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--font-display);font-size:1.3rem;color:var(--text);letter-spacing:-0.01em}
+.logo span{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:8px}
+.region-switcher{display:flex;gap:4px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:4px}
+.region-btn{padding:5px 14px;border-radius:6px;border:none;background:transparent;color:var(--text2);font-family:var(--font-body);font-size:0.8rem;font-weight:500;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:6px}
+.region-btn:hover{color:var(--text);background:var(--bg4)}
+.region-btn.active{background:var(--accent);color:#fff}
+.region-btn .flag{font-size:14px}
+.stub-badge{font-size:9px;font-weight:600;letter-spacing:0.05em;background:var(--amber-bg);color:var(--amber);padding:1px 5px;border-radius:3px}
+.hero{padding:48px 32px 32px;max-width:1400px;margin:0 auto}
+.hero h1{font-family:var(--font-display);font-size:2.8rem;font-weight:400;line-height:1.15;letter-spacing:-0.02em;margin-bottom:12px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero p{color:var(--text2);font-size:0.95rem;max-width:560px;line-height:1.7}
+.hero-meta{display:flex;gap:32px;margin-top:28px;flex-wrap:wrap}
+.hero-stat .num{font-family:var(--font-mono);font-size:1.6rem;font-weight:500;color:var(--text);line-height:1}
+.hero-stat .label{font-size:0.78rem;color:var(--text3);margin-top:4px;letter-spacing:0.04em;text-transform:uppercase}
+.divider-v{width:1px;background:var(--border);align-self:stretch}
+.controls{max-width:1400px;margin:0 auto;padding:0 32px 24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.search-wrap{position:relative;flex:1;min-width:240px;max-width:360px}
+.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;opacity:0.4}
+input[type="search"]{width:100%;padding:9px 12px 9px 36px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:var(--font-body);font-size:0.85rem;outline:none;transition:border-color 0.15s}
+input[type="search"]:focus{border-color:var(--accent)}
+input[type="search"]::placeholder{color:var(--text3)}
+.filter-group{display:flex;gap:6px;flex-wrap:wrap}
+.filter-btn{padding:7px 14px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);font-family:var(--font-body);font-size:0.8rem;font-weight:500;cursor:pointer;transition:all 0.15s;white-space:nowrap}
+.filter-btn:hover{border-color:var(--border2);color:var(--text)}
+.filter-btn.active{border-color:transparent;color:#fff}
+.filter-btn.f-urgent.active{background:var(--coral)}
+.filter-btn.f-invest.active{background:var(--green);color:#0a2a1c}
+.filter-btn.f-sunset.active{background:var(--amber);color:#1a0e00}
+.filter-btn.f-maintain.active{background:var(--accent)}
+.filter-btn.f-critical.active{background:var(--red)}
+.sort-select{padding:7px 12px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);font-family:var(--font-body);font-size:0.8rem;cursor:pointer;outline:none}
+.grid-wrap{max-width:1400px;margin:0 auto;padding:0 32px 80px}
+.program-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.no-results{grid-column:1/-1;text-align:center;padding:64px 0;color:var(--text3)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px;cursor:pointer;transition:all 0.18s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity 0.18s}
+.card.urgent::before{background:var(--coral)}.card.invest::before{background:var(--green)}.card.sunset::before{background:var(--amber)}.card.maintain::before{background:var(--accent)}
+.card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--shadow)}
+.card:hover::before{opacity:1}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.card-meta{display:flex;gap:6px;flex-wrap:wrap}
+.badge{padding:3px 9px;border-radius:4px;font-size:0.72rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
+.badge-field{background:var(--bg4);color:var(--text3)}
+.badge-confidence-a{background:rgba(62,207,142,0.15);color:var(--green)}
+.badge-confidence-b{background:var(--amber-bg);color:var(--amber)}
+.badge-confidence-c{background:var(--red-bg);color:var(--red)}
+.badge-critical{background:var(--red-bg);color:var(--red);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+.rec-badge{padding:4px 10px;border-radius:var(--r-sm);font-size:0.75rem;font-weight:600;white-space:nowrap}
+.rec-urgent{background:var(--coral-bg);color:var(--coral)}.rec-invest{background:var(--green-bg);color:var(--green)}.rec-sunset{background:var(--amber-bg);color:var(--amber)}.rec-maintain{background:var(--purple-bg);color:var(--purple)}
+.card-name{font-family:var(--font-display);font-size:1.15rem;font-weight:400;margin-bottom:4px;line-height:1.2}
+.card-code{font-family:var(--font-mono);font-size:0.72rem;color:var(--text3);margin-bottom:14px}
+.score-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.score-big{font-family:var(--font-mono);font-size:1.8rem;font-weight:500;line-height:1}
+.score-label{font-size:0.72rem;color:var(--text3);line-height:1.3}
+.score-bar-wrap{flex:1}
+.score-bar-track{height:6px;background:var(--bg4);border-radius:3px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:3px;transition:width 0.4s ease}
+.mini-dims{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.mini-dim{background:var(--bg3);border-radius:var(--r-sm);padding:7px 9px;position:relative}
+.mini-dim.estimated{opacity:0.55}
+.mini-dim-label{font-size:0.68rem;color:var(--text3);letter-spacing:0.03em;margin-bottom:3px}
+.mini-dim-val{font-family:var(--font-mono);font-size:0.82rem;color:var(--text);font-weight:500}
+.estimated-dot{position:absolute;top:5px;right:6px;width:5px;height:5px;border-radius:50%;background:var(--amber);opacity:0.7}
+.enrol-trend{display:flex;align-items:center;gap:5px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:0.78rem;color:var(--text3)}
+.trend-up{color:var(--green)}.trend-down{color:var(--red)}.trend-flat{color:var(--text3)}
+.drawer-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity 0.25s}
+.drawer-overlay.open{opacity:1;pointer-events:all}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(680px,100vw);background:var(--bg2);border-left:1px solid var(--border);overflow-y:auto;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);z-index:201}
+.drawer.open{transform:translateX(0)}
+.drawer-inner{padding:32px}
+.drawer-close{position:sticky;top:0;z-index:10;display:flex;justify-content:flex-end;padding:16px 32px;background:var(--bg2);border-bottom:1px solid var(--border);margin:-32px -32px 28px}
+.close-btn{width:32px;height:32px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all 0.15s}
+.close-btn:hover{border-color:var(--border2);color:var(--text)}
+.drawer-name{font-family:var(--font-display);font-size:1.8rem;font-weight:400;line-height:1.15;margin-bottom:6px}
+.drawer-code{font-family:var(--font-mono);font-size:0.78rem;color:var(--text3);margin-bottom:20px}
+.dim-section{margin-bottom:28px}
+.dim-section-title{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dim-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.dim-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding:10px 12px;background:var(--bg3);border-radius:var(--r-sm);position:relative;transition:opacity 0.15s}
+.dim-row.estimated{opacity:0.65;border:1px dashed rgba(245,158,11,0.25)}
+.dim-row-label{flex:0 0 160px;font-size:0.82rem;color:var(--text2)}
+.dim-row-bar{flex:1}
+.dim-row-track{height:5px;background:var(--bg4);border-radius:3px;overflow:hidden}
+.dim-row-fill{height:100%;border-radius:3px}
+.dim-row-val{flex:0 0 48px;text-align:right;font-family:var(--font-mono);font-size:0.82rem;color:var(--text)}
+.est-tag{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:0.68rem;color:var(--amber);opacity:0.8;background:var(--amber-bg);padding:1px 6px;border-radius:3px}
+.tooltip-wrap{position:relative;display:inline-block}
+.tooltip-icon{width:14px;height:14px;border-radius:50%;background:var(--bg4);color:var(--text3);font-size:0.65rem;display:inline-flex;align-items:center;justify-content:center;cursor:help;margin-left:4px}
+.tooltip-text{position:absolute;bottom:calc(100% + 6px);left:0;width:220px;padding:8px 10px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--r-sm);font-size:0.75rem;color:var(--text2);line-height:1.5;z-index:300;opacity:0;pointer-events:none;transition:opacity 0.15s;white-space:normal}
+.tooltip-wrap:hover .tooltip-text{opacity:1}
+.tasks-section{margin-bottom:28px}
+.task-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.task-item:last-child{border-bottom:none}
+.task-type{flex:0 0 62px;padding:2px 7px;border-radius:4px;font-size:0.68rem;font-weight:600;text-align:center;margin-top:2px}
+.task-rep{background:var(--coral-bg);color:var(--coral)}.task-aug{background:var(--teal-bg);color:var(--teal)}
+.task-name{flex:1;font-size:0.85rem;color:var(--text)}
+.task-score{flex:0 0 36px;text-align:right;font-family:var(--font-mono);font-size:0.8rem;color:var(--text2)}
+.intervention-box{background:var(--bg3);border-left:3px solid var(--accent);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:14px 16px;margin-bottom:20px}
+.intervention-box h4{font-size:0.78rem;font-weight:600;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;text-transform:uppercase}
+.intervention-box p{font-size:0.84rem;color:var(--text2);line-height:1.6}
+.enrol-chart{margin:8px 0;display:flex;align-items:flex-end;gap:4px;height:40px}
+.enrol-bar{flex:1;border-radius:3px 3px 0 0;min-height:4px;transition:height 0.4s ease}
+.composite-breakdown{background:var(--bg3);border-radius:var(--r);padding:16px;margin-bottom:20px}
+.cb-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:0.82rem}
+.cb-row:not(:last-child){border-bottom:1px solid var(--border)}
+.cb-label{color:var(--text2)}.cb-val{font-family:var(--font-mono);color:var(--text)}
+.cb-total{font-weight:600;color:var(--text)}.cb-total .cb-val{color:var(--accent)}
+.modal-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;padding:32px;width:min(700px,95vw);max-height:85vh;overflow-y:auto;transform:scale(0.96);transition:transform 0.2s}
+.modal-overlay.open .modal{transform:scale(1)}
+.modal h2{font-family:var(--font-display);font-size:1.5rem;font-weight:400;margin-bottom:6px}
+.modal p.sub{color:var(--text2);font-size:0.85rem;margin-bottom:24px}
+.weight-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.weight-label{flex:0 0 200px;font-size:0.85rem;color:var(--text2)}
+.weight-slider{flex:1;accent-color:var(--accent);cursor:pointer}
+.weight-val{flex:0 0 44px;text-align:right;font-family:var(--font-mono);font-size:0.82rem;color:var(--accent)}
+.weight-total{margin-top:12px;padding:10px 14px;border-radius:var(--r-sm);background:var(--bg3);display:flex;justify-content:space-between;font-size:0.85rem}
+.weight-total span:last-child{font-family:var(--font-mono);color:var(--green)}
+.weight-total.over span:last-child{color:var(--red)}
+.apply-btn{margin-top:16px;width:100%;padding:11px;background:var(--accent);border:none;border-radius:var(--r-sm);color:#fff;font-family:var(--font-body);font-size:0.9rem;font-weight:500;cursor:pointer;transition:background 0.15s}
+.apply-btn:hover{background:var(--accent2)}
+.icon-btn{width:36px;height:36px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s;font-size:0.85rem}
+.icon-btn:hover{border-color:var(--border2);color:var(--text)}
+.uncertainty-band{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);margin-top:2px}
+@media(max-width:640px){header{padding:0 16px}.hero,.controls,.grid-wrap{padding-left:16px;padding-right:16px}.hero h1{font-size:2rem}.region-btn span:not(.flag){display:none}.stub-badge{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Canary<span>.</span></div>
+  <div class="header-right">
+    <div class="region-switcher" id="regionSwitcher">
+      <button class="region-btn active" data-region="uk" onclick="switchRegion('uk')"><span class="flag">🇬🇧</span> <span>United Kingdom</span></button>
+      <button class="region-btn" data-region="gcc" onclick="switchRegion('gcc')"><span class="flag">🇦🇪</span> <span>GCC / UAE</span></button>
+      <button class="region-btn" data-region="us" onclick="switchRegion('us')"><span class="flag">🇺🇸</span> <span>United States</span></button>
+      <button class="region-btn" data-region="eu" onclick="switchRegion('eu')"><span class="flag">🇪🇺</span> <span>Europe</span> <span class="stub-badge">STUB</span></button>
+    </div>
+    <button class="icon-btn" onclick="openMethodology()" title="Methodology & weights">⚙</button>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1>How will AI reshape<br><em>academic programmes</em><br>in your region?</h1>
+    <p>A six-dimension risk framework grounded in peer-reviewed research and regional labour market data. Built for higher education leaders making real planning decisions.</p>
+    <div class="hero-meta">
+      <div class="hero-stat"><div class="num" id="statPrograms">—</div><div class="label">Programmes</div></div>
+      <div class="divider-v"></div>
+      <div class="hero-stat"><div class="num" id="statFields">—</div><div class="label">Subject areas</div></div>
+      <div class="divider-v"></div>
+      <div class="hero-stat"><div class="num" id="statConfidence">—</div><div class="label">Data confidence</div></div>
+      <div class="divider-v"></div>
+      <div class="hero-stat"><div class="num" id="statRegion">—</div><div class="label">Region</div></div>
+    </div>
+  </section>
+  <section class="controls">
+    <div class="search-wrap">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="search" id="searchInput" placeholder="Search programmes…" oninput="renderGrid()">
+    </div>
+    <div class="filter-group">
+      <button class="filter-btn f-urgent" onclick="toggleFilter('urgent',this)">⚡ Urgent Pivot</button>
+      <button class="filter-btn f-invest" onclick="toggleFilter('invest',this)">🌱 Invest &amp; Grow</button>
+      <button class="filter-btn f-sunset" onclick="toggleFilter('sunset',this)">🌅 Sunset</button>
+      <button class="filter-btn f-maintain" onclick="toggleFilter('maintain',this)">🔒 Maintain</button>
+      <button class="filter-btn f-critical" onclick="toggleFilter('critical',this)">🚨 Critical Now</button>
+    </div>
+    <select class="sort-select" onchange="renderGrid()" id="sortSelect">
+      <option value="default">Sort: Default</option>
+      <option value="score-desc">Highest Risk</option>
+      <option value="score-asc">Lowest Risk</option>
+      <option value="exposure">Highest Exposure</option>
+      <option value="halflife">Shortest Runway</option>
+      <option value="enrol-down">Declining Enrolment</option>
+    </select>
+  </section>
+  <section class="grid-wrap"><div class="program-grid" id="programGrid"></div></section>
+</main>
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer"><div class="drawer-inner" id="drawerContent"></div></div>
+<div class="modal-overlay" id="modalOverlay" onclick="closeMethodology(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h2>Scoring methodology</h2>
+    <p class="sub">Adjust dimension weights. Changes recalculate all programme scores in real time. Weights must sum to 100%.</p>
+    <div id="weightSliders"></div>
+    <div class="weight-total" id="weightTotal"><span>Total weight</span><span id="weightSum">100%</span></div>
+    <button class="apply-btn" onclick="applyWeights()">Apply &amp; recalculate</button>
+    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border)">
+      <p style="font-size:0.82rem;color:var(--text3);line-height:1.7"><strong style="color:var(--text2)">Greyed-out dimensions</strong> indicate values estimated rather than directly sourced. Hover the amber dot on any dimension for the source note.</p>
+    </div>
+  </div>
+</div><script>
+const DATA_UK=[
+{id:'uk-accounting',name:'Accounting & Finance',field:'Business',code:'CAH17-01-01',exposure:0.84,halfLife:1.7,facultyReady:24,region:0.92,empOut:-0.03,mechanism:'aug',enrolTrend:[-2.1,-3.4,-1.8],enrolNote:'Declining — EY/KPMG graduate intake automation signals. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Prepare financial statements',type:'rep',score:0.92},{name:'Process accounts payable',type:'rep',score:0.89},{name:'Advise on tax planning',type:'aug',score:0.54},{name:'Audit internal controls',type:'aug',score:0.47},{name:'Build financial models',type:'rep',score:0.81}]},
+{id:'uk-cs',name:'Computer Science',field:'Technology',code:'CAH11-01-01',exposure:0.71,halfLife:3.2,facultyReady:58,region:1.18,empOut:0.14,mechanism:'aug',enrolTrend:[8.2,11.4,9.7],enrolNote:'Strong growth — graduates will work alongside AI from day one. HESA 2021-2024.',estimatedDims:['facultyReady'],tasks:[{name:'Write and test code',type:'rep',score:0.78},{name:'Design system architecture',type:'aug',score:0.41},{name:'Debug legacy systems',type:'rep',score:0.72},{name:'Lead technical decisions',type:'aug',score:0.22},{name:'Review code contributions',type:'aug',score:0.55}]},
+{id:'uk-nursing',name:'Nursing (BSc)',field:'Health',code:'CAH02-01-01',exposure:0.24,halfLife:9.4,facultyReady:41,region:1.12,empOut:0.18,mechanism:'aug',enrolTrend:[3.1,4.2,5.8],enrolNote:'Growing — NHS Long Term Workforce Plan driving funded places. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Administer medications',type:'aug',score:0.09},{name:'Document patient records',type:'rep',score:0.71},{name:'Assess patient condition',type:'aug',score:0.18},{name:'Patient education',type:'aug',score:0.14},{name:'Coordinate care pathways',type:'aug',score:0.27}]},
+{id:'uk-law',name:'Law (LLB)',field:'Law',code:'CAH14-01-01',exposure:0.67,halfLife:3.8,facultyReady:29,region:1.04,empOut:0.02,mechanism:'aug',enrolTrend:[1.2,0.8,-0.4],enrolNote:'Flat — AI threat to paralegal pipeline. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Draft contracts',type:'rep',score:0.85},{name:'Legal research',type:'rep',score:0.79},{name:'Advise on legal strategy',type:'aug',score:0.31},{name:'Represent clients',type:'aug',score:0.08},{name:'Due diligence review',type:'rep',score:0.82}]},
+{id:'uk-journalism',name:'Journalism & Media',field:'Arts & Humanities',code:'CAH19-01-02',exposure:0.79,halfLife:1.9,facultyReady:22,region:0.84,empOut:-0.12,mechanism:'rep',enrolTrend:[-6.2,-8.4,-9.1],enrolNote:'Steep decline — newsroom restructuring accelerating. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Write news articles',type:'rep',score:0.87},{name:'Summarise press releases',type:'rep',score:0.93},{name:'Investigate sources',type:'aug',score:0.28},{name:'Edit copy',type:'rep',score:0.84},{name:'Produce broadcast content',type:'aug',score:0.31}]},
+{id:'uk-data-sci',name:'Data Science & Analytics',field:'Technology',code:'CAH11-01-03',exposure:0.62,halfLife:3.6,facultyReady:52,region:1.22,empOut:0.21,mechanism:'aug',enrolTrend:[18.4,22.1,19.8],enrolNote:'Rapid growth — strong employer pull. HESA 2021-2024.',estimatedDims:['facultyReady'],tasks:[{name:'Clean and transform data',type:'rep',score:0.82},{name:'Build predictive models',type:'aug',score:0.55},{name:'Communicate insights',type:'aug',score:0.34},{name:'Write data pipelines',type:'rep',score:0.74},{name:'Evaluate model performance',type:'aug',score:0.49}]},
+{id:'uk-marketing',name:'Marketing & Communications',field:'Business',code:'CAH17-01-04',exposure:0.76,halfLife:2.4,facultyReady:31,region:0.98,empOut:-0.04,mechanism:'aug',enrolTrend:[-0.8,-2.1,-3.2],enrolNote:'Declining — employer perception shift on degree value. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Create ad content',type:'rep',score:0.91},{name:'Manage social campaigns',type:'rep',score:0.83},{name:'Develop brand strategy',type:'aug',score:0.38},{name:'Analyse campaign data',type:'rep',score:0.77},{name:'Manage client relationships',type:'aug',score:0.21}]},
+{id:'uk-economics',name:'Economics (BSc)',field:'Social Sciences',code:'CAH16-01-01',exposure:0.69,halfLife:3.1,facultyReady:33,region:1.06,empOut:0.07,mechanism:'aug',enrolTrend:[2.4,3.1,1.9],enrolNote:'Stable — strong graduate wage premium. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Model economic forecasts',type:'rep',score:0.81},{name:'Analyse policy data',type:'rep',score:0.77},{name:'Write research reports',type:'rep',score:0.85},{name:'Advise on macro strategy',type:'aug',score:0.36},{name:'Present to policymakers',type:'aug',score:0.29}]},
+{id:'uk-civil-eng',name:'Civil Engineering (BEng)',field:'Engineering',code:'CAH10-01-03',exposure:0.38,halfLife:7.2,facultyReady:38,region:1.08,empOut:0.09,mechanism:'aug',enrolTrend:[1.4,2.1,2.8],enrolNote:'Steady growth — infrastructure investment pipeline. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Structural calculations',type:'rep',score:0.68},{name:'Oversee construction',type:'aug',score:0.07},{name:'Produce technical drawings',type:'rep',score:0.72},{name:'Environmental assessment',type:'aug',score:0.33},{name:'Manage project timelines',type:'aug',score:0.41}]},
+{id:'uk-social-work',name:'Social Work (BA)',field:'Health',code:'CAH02-02-01',exposure:0.21,halfLife:11.2,facultyReady:19,region:0.97,empOut:0.16,mechanism:'aug',enrolTrend:[5.2,6.1,4.8],enrolNote:'Growing — DfE bursaries driving intake. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Safeguarding assessments',type:'aug',score:0.11},{name:'Write case notes',type:'rep',score:0.66},{name:'Liaise with families',type:'aug',score:0.08},{name:'Manage complex caseloads',type:'aug',score:0.17},{name:'Court report preparation',type:'rep',score:0.59}]},
+{id:'uk-psychology',name:'Psychology (BSc)',field:'Social Sciences',code:'CAH04-01-01',exposure:0.44,halfLife:6.1,facultyReady:27,region:0.91,empOut:0.06,mechanism:'aug',enrolTrend:[4.1,3.8,2.9],enrolNote:'Growing — destination outcomes widely dispersed. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Conduct assessments',type:'aug',score:0.35},{name:'Write clinical reports',type:'rep',score:0.64},{name:'Deliver therapy',type:'aug',score:0.09},{name:'Analyse research data',type:'rep',score:0.71},{name:'Advise on mental health plans',type:'aug',score:0.14}]},
+{id:'uk-architecture',name:'Architecture (BA/BSc)',field:'Design',code:'CAH13-01-01',exposure:0.54,halfLife:4.8,facultyReady:42,region:0.96,empOut:0.04,mechanism:'aug',enrolTrend:[0.2,-0.8,-1.2],enrolNote:'Slightly declining — RIBA pathway constraints. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Produce technical drawings',type:'rep',score:0.79},{name:'Generate design concepts',type:'rep',score:0.71},{name:'Client brief interpretation',type:'aug',score:0.34},{name:'Planning application prep',type:'rep',score:0.74},{name:'Site supervision',type:'aug',score:0.12}]},
+{id:'uk-pharma',name:'Pharmacy (MPharm)',field:'Health',code:'CAH02-01-03',exposure:0.48,halfLife:5.3,facultyReady:36,region:1.02,empOut:0.08,mechanism:'aug',enrolTrend:[2.8,3.4,3.1],enrolNote:'Stable growth — NHS supply pressures. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Dispense prescriptions',type:'rep',score:0.74},{name:'Clinical medication review',type:'aug',score:0.38},{name:'Patient counselling',type:'aug',score:0.19},{name:'Drug interaction checks',type:'rep',score:0.82},{name:'Manage pharmacy operations',type:'aug',score:0.31}]},
+{id:'uk-finance',name:'Finance (BSc)',field:'Business',code:'CAH17-01-02',exposure:0.81,halfLife:2.1,facultyReady:28,region:1.14,empOut:-0.01,mechanism:'aug',enrolTrend:[-1.2,-2.4,-0.8],enrolNote:'Slight decline — AI concern dampening applications. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Financial modelling',type:'rep',score:0.86},{name:'Investment research reports',type:'rep',score:0.88},{name:'Risk scenario analysis',type:'rep',score:0.79},{name:'Client relationship management',type:'aug',score:0.24},{name:'Regulatory compliance',type:'aug',score:0.51}]},
+{id:'uk-teaching',name:'Education / PGCE',field:'Education',code:'CAH23-01-01',exposure:0.34,halfLife:7.8,facultyReady:21,region:0.94,empOut:0.11,mechanism:'aug',enrolTrend:[4.4,6.2,7.1],enrolNote:'Growing — DfE shortage subject bursaries. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Lesson planning',type:'rep',score:0.68},{name:'Classroom instruction',type:'aug',score:0.13},{name:'Mark student work',type:'rep',score:0.72},{name:'Pastoral care',type:'aug',score:0.06},{name:'Parent communication',type:'aug',score:0.27}]},
+{id:'uk-biomedical',name:'Biomedical Science (BSc)',field:'Health',code:'CAH02-03-01',exposure:0.52,halfLife:5.1,facultyReady:44,region:1.04,empOut:0.13,mechanism:'aug',enrolTrend:[3.8,4.9,5.4],enrolNote:'Growing — life sciences sector expansion. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Laboratory data analysis',type:'rep',score:0.78},{name:'Run diagnostic assays',type:'aug',score:0.31},{name:'Research report writing',type:'rep',score:0.82},{name:'Quality control',type:'rep',score:0.67},{name:'Interpret pathology results',type:'aug',score:0.39}]}
+];
+const DATA_GCC=[
+{id:'gcc-business-admin',name:'Business Administration (BBA)',field:'Business',code:'ISCED-0413',exposure:0.77,halfLife:2.3,facultyReady:19,region:0.88,empOut:0.04,mechanism:'aug',enrolTrend:[3.1,2.4,1.8],enrolNote:'Slowing growth — market saturation approaching. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Prepare management reports',type:'rep',score:0.88},{name:'Analyse business data',type:'rep',score:0.82},{name:'Lead strategy sessions',type:'aug',score:0.29},{name:'Manage stakeholder relationships',type:'aug',score:0.18},{name:'Draft business proposals',type:'rep',score:0.85}]},
+{id:'gcc-engineering-civil',name:'Civil & Infrastructure Engineering',field:'Engineering',code:'ISCED-0732',exposure:0.41,halfLife:6.8,facultyReady:31,region:1.24,empOut:0.22,mechanism:'aug',enrolTrend:[8.4,11.2,13.1],enrolNote:'High growth — UAE/KSA megaproject pipeline. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Structural design calculations',type:'rep',score:0.71},{name:'BIM modelling',type:'rep',score:0.75},{name:'Site inspection',type:'aug',score:0.08},{name:'Project cost estimation',type:'rep',score:0.68},{name:'Regulatory compliance',type:'aug',score:0.37}]},
+{id:'gcc-islamic-finance',name:'Islamic Finance & Banking',field:'Business',code:'ISCED-0412',exposure:0.69,halfLife:3.4,facultyReady:16,region:1.08,empOut:0.11,mechanism:'aug',enrolTrend:[4.2,5.1,6.8],enrolNote:'Growing — strong regional employer pull. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Shariah compliance review',type:'aug',score:0.42},{name:'Prepare Islamic instruments',type:'rep',score:0.79},{name:'Client advisory on halal investing',type:'aug',score:0.31},{name:'AAOIFI regulatory reporting',type:'rep',score:0.81},{name:'Sukuk structuring',type:'rep',score:0.73}]},
+{id:'gcc-cs',name:'Computer Science & AI',field:'Technology',code:'ISCED-0613',exposure:0.68,halfLife:3.1,facultyReady:41,region:1.31,empOut:0.28,mechanism:'aug',enrolTrend:[24.1,29.4,31.2],enrolNote:'Explosive growth — UAE AI Strategy 2031. UAE MOHESR 2022-2024.',estimatedDims:['facultyReady','region'],tasks:[{name:'Develop software applications',type:'rep',score:0.76},{name:'Build ML models',type:'aug',score:0.52},{name:'System architecture design',type:'aug',score:0.38},{name:'Cybersecurity implementation',type:'aug',score:0.34},{name:'Code review',type:'rep',score:0.71}]},
+{id:'gcc-petroleum-eng',name:'Petroleum Engineering',field:'Engineering',code:'ISCED-0715',exposure:0.44,halfLife:6.2,facultyReady:34,region:1.42,empOut:0.06,mechanism:'aug',enrolTrend:[-2.4,-4.1,-5.8],enrolNote:'Declining — energy transition dampening applications despite employer demand. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Reservoir simulation',type:'rep',score:0.74},{name:'Well planning & drilling',type:'rep',score:0.66},{name:'On-site operations',type:'aug',score:0.12},{name:'Environmental impact assessment',type:'rep',score:0.69},{name:'Project management',type:'aug',score:0.33}]},
+{id:'gcc-hospitality',name:'Hospitality & Tourism Management',field:'Business',code:'ISCED-1015',exposure:0.53,halfLife:4.6,facultyReady:14,region:1.18,empOut:0.19,mechanism:'aug',enrolTrend:[6.8,9.2,11.4],enrolNote:'Strong growth — UAE Tourism Strategy 2031. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Manage reservations',type:'rep',score:0.84},{name:'Revenue optimisation',type:'rep',score:0.81},{name:'Guest experience management',type:'aug',score:0.12},{name:'Event planning',type:'aug',score:0.31},{name:'Staff training',type:'aug',score:0.22}]},
+{id:'gcc-medicine',name:'Medicine (MBBS / MD)',field:'Health',code:'ISCED-0912',exposure:0.32,halfLife:8.4,facultyReady:29,region:1.11,empOut:0.24,mechanism:'aug',enrolTrend:[4.1,4.8,5.2],enrolNote:'Steady growth — UAE/KSA healthcare nationalisation targets. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Diagnose from imaging',type:'aug',score:0.54},{name:'Patient clinical examination',type:'aug',score:0.09},{name:'Medical record documentation',type:'rep',score:0.74},{name:'Treatment planning',type:'aug',score:0.28},{name:'Surgical procedures',type:'aug',score:0.04}]},
+{id:'gcc-arabic-media',name:'Arabic Media & Communications',field:'Arts & Humanities',code:'ISCED-0321',exposure:0.72,halfLife:2.6,facultyReady:12,region:0.76,empOut:-0.08,mechanism:'rep',enrolTrend:[-3.8,-5.2,-6.4],enrolNote:'Declining — Arabic LLM capability accelerating faster than English equivalents. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Write Arabic news content',type:'rep',score:0.88},{name:'Translate & localise content',type:'rep',score:0.91},{name:'Social media management',type:'rep',score:0.86},{name:'Investigate stories',type:'aug',score:0.24},{name:'On-screen presentation',type:'aug',score:0.17}]},
+{id:'gcc-logistics',name:'Logistics & Supply Chain',field:'Business',code:'ISCED-0414',exposure:0.64,halfLife:3.8,facultyReady:18,region:1.28,empOut:0.17,mechanism:'aug',enrolTrend:[9.4,12.1,14.8],enrolNote:'Strong growth — Dubai Logistics Strategy, Jebel Ali expansion. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Demand forecasting',type:'rep',score:0.83},{name:'Route optimisation',type:'rep',score:0.87},{name:'Supplier negotiation',type:'aug',score:0.34},{name:'Inventory management',type:'rep',score:0.79},{name:'Cross-border compliance',type:'aug',score:0.44}]},
+{id:'gcc-architecture',name:'Architecture & Urban Design',field:'Design',code:'ISCED-0731',exposure:0.56,halfLife:4.4,facultyReady:28,region:1.16,empOut:0.21,mechanism:'aug',enrolTrend:[7.2,8.4,9.8],enrolNote:'Strong growth — GCC smart city and construction boom. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Parametric design',type:'rep',score:0.74},{name:'Technical documentation',type:'rep',score:0.78},{name:'Client brief development',type:'aug',score:0.29},{name:'Planning navigation',type:'aug',score:0.34},{name:'Construction oversight',type:'aug',score:0.11}]},
+{id:'gcc-data-analytics',name:'Data Science & Analytics',field:'Technology',code:'ISCED-0612',exposure:0.61,halfLife:3.4,facultyReady:38,region:1.26,empOut:0.31,mechanism:'aug',enrolTrend:[19.2,24.4,28.1],enrolNote:'Explosive growth — UAE national AI strategy and Smart Dubai. UAE MOHESR 2022-2024.',estimatedDims:['facultyReady','region'],tasks:[{name:'Data cleaning & transformation',type:'rep',score:0.84},{name:'Build dashboards',type:'rep',score:0.78},{name:'Statistical modelling',type:'aug',score:0.52},{name:'Present insights',type:'aug',score:0.31},{name:'Write analytical reports',type:'rep',score:0.81}]},
+{id:'gcc-nursing',name:'Nursing (BSc)',field:'Health',code:'ISCED-0913',exposure:0.26,halfLife:9.1,facultyReady:22,region:1.08,empOut:0.29,mechanism:'aug',enrolTrend:[8.1,9.4,10.2],enrolNote:'Strong growth — Saudisation/Emiratisation healthcare targets. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Patient monitoring',type:'aug',score:0.14},{name:'Clinical documentation',type:'rep',score:0.68},{name:'Medication administration',type:'aug',score:0.08},{name:'Patient education',type:'aug',score:0.11},{name:'Coordinate care',type:'aug',score:0.24}]}
+];
+const DATA_US=[
+{id:'us-accounting',name:'Accounting',field:'Business',code:'CIP 52.0301',exposure:0.83,halfLife:1.8,facultyReady:22,region:0.90,empOut:-0.02,mechanism:'aug',enrolTrend:[-3.1,-4.2,-2.8],enrolNote:'Declining — CPA exam changes and AI perception reducing applications.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Prepare financial statements',type:'rep',score:0.91},{name:'Process journal entries',type:'rep',score:0.94},{name:'Tax preparation',type:'rep',score:0.88},{name:'Advise on financial strategy',type:'aug',score:0.44},{name:'Internal audit',type:'aug',score:0.51}]},
+{id:'us-cs',name:'Computer Science',field:'Technology',code:'CIP 11.0701',exposure:0.69,halfLife:3.4,facultyReady:61,region:1.21,empOut:0.17,mechanism:'aug',enrolTrend:[11.2,14.1,10.4],enrolNote:'Strong but slowing — market saturation concern emerging.',estimatedDims:['facultyReady'],tasks:[{name:'Write & test code',type:'rep',score:0.79},{name:'Design software architecture',type:'aug',score:0.42},{name:'Code review & debugging',type:'rep',score:0.74},{name:'Technical leadership',type:'aug',score:0.19},{name:'Requirements analysis',type:'aug',score:0.37}]},
+{id:'us-nursing',name:'Nursing (BSN)',field:'Health',code:'CIP 51.3801',exposure:0.22,halfLife:10.2,facultyReady:44,region:1.14,empOut:0.21,mechanism:'aug',enrolTrend:[4.8,5.2,6.1],enrolNote:'Growing — persistent national nursing shortage.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Patient assessment',type:'aug',score:0.11},{name:'Clinical documentation',type:'rep',score:0.69},{name:'Medication administration',type:'aug',score:0.07},{name:'Patient education',type:'aug',score:0.13},{name:'Care coordination',type:'aug',score:0.22}]},
+{id:'us-journalism',name:'Journalism',field:'Arts & Humanities',code:'CIP 09.0401',exposure:0.81,halfLife:1.9,facultyReady:21,region:0.82,empOut:-0.14,mechanism:'rep',enrolTrend:[-8.4,-10.1,-11.2],enrolNote:'Steep decline — industry structural collapse accelerating.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Write news articles',type:'rep',score:0.88},{name:'Edit and proofread copy',type:'rep',score:0.86},{name:'Investigative reporting',type:'aug',score:0.24},{name:'Conduct interviews',type:'aug',score:0.21},{name:'Social media management',type:'rep',score:0.83}]},
+{id:'us-data-sci',name:'Data Science',field:'Technology',code:'CIP 11.0401',exposure:0.60,halfLife:3.7,facultyReady:54,region:1.24,empOut:0.24,mechanism:'aug',enrolTrend:[22.4,28.1,21.8],enrolNote:'Strong growth — but shows signs of plateauing.',estimatedDims:['facultyReady'],tasks:[{name:'Data wrangling',type:'rep',score:0.83},{name:'Build ML models',type:'aug',score:0.54},{name:'Statistical analysis',type:'rep',score:0.78},{name:'Communicate findings',type:'aug',score:0.32},{name:'Write technical documentation',type:'rep',score:0.79}]}
+];
+const DATA_EU=[{id:'eu-stub',name:'EU data — coming in v2',field:'—',code:'—',exposure:0,halfLife:8,facultyReady:50,region:1,empOut:0,mechanism:'aug',enrolTrend:[0,0,0],enrolNote:'Stub — Cedefop + Eurostat NUTS-2 in development.',estimatedDims:['halfLife','facultyReady','region','empOut','enrolment'],tasks:[]}];
+const REGION_DATA={uk:DATA_UK,gcc:DATA_GCC,us:DATA_US,eu:DATA_EU};
+const REGION_META={uk:{name:'United Kingdom',flag:'🇬🇧',confidence:'B+ avg',dataNote:'HESA CAH · ONS LMI for All · Graduate Outcomes · Jisc'},gcc:{name:'GCC / UAE',flag:'🇦🇪',confidence:'B avg',dataNote:'ISCED · ILO ILOSTAT · UAE Vision 2031 · ISCO-08 crosswalk'},us:{name:'United States',flag:'🇺🇸',confidence:'A avg',dataNote:'NCES CIP · BLS OOH · O*NET · Educause'},eu:{name:'Europe',flag:'🇪🇺',confidence:'Stub',dataNote:'v2 — Cedefop · Eurostat NUTS-2'}};
+let weights={task:0.33,halfLife:0.17,faculty:0.12,regional:0.11,employment:0.10,enrolment:0.17};
+let activeRegion='uk',activeFilters=new Set(),programs=[];
+function normalise(p){const task=p.exposure;const hl=Math.min(1,Math.max(0,1-(p.halfLife-0.5)/14.5));const fac=1-(p.facultyReady/100);const reg=Math.max(0,1-(p.region-0.8)/0.4);const emp=Math.max(0,Math.min(1,-p.empOut/0.15));const avgT=p.enrolTrend.reduce((a,b)=>a+b,0)/p.enrolTrend.length;const enrol=Math.max(0,Math.min(1,-avgT/10));return{task,hl,fac,reg,emp,enrol}}
+function computeScore(p){const n=normalise(p);return(n.task*weights.task)+(n.hl*weights.halfLife)+(n.fac*weights.faculty)+(n.reg*weights.regional)+(n.emp*weights.employment)+(n.enrol*weights.enrolment)}
+function classify(p,score){if(p.mechanism==='rep'&&score>0.67)return'sunset';if(score>0.57)return'urgent';if(score<0.30)return'invest';return'maintain'}
+function isCritical(p){return p.exposure>=0.65&&p.halfLife<=3.0&&p.facultyReady<=35}
+function uncertaintyBand(s){const m=0.04+(s*0.04);return[Math.max(0,s-m).toFixed(2),Math.min(1,s+m).toFixed(2)]}
+function confidenceTier(p){const e=p.estimatedDims.length;if(e<=1)return'a';if(e<=3)return'b';return'c'}
+function scoreColor(s){if(s>=0.68)return'#ef4444';if(s>=0.57)return'#fb7185';if(s>=0.40)return'#f59e0b';if(s>=0.30)return'#a78bfa';return'#3ecf8e'}
+function recLabel(r){return{urgent:'⚡ Urgent Pivot',invest:'🌱 Invest & Grow',sunset:'🌅 Sunset',maintain:'🔒 Maintain'}[r]}
+function trendIcon(v){const a=v.reduce((x,y)=>x+y,0)/v.length;if(a>2)return{icon:'↑',cls:'trend-up',label:'+'+a.toFixed(1)+'% avg enrolment'};if(a<-2)return{icon:'↓',cls:'trend-down',label:a.toFixed(1)+'% avg enrolment'};return{icon:'→',cls:'trend-flat',label:'Stable enrolment'}}
+function switchRegion(r){activeRegion=r;activeFilters.clear();document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.region-btn').forEach(b=>b.classList.toggle('active',b.dataset.region===r));loadPrograms();renderGrid();updateHeroStats()}
+function loadPrograms(){const raw=REGION_DATA[activeRegion]||[];programs=raw.map(p=>{const score=computeScore(p);return{...p,score,rec:classify(p,score),critical:isCritical(p)}})}
+function updateHeroStats(){const m=REGION_META[activeRegion];const fields=new Set(programs.map(p=>p.field)).size;document.getElementById('statPrograms').textContent=programs.length;document.getElementById('statFields').textContent=fields;document.getElementById('statConfidence').textContent=m.confidence;document.getElementById('statRegion').textContent=m.flag+' '+m.name}
+function toggleFilter(key,btn){if(activeFilters.has(key)){activeFilters.delete(key);btn.classList.remove('active')}else{activeFilters.add(key);btn.classList.add('active')}renderGrid()}
+function renderGrid(){const query=document.getElementById('searchInput').value.toLowerCase();const sort=document.getElementById('sortSelect').value;let list=[...programs];if(query)list=list.filter(p=>p.name.toLowerCase().includes(query)||p.field.toLowerCase().includes(query));if(activeFilters.size)list=list.filter(p=>{if(activeFilters.has('critical'))return p.critical;return activeFilters.has(p.rec)});if(sort==='score-desc')list.sort((a,b)=>b.score-a.score);else if(sort==='score-asc')list.sort((a,b)=>a.score-b.score);else if(sort==='exposure')list.sort((a,b)=>b.exposure-a.exposure);else if(sort==='halflife')list.sort((a,b)=>a.halfLife-b.halfLife);else if(sort==='enrol-down')list.sort((a,b)=>{const aA=a.enrolTrend.reduce((x,y)=>x+y,0)/a.enrolTrend.length;const bA=b.enrolTrend.reduce((x,y)=>x+y,0)/b.enrolTrend.length;return aA-bA});else list.sort((a,b)=>b.score-a.score);const grid=document.getElementById('programGrid');if(!list.length){grid.innerHTML='<div class="no-results">No programmes match your filters.</div>';return}
+grid.innerHTML=list.map(p=>{const col=scoreColor(p.score);const[lo,hi]=uncertaintyBand(p.score);const trend=trendIcon(p.enrolTrend);const conf=confidenceTier(p);const n=normalise(p);const dims=[{label:'Task AI',val:n.task,est:p.estimatedDims.includes('task')},{label:'Runway',val:n.hl,est:p.estimatedDims.includes('halfLife')},{label:'Faculty',val:n.fac,est:p.estimatedDims.includes('facultyReady')}];return `<div class="card ${p.rec}" onclick="openDrawer('${p.id}')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">${p.field}</span><span class="badge badge-confidence-${conf}">Tier ${conf.toUpperCase()}</span>${p.critical?'<span class="badge badge-critical">🚨 Critical</span>':''}</div><span class="rec-badge rec-${p.rec}">${recLabel(p.rec)}</span></div><div class="card-name">${p.name}</div><div class="card-code">${p.code}</div><div class="score-row"><div><div class="score-big" style="color:${col}">${p.score.toFixed(2)}</div><div class="uncertainty-band">${lo}–${hi} range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:${p.score*100}%;background:${col}"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: ${(p.exposure*100).toFixed(0)}%</span><span>${p.halfLife}yr runway</span></div></div></div><div class="mini-dims">${dims.map(d=>`<div class="mini-dim ${d.est?'estimated':''}">${d.est?'<div class="estimated-dot"></div>':''}<div class="mini-dim-label">${d.label}</div><div class="mini-dim-val">${(d.val*100).toFixed(0)}%</div></div>`).join('')}</div><div class="enrol-trend"><span class="${trend.cls}">${trend.icon}</span><span>${trend.label}</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">${p.enrolNote.split('—')[0]}</span></div></div>`}).join('')}
+function openDrawer(id){const p=programs.find(x=>x.id===id);if(!p)return;const n=normalise(p);const[lo,hi]=uncertaintyBand(p.score);const col=scoreColor(p.score);const trend=trendIcon(p.enrolTrend);const conf=confidenceTier(p);
+const dimDefs=[{label:'Task automation',val:n.task,raw:(p.exposure*100).toFixed(0)+'% tasks AI-replaceable',est:false,tooltip:'Eloundou et al. β score + Felten Princeton Index via SOC crosswalk. Directly sourced.'},{label:'Curriculum half-life',val:n.hl,raw:p.halfLife+' years runway',est:p.estimatedDims.includes('halfLife'),tooltip:'Estimated. O*NET task concentration + wage premium proxy. Based on Acemoglu & Restrepo (2022).'},{label:'Faculty readiness gap',val:n.fac,raw:p.facultyReady+'% AI-fluent faculty',est:p.estimatedDims.includes('facultyReady'),tooltip:'Estimated. Jisc Digital Experience Insights (UK) / TIMSS educator surveys (GCC). Institutional variation is high.'},{label:'Regional labour market',val:n.reg,raw:p.region+'× national avg',est:p.estimatedDims.includes('region'),tooltip:p.estimatedDims.includes('region')?'Estimated. ILO regional data at 1-digit group level. Treat as directional.':'ONS ASHE regional employment data by SOC 2020. Directly sourced.'},{label:'Employment outlook',val:n.emp,raw:(p.empOut>=0?'+':'')+(p.empOut*100).toFixed(0)+'% 10-yr projection',est:false,tooltip:'ONS LMI for All (UK) / ILO ILOSTAT (GCC) / BLS OOH (US). Directly sourced.'},{label:'Enrolment trajectory',val:n.enrol,raw:trend.icon+' '+trend.label,est:p.estimatedDims.includes('enrolment'),tooltip:'HESA Student Record 2021-2024 (UK) / UAE MOHESR (GCC). 3-year rolling average % change.'}];
+const repTasks=p.tasks.filter(t=>t.type==='rep');const topRep=repTasks.sort((a,b)=>b.score-a.score)[0];let intervention='';
+if(p.rec==='sunset')intervention='<p>The modal tasks in this programme are being <strong>substituted</strong> by AI. Graduate employer demand is projected to contract. Begin a structured wind-down review: assess student cohort impact, explore merger with adjacent programmes, and consult accreditation body on timeline implications.</p>';
+else if(p.rec==='urgent'){if(topRep&&(topRep.name.includes('report')||topRep.name.includes('writ')||topRep.name.includes('draft')))intervention='<p>The highest-risk tasks are <strong>document generation and written outputs</strong>. Shift curriculum emphasis from producing documents to <em>commissioning, evaluating, and critically editing</em> AI-generated outputs. Add structured AI audit modules and human-in-the-loop assessment design.</p>';else if(topRep&&(topRep.name.includes('data')||topRep.name.includes('model')||topRep.name.includes('analy')))intervention='<p>The highest-risk tasks are <strong>data processing and quantitative analysis</strong>. Shift curriculum emphasis from executing analysis to <em>problem framing, methodology selection, and results interpretation</em>. Introduce AI tool proficiency as a core assessed competency.</p>';else intervention='<p>Core tasks face significant AI substitution risk. Redesign the curriculum around <em>task direction, oversight, and quality assurance</em> of AI outputs. Faculty development is the critical constraint — '+p.facultyReady+'% AI fluency is insufficient to lead this change without a structured CPD programme.</p>';}
+else if(p.rec==='invest')intervention='<p>This programme trains students for work AI cannot easily replicate. <strong>Grow capacity</strong> where possible. Add targeted AI fluency modules to future-proof graduates without wholesale redesign. This is a strategic asset worth protecting.</p>';
+else intervention='<p>Moderate AI exposure — the field will change but is unlikely to be reshaped fundamentally in the near term. <strong>Monitor annually</strong>. Add AI fluency as optional enrichment modules. Reserve major curriculum investment for the next cycle pending updated data.</p>';
+const maxE=Math.max(...p.enrolTrend.map(Math.abs),1);const enrolBars=p.enrolTrend.map((v,i)=>{const h=Math.max(4,Math.abs(v)/maxE*36);const c=v>0?'var(--green)':v<0?'var(--red)':'var(--text3)';return `<div class="enrol-bar" style="height:${h}px;background:${c};opacity:${0.5+0.5*(i/p.enrolTrend.length)}"></div>`}).join('');
+document.getElementById('drawerContent').innerHTML=`<div class="drawer-close"><button class="close-btn" onclick="closeDrawer()">✕</button></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px"><span class="badge badge-field">${p.field}</span><span class="badge badge-confidence-${conf}">Tier ${conf.toUpperCase()} confidence</span>${p.critical?'<span class="badge badge-critical">🚨 Critical Now</span>':''}<span class="rec-badge rec-${p.rec}">${recLabel(p.rec)}</span></div><div class="drawer-name">${p.name}</div><div class="drawer-code">${p.code} · ${REGION_META[activeRegion].dataNote}</div><div class="composite-breakdown"><div class="cb-row"><span class="cb-label">Composite risk score</span><span class="cb-val cb-total" style="color:${col}">${p.score.toFixed(3)}</span></div><div class="cb-row"><span class="cb-label">Uncertainty band</span><span class="cb-val">${lo} – ${hi}</span></div><div class="cb-row"><span class="cb-label">Raw AI exposure</span><span class="cb-val">${(p.exposure*100).toFixed(0)}%</span></div><div class="cb-row"><span class="cb-label">Mechanism</span><span class="cb-val">${p.mechanism==='rep'?'AI Replaces core tasks':'AI Augments core tasks'}</span></div></div><div class="dim-section"><div class="dim-section-title">Six dimensions <span style="font-size:0.68rem;color:var(--amber);font-weight:400;text-transform:none;letter-spacing:0">● amber dot = estimated value</span></div>${dimDefs.map(d=>`<div class="dim-row ${d.est?'estimated':''}"><div class="dim-row-label">${d.label}<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>${d.est?'⚠ Estimated':'✓ Sourced'}</strong><br>${d.tooltip}</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:${d.val*100}%;background:${d.est?'#f59e0b':scoreColor(d.val)}"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">${d.raw}</div></div><div class="dim-row-val">${(d.val*100).toFixed(0)}%</div>${d.est?'<span class="est-tag">est.</span>':''}</div>`).join('')}</div><div class="tasks-section"><div class="dim-section-title">Task breakdown</div>${p.tasks.map(t=>`<div class="task-item"><span class="task-type ${t.type==='rep'?'task-rep':'task-aug'}">${t.type==='rep'?'Replaces':'Assists'}</span><span class="task-name">${t.name}</span><span class="task-score">${t.score.toFixed(2)}</span></div>`).join('')}<div style="font-size:0.74rem;color:var(--text3);margin-top:8px">Score = probability AI performs at human-level quality. Sources: O*NET / ISCO-08 task frameworks.</div></div><div class="dim-section"><div class="dim-section-title">Enrolment trajectory</div><div class="enrol-chart">${enrolBars}</div><div style="font-size:0.8rem;color:var(--text2);margin-top:6px">${p.enrolNote}</div></div><div class="tasks-section"><div class="dim-section-title">Recommended intervention</div><div class="intervention-box"><h4>${recLabel(p.rec)}</h4>${intervention}</div></div>`;
+document.getElementById('drawerOverlay').classList.add('open');document.getElementById('drawer').classList.add('open')}
+function closeDrawer(){document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawer').classList.remove('open')}
+const weightMeta=[{key:'task',label:'Task automation potential',tooltip:'Eloundou β + Felten via SOC crosswalk'},{key:'halfLife',label:'Curriculum half-life',tooltip:'O*NET task frequency + Epoch AI compute timeline'},{key:'faculty',label:'Faculty readiness gap',tooltip:'Jisc / TIMSS educator surveys (estimated)'},{key:'regional',label:'Regional labour market',tooltip:'ONS ASHE / ILO ILOSTAT regional employment'},{key:'employment',label:'Employment outlook',tooltip:'ONS LMI for All / ILO ILOSTAT / BLS OOH'},{key:'enrolment',label:'Enrolment trajectory',tooltip:'HESA Student Record / UAE MOHESR (new in v2)'}];
+function openMethodology(){const c=document.getElementById('weightSliders');c.innerHTML=weightMeta.map(w=>`<div class="weight-row"><div class="weight-label">${w.label}<br><span style="font-size:0.7rem;color:var(--text3)">${w.tooltip}</span></div><input type="range" class="weight-slider" id="w-${w.key}" min="0" max="60" step="1" value="${Math.round(weights[w.key]*100)}" oninput="updateWeightDisplay()"><div class="weight-val" id="wv-${w.key}">${Math.round(weights[w.key]*100)}%</div></div>`).join('');updateWeightDisplay();document.getElementById('modalOverlay').classList.add('open')}
+function updateWeightDisplay(){let t=0;weightMeta.forEach(w=>{const v=parseInt(document.getElementById('w-'+w.key).value);document.getElementById('wv-'+w.key).textContent=v+'%';t+=v});const el=document.getElementById('weightTotal');document.getElementById('weightSum').textContent=t+'%';el.classList.toggle('over',t!==100)}
+function applyWeights(){let t=0;weightMeta.forEach(w=>{t+=parseInt(document.getElementById('w-'+w.key).value)});if(t!==100)return;weightMeta.forEach(w=>{weights[w.key]=parseInt(document.getElementById('w-'+w.key).value)/100});loadPrograms();renderGrid();closeMethodology()}
+function closeMethodology(e){if(!e||e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('open')}
+loadPrograms();updateHeroStats();renderGrid();
+</script></body></html>
