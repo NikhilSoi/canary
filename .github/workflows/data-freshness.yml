@@ -1,0 +1,26 @@
+name: Data Freshness Check
+
+on:
+  schedule:
+    - cron: '0 9 1 1,7 *'
+  workflow_dispatch:
+
+jobs:
+  freshness-check:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Open reminder issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "Data refresh reminder - " + new Date().toISOString().split('T')[0],
+              body: "## Canary data freshness check\n\nSources to verify:\n- ONS ASHE annual tables (usually November)\n- ILO ILOSTAT annual update (usually Q1)\n- HESA Student Record (usually January)\n- Eloundou / Felten AI exposure updates\n\nRun: `node fetch-all.js` then update index.html and push.",
+              labels: ['data-maintenance']
+            });
