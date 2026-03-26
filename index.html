@@ -638,6 +638,186 @@ input[type="search"]::placeholder{color:var(--text3)}
   .pw-arrow { display:none; }
   .pw-outer { padding:24px 16px 32px; }
 }
+</style><style id="two-tab-styles">
+/* Two-tab nav */
+#mainTabBar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex;
+  gap: 0;
+}
+.main-tab {
+  padding: 14px 24px;
+  border: none;
+  background: transparent;
+  color: var(--text3);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+  margin-bottom: -1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.main-tab:hover { color: var(--text2); }
+.main-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.main-tab .tab-badge {
+  font-size: 0.68rem; font-weight: 600;
+  padding: 2px 7px; border-radius: 10px;
+  background: var(--bg4); color: var(--text3);
+  transition: all 0.15s;
+}
+.main-tab.active .tab-badge { background: rgba(91,141,239,0.15); color: var(--accent); }
+
+/* Tab content areas */
+#view-pathway { display: block; }
+#view-details { display: none; }
+
+/* Pathway view — full-width bg panel */
+#view-pathway {
+  background: var(--bg2);
+  border-bottom: 2px solid var(--border);
+}
+.pw-outer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 36px 32px 48px;
+}
+
+/* GCSE picker pills */
+.pw-gcse-btn {
+  padding: 10px 18px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  color: var(--text2);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pw-gcse-btn:hover { border-color: var(--border2); color: var(--text); background: var(--bg4); }
+.pw-gcse-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.pw-gcse-btn .pw-pill {
+  font-size: 0.7rem; padding: 2px 7px; border-radius: 4px; font-weight: 600;
+}
+.pw-gcse-btn.active .pw-pill { background: rgba(255,255,255,0.2); color: #fff; }
+
+/* Pipeline stage headers */
+.pw-stages {
+  display: grid;
+  grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.pw-stage-head {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 12px 14px; text-align: center;
+}
+.pw-stage-head .stage-label {
+  font-size: 0.63rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text3); margin-bottom: 3px;
+}
+.pw-stage-head .stage-name {
+  font-family: var(--font-display); font-size: 1.05rem; color: var(--text); line-height: 1.2;
+}
+.pw-stage-head .stage-sub { font-size: 0.7rem; color: var(--text3); margin-top: 2px; }
+
+/* Pipeline columns */
+.pw-cols {
+  display: grid;
+  grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr;
+  align-items: start;
+}
+.pw-col { display: flex; flex-direction: column; gap: 10px; }
+.pw-arrow { text-align: center; color: var(--text3); font-size: 1.2rem; padding-top: 26px; }
+
+/* Pipeline node cards */
+.pw-node {
+  border-radius: var(--r-sm); padding: 16px 16px;
+  border: 1px solid var(--border); background: var(--bg3);
+  transition: all 0.15s;
+}
+.pw-node:hover { border-color: var(--border2); }
+.pw-node.selected { border-color: var(--accent); background: rgba(91,141,239,0.06); }
+.pw-node-score {
+  font-family: var(--font-mono); font-size: 1.6rem;
+  font-weight: 500; line-height: 1; margin-bottom: 4px;
+}
+.pw-node-name { font-size: 0.88rem; font-weight: 500; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+.pw-node-bar { height: 5px; border-radius: 3px; background: var(--bg4); margin: 6px 0; overflow: hidden; }
+.pw-node-bar-fill { height: 100%; border-radius: 3px; }
+.pw-node-meta { font-size: 0.73rem; color: var(--text3); line-height: 1.5; }
+.pw-fit-badge {
+  font-size: 0.65rem; font-weight: 600; padding: 2px 7px;
+  border-radius: 3px; text-transform: uppercase;
+}
+.fit-required { background: rgba(62,207,142,0.15); color: var(--green); }
+.fit-preferred { background: rgba(91,141,239,0.12); color: var(--accent); }
+.fit-relevant  { background: var(--bg4); color: var(--text3); }
+.pw-insight {
+  margin-top: 20px; padding: 16px 20px;
+  background: var(--bg3); border-radius: var(--r-sm);
+  border-left: 3px solid var(--accent); font-size: 0.86rem;
+  color: var(--text2); line-height: 1.7;
+}
+.pw-insight strong { color: var(--text); }
+.pw-chain { display: none; }
+.pw-chain.visible { display: block; }
+
+/* Details view */
+#view-details { max-width: 1400px; margin: 0 auto; padding: 32px 32px 80px; }
+
+/* Subject dashboard tiles */
+.dash-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap:10px;
+  margin-bottom: 32px;
+}
+.dash-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 14px 16px; cursor: pointer; transition: all 0.18s;
+}
+.dash-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.dash-card.active { border-color: var(--accent); background: rgba(91,141,239,0.08); }
+.dash-field-name { font-size: 0.78rem; font-weight: 500; color: var(--text2); margin-bottom: 10px; line-height: 1.3; }
+.dash-score-num { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 500; line-height: 1; }
+.dash-count { font-size: 0.68rem; color: var(--text3); margin-top: 4px; }
+.dash-bar { height: 3px; background: var(--bg4); border-radius: 2px; margin-top: 10px; overflow: hidden; }
+.dash-bar-fill { height: 100%; border-radius: 2px; }
+.dash-verdict { font-size: 0.68rem; margin-top: 6px; font-weight: 500; }
+.dash-clear {
+  padding: 5px 12px; border-radius: var(--r-sm); border: 1px solid var(--border);
+  background: var(--bg3); color: var(--text2); font-family: var(--font-body);
+  font-size: 0.78rem; cursor: pointer;
+}
+.dash-clear:hover { border-color: var(--border2); color: var(--text); }
+
+/* Details sub-tabs for HE vs Schools */
+.sub-tabs {
+  display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;
+}
+.sub-tab {
+  padding: 7px 16px; border-radius: var(--r-sm); border: 1px solid var(--border);
+  background: var(--bg3); color: var(--text2); font-family: var(--font-body);
+  font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.15s;
+}
+.sub-tab:hover { border-color: var(--border2); color: var(--text); }
+.sub-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+@media(max-width:860px){
+  .pw-stages,.pw-cols { grid-template-columns:1fr; }
+  .pw-arrow { display:none; }
+  .pw-outer { padding:24px 16px 32px; }
+  #mainTabBar { padding:0 16px; }
+}
 </style></head>
 <body>
 <header>
@@ -651,15 +831,45 @@ input[type="search"]::placeholder{color:var(--text3)}
     </div>
     <button class="icon-btn" onclick="openMethodology()" title="Methodology &amp; weights">⚙</button>
   </div>
-</header>
-
-<div id="pathwaysView" style="display: block;"><div class="pw-outer">
-    <div class="pw-hero">
-      <h2>Trace the full learning pipeline</h2>
-      <p>Select a GCSE subject to see which A-Levels it typically leads to, which degrees those A-Levels unlock, and the compounded AI risk score across the entire pathway — from age 14 to graduation.</p>
+</header><div id="mainTabBar">
+    <button class="main-tab active" id="maintab-pathway" onclick="switchMainTab('pathway')">
+      🔗 Trace your pathway
+      <span class="tab-badge">8 GCSEs mapped</span>
+    </button>
+    <button class="main-tab" id="maintab-details" onclick="switchMainTab('details')">
+      📊 Subject risk details
+      <span class="tab-badge">33 subjects</span>
+    </button></div><div id="view-pathway" style="display: block;"><div id="pathwaysView" style="display: block;"><div class="pw-outer">
+    <div style="margin-bottom:24px">
+      <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Start here — pick a GCSE subject</div>
+      <p style="color:var(--text2);font-size:0.88rem;line-height:1.6;max-width:640px">Select a GCSE to trace the full pipeline: which A-Levels it leads to, which degrees those unlock, and the compounded AI risk score from age 14 to graduation.</p>
     </div>
-    <div class="pw-picker" id="pwPicker">
-      <button class="pw-gcse-btn active" onclick="selectGCSE('GCSE English')" id="btn-GCSE-English">English<span class="pw-pill" style="background:#ef444422;color:#ef4444">81%</span></button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Maths')" id="btn-GCSE-Maths">Maths<span class="pw-pill" style="background:#fb718522;color:#fb7185">64%</span></button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Biology')" id="btn-GCSE-Biology">Biology<span class="pw-pill" style="background:#3ecf8e22;color:#3ecf8e">29%</span></button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Computing')" id="btn-GCSE-Computing">Computing<span class="pw-pill" style="background:#fb718522;color:#fb7185">61%</span></button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Business')" id="btn-GCSE-Business">Business<span class="pw-pill" style="background:#ef444422;color:#ef4444">79%</span></button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE History')" id="btn-GCSE-History">History<span class="pw-pill" style="background:#f59e0b22;color:#f59e0b">56%</span></button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Art &amp; Design')" id="btn-GCSE-Art--Design">Art &amp; Design<span class="pw-pill" style="background:#fb718522;color:#fb7185">72%</span></button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Comb. Science')" id="btn-GCSE-Comb-Science">Comb. Science<span class="pw-pill" style="background:#3ecf8e22;color:#3ecf8e">29%</span></button>
+    <div class="pw-picker" id="pwPicker" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px">
+      <button class="pw-gcse-btn active" onclick="selectGCSE('GCSE English')">
+          English
+          <span class="pw-pill" style="background:#ef444422;color:#ef4444">81%</span>
+        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Maths')">
+          Maths
+          <span class="pw-pill" style="background:#fb718522;color:#fb7185">64%</span>
+        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Biology')">
+          Biology
+          <span class="pw-pill" style="background:#3ecf8e22;color:#3ecf8e">29%</span>
+        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Computing')">
+          Computing
+          <span class="pw-pill" style="background:#fb718522;color:#fb7185">61%</span>
+        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Business')">
+          Business
+          <span class="pw-pill" style="background:#ef444422;color:#ef4444">79%</span>
+        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE History')">
+          History
+          <span class="pw-pill" style="background:#f59e0b22;color:#f59e0b">56%</span>
+        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Art &amp; Design')">
+          Art &amp; Design
+          <span class="pw-pill" style="background:#fb718522;color:#fb7185">72%</span>
+        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Comb. Science')">
+          Comb. Science
+          <span class="pw-pill" style="background:#3ecf8e22;color:#3ecf8e">29%</span>
+        </button>
     </div>
     <div id="pwChain" class="pw-chain visible">
     <div class="pw-stages">
@@ -669,444 +879,752 @@ input[type="search"]::placeholder{color:var(--text3)}
       <div class="pw-arrow">→</div>
       <div class="pw-stage-head"><div class="stage-label">Stage 3</div><div class="stage-name">Degree</div><div class="stage-sub">Age 18–21</div></div>
       <div class="pw-arrow">→</div>
-      <div class="pw-stage-head"><div class="stage-label">Pipeline</div><div class="stage-name">AI risk</div><div class="stage-sub">Composite score</div></div>
+      <div class="pw-stage-head"><div class="stage-label">Pipeline</div><div class="stage-name">AI risk</div><div class="stage-sub">Composite</div></div>
     </div>
     <div class="pw-cols">
-      <!-- GCSE -->
       <div class="pw-col">
-        <div class="pw-node selected">
-          <div class="pw-node-score" style="color:#ef4444">81%</div>
-          <div class="pw-node-name">GCSE English</div>
-          <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:81%;background:#ef4444"></div></div>
-          <div class="pw-node-meta">721k entries/yr · <span style="color:var(--text3)">↑ +0.2%/yr</span></div>
-          <div class="pw-node-meta" style="margin-top:5px;font-style:italic;color:var(--text3)">Most common humanities pathway. English Lit/Lang strongest predictor of creative/comms degrees.</div>
-        </div>
-      </div>
-      <div class="pw-arrow" style="padding-top:30px;font-size:1.4rem;color:var(--text3)">→</div>
-      <!-- A-Levels -->
-      <div class="pw-col">
-        <div class="pw-node">
-            <div class="pw-node-score" style="color:#ef4444">84%</div>
-            <div class="pw-node-name">A-Level English</div>
-            <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:84%;background:#ef4444"></div></div>
-            <div class="pw-node-meta">75k entries/yr · <span style="color:var(--red)">↓ -4.1%/yr</span></div>
-          </div><div class="pw-node">
-            <div class="pw-node-score" style="color:#f59e0b">58%</div>
-            <div class="pw-node-name">A-Level History</div>
-            <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:57.99999999999999%;background:#f59e0b"></div></div>
-            <div class="pw-node-meta">48k entries/yr · <span style="color:var(--red)">↓ -1.8%/yr</span></div>
-          </div><div class="pw-node">
-            <div class="pw-node-score" style="color:#ef4444">79%</div>
-            <div class="pw-node-name">A-Level Business</div>
-            <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:79%;background:#ef4444"></div></div>
-            <div class="pw-node-meta">53k entries/yr · <span style="color:var(--red)">↓ -2.3%/yr</span></div>
-          </div>
-      </div>
-      <div class="pw-arrow" style="padding-top:30px;font-size:1.4rem;color:var(--text3)">→</div>
-      <!-- Degrees -->
-      <div class="pw-col">
-        <div class="pw-node">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div class="pw-node-score" style="color:#ef4444">0.82</div>
-              <span class="pw-fit-badge fit-required">Required</span>
-            </div>
-            <div class="pw-node-name">Journalism &amp; Media</div>
-            <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:82.11862068965519%;background:#ef4444"></div></div>
-            <div class="pw-node-meta">Via: English, History</div>
-            <div class="pw-node-meta" style="margin-top:3px;font-style:italic;color:var(--text3);font-size:0.7rem">Directly required by most journalism degrees (UCAS tariff data)</div>
-          </div><div class="pw-node">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div class="pw-node-score" style="color:#f59e0b">0.48</div>
-              <span class="pw-fit-badge fit-preferred">Preferred</span>
-            </div>
-            <div class="pw-node-name">Law (LLB)</div>
-            <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:48.16103448275862%;background:#f59e0b"></div></div>
-            <div class="pw-node-meta">Via: English, History</div>
-            <div class="pw-node-meta" style="margin-top:3px;font-style:italic;color:var(--text3);font-size:0.7rem">Strong analytical writing skills. 40% of law entrants have English A-Level (UCAS 2023)</div>
-          </div><div class="pw-node">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div class="pw-node-score" style="color:#fb7185">0.60</div>
-              <span class="pw-fit-badge fit-preferred">Preferred</span>
-            </div>
-            <div class="pw-node-name">Marketing &amp; Communications</div>
-            <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:60.30574712643677%;background:#fb7185"></div></div>
-            <div class="pw-node-meta">Via: English, Business</div>
-            <div class="pw-node-meta" style="margin-top:3px;font-style:italic;color:var(--text3);font-size:0.7rem">Content and comms skills valued. Common pathway for marketing comms roles</div>
-          </div><div class="pw-node">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div class="pw-node-score" style="color:#a78bfa">0.36</div>
-              <span class="pw-fit-badge fit-preferred">Preferred</span>
-            </div>
-            <div class="pw-node-name">Education / PGCE</div>
-            <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:36.29137931034483%;background:#a78bfa"></div></div>
-            <div class="pw-node-meta">Via: English, History</div>
-            <div class="pw-node-meta" style="margin-top:3px;font-style:italic;color:var(--text3);font-size:0.7rem">English specialism pathway for PGCE English</div>
-          </div><div class="pw-node">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div class="pw-node-score" style="color:#fb7185">0.66</div>
-              <span class="pw-fit-badge fit-preferred">Preferred</span>
-            </div>
-            <div class="pw-node-name">Accounting &amp; Finance</div>
-            <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:66.26977011494253%;background:#fb7185"></div></div>
-            <div class="pw-node-meta">Via: Business</div>
-            <div class="pw-node-meta" style="margin-top:3px;font-style:italic;color:var(--text3);font-size:0.7rem">Business knowledge directly mapped. Common pathway for accounting technician route</div>
-          </div><div class="pw-node">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div class="pw-node-score" style="color:#f59e0b">0.49</div>
-              <span class="pw-fit-badge fit-relevant">Relevant</span>
-            </div>
-            <div class="pw-node-name">Economics (BSc)</div>
-            <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:48.61172413793103%;background:#f59e0b"></div></div>
-            <div class="pw-node-meta">Via: Business</div>
-            <div class="pw-node-meta" style="margin-top:3px;font-style:italic;color:var(--text3);font-size:0.7rem">Applied business understanding. Less valued than A-Level Maths for economics</div>
-          </div><div class="pw-node">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div class="pw-node-score" style="color:#f59e0b">0.55</div>
-              <span class="pw-fit-badge fit-relevant">Relevant</span>
-            </div>
-            <div class="pw-node-name">Finance (BSc)</div>
-            <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:55.304137931034504%;background:#f59e0b"></div></div>
-            <div class="pw-node-meta">Via: Business</div>
-            <div class="pw-node-meta" style="margin-top:3px;font-style:italic;color:var(--text3);font-size:0.7rem">Background knowledge useful. Maths A-Level remains stronger signal for finance degrees</div>
-          </div>
-      </div>
-      <div class="pw-arrow" style="padding-top:30px;font-size:1.4rem;color:var(--text3)">→</div>
-      <!-- Pipeline summary -->
-      <div class="pw-col">
-        <div class="pw-node" style="border-left:3px solid #fb7185;border-radius:0 var(--r-sm) var(--r-sm) 0">
-          <div class="pw-node-score" style="color:#fb7185">0.74</div>
-          <div class="pw-node-name">Pipeline risk</div>
-          <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:74.03333333333333%;background:#fb7185"></div></div>
-          <div class="pw-node-meta" style="margin-top:4px;font-weight:500;color:#fb7185">High risk</div>
-          <div class="pw-node-meta" style="margin-top:4px">7 degree pathways reachable</div>
-        </div>
-        <div class="pw-node" style="margin-top:0">
-          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);margin-bottom:10px">Risk by stage</div>
-          
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-            <span style="flex:0 0 76px;font-size:0.72rem;color:var(--text3)">GCSE</span>
-            <div style="flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
-              <div style="width:81%;height:100%;border-radius:3px;background:#ef4444"></div>
-            </div>
-            <span style="font-family:var(--font-mono);font-size:0.72rem;color:#ef4444;flex:0 0 32px;text-align:right">81%</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-            <span style="flex:0 0 76px;font-size:0.72rem;color:var(--text3)">A-Level avg</span>
-            <div style="flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
-              <div style="width:73.66666666666667%;height:100%;border-radius:3px;background:#fb7185"></div>
-            </div>
-            <span style="font-family:var(--font-mono);font-size:0.72rem;color:#fb7185;flex:0 0 32px;text-align:right">74%</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-            <span style="flex:0 0 76px;font-size:0.72rem;color:var(--text3)">Degree avg</span>
-            <div style="flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
-              <div style="width:70%;height:100%;border-radius:3px;background:#fb7185"></div>
-            </div>
-            <span style="font-family:var(--font-mono);font-size:0.72rem;color:#fb7185;flex:0 0 32px;text-align:right">70%</span>
-          </div>
-        </div>
-      </div>
+    <div class="pw-node selected">
+      <div class="pw-node-score" style="color:#ef4444">81%</div>
+      <div class="pw-node-name">GCSE English</div>
+      <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:81%;background:#ef4444"></div></div>
+      <div class="pw-node-meta">721k entries/yr</div>
+      <div class="pw-node-meta" style="color:var(--text3)">↑ +0.2%/yr</div>
+      <div class="pw-node-meta" style="margin-top:6px;font-style:italic;color:var(--text3);font-size:0.7rem">Most common humanities pathway. Strongest predictor of creative and comms degrees.</div>
     </div>
-    <div class="pw-insight">This pathway carries <strong>consistently high AI exposure at every stage</strong>. Students following GCSE English into A-Level English face one of the most disrupted pipelines in UK education. The risk compounds — it starts at GCSE and intensifies through to degree level. Early intervention at subject choice would have the greatest leverage.</div>
-    <div style="margin-top:8px;font-size:0.7rem;color:var(--text3)">Sources: UCAS 2023 · DfE LEO · JCQ 2024 · Eloundou et al. arXiv:2303.10130 · ONS LMI for All</div></div>
-  </div></div><div>
-  <div class="section-divider">
-    <div class="section-divider-title">Higher education programmes</div>
-    <div class="section-divider-line"></div>
-    <div class="section-divider-badge">UK · 16 programmes</div>
-  </div></div><main id="heView" style="display: block;">
-  <section class="hero">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px">
-      <div>
-        <h1>Which subjects put students<br>on a <em>high-risk AI path</em>?</h1>
-        <p>Trace the full pipeline from GCSE to A-Level to degree — and see where AI exposure compounds. Built on ONS, HESA, JCQ, and peer-reviewed AI research.</p>
-      </div>
-      <div class="hero-meta">
-        <div class="hero-stat"><div class="num" id="statPrograms">16</div><div class="label">HE Programmes</div></div>
-        <div class="divider-v"></div>
-        <div class="hero-stat"><div class="num">8</div><div class="label">GCSE pathways</div></div>
-        <div class="divider-v"></div>
-        <div class="hero-stat"><div class="num">17</div><div class="label">School subjects</div></div>
-        <div class="divider-v"></div>
-        <div class="hero-stat"><div class="num" id="statRegion">🇬🇧 United Kingdom</div><div class="label">Region</div></div>
-      </div>
-    </div></section>
-  
-<section class="dashboard" id="subjectDashboard">
-  <div class="dash-header">
-    <div>
-      <div class="dash-title">Risk by subject area</div>
-      <div class="dash-sub">Click any subject to filter programmes below</div>
-    </div>
-    <button class="dash-clear" id="dashClear" onclick="clearDashFilter()" style="display:none">✕ Clear filter</button>
   </div>
-  <div class="dash-grid" id="dashGrid">
-    <div class="dash-card " onclick="toggleDashField('Arts &amp; Humanities')" style="--dash-col:#f59e0b">
+      <div class="pw-arrow">→</div>
+      <div class="pw-col">
+    <div class="pw-node">
+        <div class="pw-node-score" style="color:#ef4444">84%</div>
+        <div class="pw-node-name">A-Level English</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:84%;background:#ef4444"></div></div>
+        <div class="pw-node-meta">75k entries/yr</div>
+        <div class="pw-node-meta" style="color:var(--red)">↓ -4.1%/yr</div>
+      </div><div class="pw-node">
+        <div class="pw-node-score" style="color:#f59e0b">58%</div>
+        <div class="pw-node-name">A-Level History</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:57.99999999999999%;background:#f59e0b"></div></div>
+        <div class="pw-node-meta">48k entries/yr</div>
+        <div class="pw-node-meta" style="color:var(--red)">↓ -1.8%/yr</div>
+      </div><div class="pw-node">
+        <div class="pw-node-score" style="color:#ef4444">79%</div>
+        <div class="pw-node-name">A-Level Business</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:79%;background:#ef4444"></div></div>
+        <div class="pw-node-meta">53k entries/yr</div>
+        <div class="pw-node-meta" style="color:var(--red)">↓ -2.3%/yr</div>
+      </div>
+  </div>
+      <div class="pw-arrow">→</div>
+      <div class="pw-col">
+    <div class="pw-node">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div class="pw-node-score" style="color:#ef4444">0.82</div>
+          <span class="pw-fit-badge fit-required">required</span>
+        </div>
+        <div class="pw-node-name">Journalism &amp; Media</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:82.11862068965519%;background:#ef4444"></div></div>
+        <div class="pw-node-meta">Via: English, History</div>
+        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">Required by most journalism degrees (UCAS tariff data)</div>
+      </div><div class="pw-node">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div class="pw-node-score" style="color:#f59e0b">0.48</div>
+          <span class="pw-fit-badge fit-preferred">preferred</span>
+        </div>
+        <div class="pw-node-name">Law (LLB)</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:48.16103448275862%;background:#f59e0b"></div></div>
+        <div class="pw-node-meta">Via: English, History</div>
+        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">40% of law entrants have English A-Level (UCAS 2023)</div>
+      </div><div class="pw-node">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div class="pw-node-score" style="color:#fb7185">0.60</div>
+          <span class="pw-fit-badge fit-preferred">preferred</span>
+        </div>
+        <div class="pw-node-name">Marketing &amp; Communications</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:60.30574712643677%;background:#fb7185"></div></div>
+        <div class="pw-node-meta">Via: English, Business</div>
+        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">Content and comms skills valued</div>
+      </div><div class="pw-node">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div class="pw-node-score" style="color:#a78bfa">0.36</div>
+          <span class="pw-fit-badge fit-preferred">preferred</span>
+        </div>
+        <div class="pw-node-name">Education / PGCE</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:36.29137931034483%;background:#a78bfa"></div></div>
+        <div class="pw-node-meta">Via: English, History</div>
+        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">English specialism PGCE pathway</div>
+      </div><div class="pw-node">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div class="pw-node-score" style="color:#fb7185">0.66</div>
+          <span class="pw-fit-badge fit-preferred">preferred</span>
+        </div>
+        <div class="pw-node-name">Accounting &amp; Finance</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:66.26977011494253%;background:#fb7185"></div></div>
+        <div class="pw-node-meta">Via: Business</div>
+        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">Common pathway for accounting technician route</div>
+      </div><div class="pw-node">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div class="pw-node-score" style="color:#f59e0b">0.49</div>
+          <span class="pw-fit-badge fit-relevant">relevant</span>
+        </div>
+        <div class="pw-node-name">Economics (BSc)</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:48.61172413793103%;background:#f59e0b"></div></div>
+        <div class="pw-node-meta">Via: Business</div>
+        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">Applied business understanding</div>
+      </div><div class="pw-node">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div class="pw-node-score" style="color:#f59e0b">0.55</div>
+          <span class="pw-fit-badge fit-relevant">relevant</span>
+        </div>
+        <div class="pw-node-name">Finance (BSc)</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:55.304137931034504%;background:#f59e0b"></div></div>
+        <div class="pw-node-meta">Via: Business</div>
+        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">Background knowledge useful</div>
+      </div>
+  </div>
+      <div class="pw-arrow">→</div>
+      <div class="pw-col">
+    <div class="pw-node" style="border-left:3px solid #fb7185;border-radius:0 var(--r-sm) var(--r-sm) 0">
+      <div class="pw-node-score" style="color:#fb7185">0.74</div>
+      <div class="pw-node-name">Pipeline risk</div>
+      <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:74.03333333333333%;background:#fb7185"></div></div>
+      <div class="pw-node-meta" style="font-weight:500;color:#fb7185;margin-top:4px">High risk</div>
+      <div class="pw-node-meta" style="margin-top:4px">7 degrees reachable</div>
+    </div>
+    <div class="pw-node">
+      <div style="font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);margin-bottom:10px">Risk by stage</div>
+      
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="flex:0 0 72px;font-size:0.7rem;color:var(--text3)">GCSE</span>
+        <div style="flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
+          <div style="width:81%;height:100%;border-radius:3px;background:#ef4444"></div>
+        </div>
+        <span style="font-family:var(--font-mono);font-size:0.7rem;color:#ef4444;flex:0 0 30px;text-align:right">81%</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="flex:0 0 72px;font-size:0.7rem;color:var(--text3)">A-Level avg</span>
+        <div style="flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
+          <div style="width:73.66666666666667%;height:100%;border-radius:3px;background:#fb7185"></div>
+        </div>
+        <span style="font-family:var(--font-mono);font-size:0.7rem;color:#fb7185;flex:0 0 30px;text-align:right">74%</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="flex:0 0 72px;font-size:0.7rem;color:var(--text3)">Degree avg</span>
+        <div style="flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
+          <div style="width:70%;height:100%;border-radius:3px;background:#fb7185"></div>
+        </div>
+        <span style="font-family:var(--font-mono);font-size:0.7rem;color:#fb7185;flex:0 0 30px;text-align:right">70%</span>
+      </div>
+    </div>
+  </div>
+    </div>
+    <div class="pw-insight"><strong>High risk compounds across all three stages.</strong> Students who take GCSE English and follow the most common A-Level route face one of the most AI-disrupted pipelines in UK education. The exposure starts high and stays high through to graduation — early subject choice has outsized impact here.</div>
+    <div style="margin-top:8px;font-size:0.68rem;color:var(--text3)">Sources: UCAS 2023 · DfE LEO · JCQ 2024 · Eloundou et al. arXiv:2303.10130 · ONS LMI for All</div></div>
+  </div></div></div><div id="view-details" style="display: none;"><div style="margin-bottom: 28px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div>
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3)">Risk by subject area</div>
+        <div style="font-size:0.75rem;color:var(--text3);margin-top:2px">Click to filter programmes below</div>
+      </div>
+      <button class="dash-clear" id="dashClear" onclick="clearDetailFilter()" style="display:none">✕ Clear filter</button>
+    </div>
+    <div class="dash-grid" id="dashGrid"><div class="dash-card " onclick="toggleDetailField('Arts &amp; Humanities')">
       <div class="dash-field-name">Arts &amp; Humanities</div>
-      <div class="dash-score-num" style="color:#f59e0b">0.75</div>
-      <div class="dash-count">1 programme · <span style="color:var(--red)">🚨 1 critical</span></div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:75.01793103448277%;background:#f59e0b"></div></div>
-      <div class="dash-verdict" style="color:#f59e0b">🌅 Sunset risk</div>
-    </div>
-    <div class="dash-card " onclick="toggleDashField('Business')" style="--dash-col:#fb7185">
+      <div class="dash-score-num" style="color:#f59e0b">0.82</div>
+      <div class="dash-count">1 prog · <span style="color:var(--red)">🚨1</span></div>
+      <div class="dash-bar"><div class="dash-bar-fill" style="width:82.11862068965519%;background:#f59e0b"></div></div>
+      <div class="dash-verdict" style="color:#f59e0b">Sunset risk</div>
+    </div><div class="dash-card " onclick="toggleDetailField('Business')">
       <div class="dash-field-name">Business</div>
-      <div class="dash-score-num" style="color:#fb7185">0.48</div>
-      <div class="dash-count">4 programmes · <span style="color:var(--red)">🚨 1 critical</span></div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:48.303448275862074%;background:#fb7185"></div></div>
-      <div class="dash-verdict" style="color:#fb7185">⚡ Needs pivoting</div>
-    </div>
-    <div class="dash-card " onclick="toggleDashField('Technology')" style="--dash-col:#a78bfa">
-      <div class="dash-field-name">Technology</div>
-      <div class="dash-score-num" style="color:#a78bfa">0.42</div>
-      <div class="dash-count">2 programmes</div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:42.32086206896552%;background:#a78bfa"></div></div>
-      <div class="dash-verdict" style="color:#a78bfa">🔒 Monitor</div>
-    </div>
-    <div class="dash-card " onclick="toggleDashField('Design')" style="--dash-col:#a78bfa">
+      <div class="dash-score-num" style="color:#fb7185">0.61</div>
+      <div class="dash-count">3 progs · <span style="color:var(--red)">🚨3</span></div>
+      <div class="dash-bar"><div class="dash-bar-fill" style="width:60.62655172413793%;background:#fb7185"></div></div>
+      <div class="dash-verdict" style="color:#fb7185">Needs pivoting</div>
+    </div><div class="dash-card " onclick="toggleDetailField('Law')">
+      <div class="dash-field-name">Law</div>
+      <div class="dash-score-num" style="color:#a78bfa">0.48</div>
+      <div class="dash-count">1 prog</div>
+      <div class="dash-bar"><div class="dash-bar-fill" style="width:48.16103448275862%;background:#a78bfa"></div></div>
+      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
+    </div><div class="dash-card " onclick="toggleDetailField('Social Sciences')">
+      <div class="dash-field-name">Social Sciences</div>
+      <div class="dash-score-num" style="color:#a78bfa">0.45</div>
+      <div class="dash-count">2 progs</div>
+      <div class="dash-bar"><div class="dash-bar-fill" style="width:45.15060344827586%;background:#a78bfa"></div></div>
+      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
+    </div><div class="dash-card " onclick="toggleDetailField('Design')">
       <div class="dash-field-name">Design</div>
+      <div class="dash-score-num" style="color:#a78bfa">0.44</div>
+      <div class="dash-count">1 prog</div>
+      <div class="dash-bar"><div class="dash-bar-fill" style="width:44.358620689655176%;background:#a78bfa"></div></div>
+      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
+    </div><div class="dash-card " onclick="toggleDetailField('Technology')">
+      <div class="dash-field-name">Technology</div>
       <div class="dash-score-num" style="color:#a78bfa">0.41</div>
-      <div class="dash-count">1 programme</div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:40.647586206896555%;background:#a78bfa"></div></div>
-      <div class="dash-verdict" style="color:#a78bfa">🔒 Monitor</div>
-    </div>
-    <div class="dash-card " onclick="toggleDashField('Engineering')" style="--dash-col:#a78bfa">
-      <div class="dash-field-name">Engineering</div>
+      <div class="dash-count">2 progs</div>
+      <div class="dash-bar"><div class="dash-bar-fill" style="width:41.22%;background:#a78bfa"></div></div>
+      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
+    </div><div class="dash-card " onclick="toggleDetailField('Education')">
+      <div class="dash-field-name">Education</div>
       <div class="dash-score-num" style="color:#a78bfa">0.36</div>
-      <div class="dash-count">2 programmes</div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:35.57551724137931%;background:#a78bfa"></div></div>
-      <div class="dash-verdict" style="color:#a78bfa">🔒 Monitor</div>
-    </div>
-    <div class="dash-card " onclick="toggleDashField('Health')" style="--dash-col:#3ecf8e">
+      <div class="dash-count">1 prog</div>
+      <div class="dash-bar"><div class="dash-bar-fill" style="width:36.29137931034483%;background:#a78bfa"></div></div>
+      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
+    </div><div class="dash-card " onclick="toggleDetailField('Health')">
       <div class="dash-field-name">Health</div>
-      <div class="dash-score-num" style="color:#3ecf8e">0.29</div>
-      <div class="dash-count">2 programmes</div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:28.725086206896556%;background:#3ecf8e"></div></div>
-      <div class="dash-verdict" style="color:#3ecf8e">🌱 Safe to grow</div>
-    </div></div>
-</section><section class="controls">
-    <div class="search-wrap">
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
-      <input type="search" id="searchInput" placeholder="Search programmes…" oninput="renderGrid()">
-    </div>
-    <div class="filter-group">
-      <button class="filter-btn f-urgent" onclick="toggleFilter('urgent',this)">⚡ Urgent Pivot</button>
-      <button class="filter-btn f-invest" onclick="toggleFilter('invest',this)">🌱 Invest &amp; Grow</button>
-      <button class="filter-btn f-sunset" onclick="toggleFilter('sunset',this)">🌅 Sunset</button>
-      <button class="filter-btn f-maintain" onclick="toggleFilter('maintain',this)">🔒 Maintain</button>
-      <button class="filter-btn f-critical" onclick="toggleFilter('critical',this)">🚨 Critical Now</button>
-    </div>
-    <select class="sort-select" onchange="renderGrid()" id="sortSelect">
-      <option value="default">Sort: Default</option>
-      <option value="score-desc">Highest Risk</option>
-      <option value="score-asc">Lowest Risk</option>
-      <option value="exposure">Highest Exposure</option>
-      <option value="halflife">Shortest Runway</option>
-      <option value="enrol-down">Declining Enrolment</option>
-    </select>
-  </section>
-  <section class="grid-wrap"><div class="program-grid" id="programGrid"><div class="card sunset" onclick="openDrawer('uk-journalism')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Arts &amp; Humanities</span><span class="badge badge-confidence-b">Tier B</span><span class="badge badge-critical">🚨 Critical</span></div><span class="rec-badge rec-sunset">🌅 Sunset</span></div><div class="card-name">Journalism &amp; Media</div><div class="card-code">CAH19-01-02</div><div class="score-row"><div><div class="score-big" style="color:#ef4444">0.82</div><div class="uncertainty-band">0.75–0.89 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:82.11862068965519%;background:#ef4444"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 79%</span><span>1.9yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">79%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">90%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">78%</div></div></div><div class="enrol-trend"><span class="trend-down">↓</span><span>-7.9% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Steep decline </span></div></div><div class="card urgent" onclick="openDrawer('uk-accounting')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Business</span><span class="badge badge-confidence-b">Tier B</span><span class="badge badge-critical">🚨 Critical</span></div><span class="rec-badge rec-urgent">⚡ Urgent Pivot</span></div><div class="card-name">Accounting &amp; Finance</div><div class="card-code">CAH17-01-01</div><div class="score-row"><div><div class="score-big" style="color:#fb7185">0.66</div><div class="uncertainty-band">0.60–0.73 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:66.26977011494253%;background:#fb7185"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 84%</span><span>1.7yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">84%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">92%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">76%</div></div></div><div class="enrol-trend"><span class="trend-down">↓</span><span>-2.4% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Declining </span></div></div><div class="card urgent" onclick="openDrawer('uk-marketing')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Business</span><span class="badge badge-confidence-b">Tier B</span><span class="badge badge-critical">🚨 Critical</span></div><span class="rec-badge rec-urgent">⚡ Urgent Pivot</span></div><div class="card-name">Marketing &amp; Communications</div><div class="card-code">CAH17-01-04</div><div class="score-row"><div><div class="score-big" style="color:#fb7185">0.60</div><div class="uncertainty-band">0.54–0.67 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:60.30574712643677%;background:#fb7185"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 76%</span><span>2.4yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">76%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">87%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">69%</div></div></div><div class="enrol-trend"><span class="trend-down">↓</span><span>-2.0% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Declining </span></div></div><div class="card maintain" onclick="openDrawer('uk-finance')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Business</span><span class="badge badge-confidence-b">Tier B</span><span class="badge badge-critical">🚨 Critical</span></div><span class="rec-badge rec-maintain">🔒 Maintain</span></div><div class="card-name">Finance (BSc)</div><div class="card-code">CAH17-01-02</div><div class="score-row"><div><div class="score-big" style="color:#f59e0b">0.55</div><div class="uncertainty-band">0.49–0.62 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:55.304137931034504%;background:#f59e0b"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 81%</span><span>2.1yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">81%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">89%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">72%</div></div></div><div class="enrol-trend"><span class="trend-flat">→</span><span>Stable enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Slight decline </span></div></div><div class="card maintain" onclick="openDrawer('uk-economics')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Social Sciences</span><span class="badge badge-confidence-b">Tier B</span></div><span class="rec-badge rec-maintain">🔒 Maintain</span></div><div class="card-name">Economics (BSc)</div><div class="card-code">CAH16-01-01</div><div class="score-row"><div><div class="score-big" style="color:#f59e0b">0.49</div><div class="uncertainty-band">0.43–0.55 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:48.61172413793103%;background:#f59e0b"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 69%</span><span>3.1yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">69%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">82%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">67%</div></div></div><div class="enrol-trend"><span class="trend-up">↑</span><span>+2.5% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Stable </span></div></div><div class="card maintain" onclick="openDrawer('uk-law')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Law</span><span class="badge badge-confidence-b">Tier B</span></div><span class="rec-badge rec-maintain">🔒 Maintain</span></div><div class="card-name">Law (LLB)</div><div class="card-code">CAH14-01-01</div><div class="score-row"><div><div class="score-big" style="color:#f59e0b">0.48</div><div class="uncertainty-band">0.42–0.54 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:48.16103448275862%;background:#f59e0b"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 67%</span><span>3.8yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">67%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">77%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">71%</div></div></div><div class="enrol-trend"><span class="trend-flat">→</span><span>Stable enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Flat </span></div></div><div class="card maintain" onclick="openDrawer('uk-architecture')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Design</span><span class="badge badge-confidence-b">Tier B</span></div><span class="rec-badge rec-maintain">🔒 Maintain</span></div><div class="card-name">Architecture (BA/BSc)</div><div class="card-code">CAH13-01-01</div><div class="score-row"><div><div class="score-big" style="color:#f59e0b">0.44</div><div class="uncertainty-band">0.39–0.50 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:44.358620689655176%;background:#f59e0b"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 54%</span><span>4.8yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">54%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">70%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">58%</div></div></div><div class="enrol-trend"><span class="trend-flat">→</span><span>Stable enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Slightly declining </span></div></div><div class="card maintain" onclick="openDrawer('uk-cs')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Technology</span><span class="badge badge-confidence-a">Tier A</span></div><span class="rec-badge rec-maintain">🔒 Maintain</span></div><div class="card-name">Computer Science</div><div class="card-code">CAH11-01-01</div><div class="score-row"><div><div class="score-big" style="color:#f59e0b">0.43</div><div class="uncertainty-band">0.37–0.49 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:42.85448275862069%;background:#f59e0b"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 71%</span><span>3.2yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">71%</div></div><div class="mini-dim "><div class="mini-dim-label">Runway</div><div class="mini-dim-val">81%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">42%</div></div></div><div class="enrol-trend"><span class="trend-up">↑</span><span>+9.8% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Strong growth </span></div></div><div class="card maintain" onclick="openDrawer('uk-psychology')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Social Sciences</span><span class="badge badge-confidence-b">Tier B</span></div><span class="rec-badge rec-maintain">🔒 Maintain</span></div><div class="card-name">Psychology (BSc)</div><div class="card-code">CAH04-01-01</div><div class="score-row"><div><div class="score-big" style="color:#f59e0b">0.42</div><div class="uncertainty-band">0.36–0.47 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:41.68948275862069%;background:#f59e0b"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 44%</span><span>6.1yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">44%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">61%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">73%</div></div></div><div class="enrol-trend"><span class="trend-up">↑</span><span>+3.6% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Growing </span></div></div><div class="card maintain" onclick="openDrawer('uk-biomedical')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Health</span><span class="badge badge-confidence-b">Tier B</span></div><span class="rec-badge rec-maintain">🔒 Maintain</span></div><div class="card-name">Biomedical Science (BSc)</div><div class="card-code">CAH02-03-01</div><div class="score-row"><div><div class="score-big" style="color:#a78bfa">0.40</div><div class="uncertainty-band">0.34–0.45 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:39.88689655172414%;background:#a78bfa"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 52%</span><span>5.1yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">52%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">68%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">56%</div></div></div><div class="enrol-trend"><span class="trend-up">↑</span><span>+4.7% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Growing </span></div></div><div class="card maintain" onclick="openDrawer('uk-pharma')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Health</span><span class="badge badge-confidence-b">Tier B</span></div><span class="rec-badge rec-maintain">🔒 Maintain</span></div><div class="card-name">Pharmacy (MPharm)</div><div class="card-code">CAH02-01-03</div><div class="score-row"><div><div class="score-big" style="color:#a78bfa">0.40</div><div class="uncertainty-band">0.34–0.45 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:39.84241379310345%;background:#a78bfa"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 48%</span><span>5.3yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">48%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">67%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">64%</div></div></div><div class="enrol-trend"><span class="trend-up">↑</span><span>+3.1% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Stable growth </span></div></div><div class="card maintain" onclick="openDrawer('uk-data-sci')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Technology</span><span class="badge badge-confidence-a">Tier A</span></div><span class="rec-badge rec-maintain">🔒 Maintain</span></div><div class="card-name">Data Science &amp; Analytics</div><div class="card-code">CAH11-01-03</div><div class="score-row"><div><div class="score-big" style="color:#a78bfa">0.40</div><div class="uncertainty-band">0.34–0.45 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:39.58551724137931%;background:#a78bfa"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 62%</span><span>3.6yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">62%</div></div><div class="mini-dim "><div class="mini-dim-label">Runway</div><div class="mini-dim-val">79%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">48%</div></div></div><div class="enrol-trend"><span class="trend-up">↑</span><span>+20.1% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Rapid growth </span></div></div><div class="card maintain" onclick="openDrawer('uk-teaching')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Education</span><span class="badge badge-confidence-b">Tier B</span></div><span class="rec-badge rec-maintain">🔒 Maintain</span></div><div class="card-name">Education / PGCE</div><div class="card-code">CAH23-01-01</div><div class="score-row"><div><div class="score-big" style="color:#a78bfa">0.36</div><div class="uncertainty-band">0.31–0.42 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:36.29137931034483%;background:#a78bfa"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 34%</span><span>7.8yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">34%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">50%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">79%</div></div></div><div class="enrol-trend"><span class="trend-up">↑</span><span>+5.9% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Growing </span></div></div><div class="card maintain" onclick="openDrawer('uk-civil-eng')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Engineering</span><span class="badge badge-confidence-b">Tier B</span></div><span class="rec-badge rec-maintain">🔒 Maintain</span></div><div class="card-name">Civil Engineering (BEng)</div><div class="card-code">CAH10-01-03</div><div class="score-row"><div><div class="score-big" style="color:#a78bfa">0.32</div><div class="uncertainty-band">0.27–0.38 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:32.424827586206895%;background:#a78bfa"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 38%</span><span>7.2yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">38%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">54%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">62%</div></div></div><div class="enrol-trend"><span class="trend-up">↑</span><span>+2.1% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Steady growth </span></div></div><div class="card invest" onclick="openDrawer('uk-social-work')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Health</span><span class="badge badge-confidence-b">Tier B</span></div><span class="rec-badge rec-invest">🌱 Invest &amp; Grow</span></div><div class="card-name">Social Work (BA)</div><div class="card-code">CAH02-02-01</div><div class="score-row"><div><div class="score-big" style="color:#3ecf8e">0.27</div><div class="uncertainty-band">0.22–0.33 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:27.43017241379311%;background:#3ecf8e"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 21%</span><span>11.2yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">21%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">26%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">81%</div></div></div><div class="enrol-trend"><span class="trend-up">↑</span><span>+5.4% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Growing </span></div></div><div class="card invest" onclick="openDrawer('uk-nursing')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">Health</span><span class="badge badge-confidence-b">Tier B</span></div><span class="rec-badge rec-invest">🌱 Invest &amp; Grow</span></div><div class="card-name">Nursing (BSc)</div><div class="card-code">CAH02-01-01</div><div class="score-row"><div><div class="score-big" style="color:#3ecf8e">0.24</div><div class="uncertainty-band">0.19–0.29 range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:23.76551724137931%;background:#3ecf8e"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: 24%</span><span>9.4yr runway</span></div></div></div><div class="mini-dims"><div class="mini-dim "><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">24%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Runway</div><div class="mini-dim-val">39%</div></div><div class="mini-dim estimated"><div class="estimated-dot"></div><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">59%</div></div></div><div class="enrol-trend"><span class="trend-up">↑</span><span>+4.4% avg enrolment</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">Growing </span></div></div></div></section>
-</main><div style="margin-top: 40px;">
-  <div class="section-divider">
-    <div class="section-divider-title">Schools — GCSE, A-Level &amp; Year 12</div>
-    <div class="section-divider-line"></div>
-    <div class="section-divider-badge">17 subjects · JCQ 2024</div>
-  </div></div><div id="schoolsView" style="max-width: 1400px; margin: 0px auto; padding: 24px 32px 48px; display: block;">
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-        <button onclick="filterSchools('all')" id="sf-all" class="filter-btn f-maintain active" style="background:var(--accent);color:#fff;border-color:transparent">All levels</button><button onclick="filterSchools('A-Level')" id="sf-A-Level" class="filter-btn " style="">A-Level</button><button onclick="filterSchools('GCSE')" id="sf-GCSE" class="filter-btn " style="">GCSE</button><button onclick="filterSchools('Year 12')" id="sf-Year 12" class="filter-btn " style="">Year 12</button>
-      </div>
-      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 16px;font-size:0.78rem;color:var(--text3);margin-bottom:20px">
-        <strong style="color:var(--amber)">Data note:</strong> AI exposure for school subjects is estimated by mapping Eloundou et al. β scores via DfE LEO career pathway data. Entry figures are directly from JCQ 2024.
-      </div>
-      <div id="schoolsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px">
-        <div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #ef4444;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="A-Level">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">A-Level</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#ef4444">⚡ Review needed</span>
+      <div class="dash-score-num" style="color:#a78bfa">0.33</div>
+      <div class="dash-count">4 progs</div>
+      <div class="dash-bar"><div class="dash-bar-fill" style="width:32.73125%;background:#a78bfa"></div></div>
+      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
+    </div><div class="dash-card " onclick="toggleDetailField('Engineering')">
+      <div class="dash-field-name">Engineering</div>
+      <div class="dash-score-num" style="color:#a78bfa">0.32</div>
+      <div class="dash-count">1 prog</div>
+      <div class="dash-bar"><div class="dash-bar-fill" style="width:32.424827586206895%;background:#a78bfa"></div></div>
+      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
+    </div></div></div><div class="sub-tabs">
+    <button class="sub-tab active" id="subtab-he" onclick="switchSubTab('he')">🎓 Higher Education <span style="font-size:0.72rem;opacity:0.7">16 programmes</span></button>
+    <button class="sub-tab" id="subtab-schools" onclick="switchSubTab('schools')">🏫 Schools <span style="font-size:0.72rem;opacity:0.7">17 subjects</span></button>
+    <div style="flex:1"></div>
+    <select class="sort-select" onchange="renderDetailGrid()" id="detailSort" style="font-size:0.8rem">
+      <option value="risk-desc">Highest risk first</option>
+      <option value="risk-asc">Lowest risk first</option>
+      <option value="exposure">Highest exposure</option>
+      <option value="enrol-down">Declining enrolment</option>
+    </select></div><div id="detailContent"><div class="program-grid">
+      <div class="card sunset" onclick="openDrawer('uk-journalism')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Arts &amp; Humanities</span>
+              <span class="badge badge-critical">🚨 Critical</span>
             </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">English Literature &amp; Language</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#ef4444;margin-bottom:6px">84%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:84%;height:100%;background:#ef4444;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">75k entries · <span style="color:var(--red)">↓ -4.1%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Journalism, Copywriting, PR, Marketing</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">High risk — core tasks are AI-replaceable. Emphasis shifting to critical evaluation and AI oversight.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #ef4444;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="GCSE">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">GCSE</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#ef4444">⚡ Review needed</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">English Language &amp; Literature</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#ef4444;margin-bottom:6px">81%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:81%;height:100%;background:#ef4444;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">721k entries · <span style="color:var(--text3)">→ +0.2%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Foundation for most career paths</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Systemic challenge — AI can produce passing-grade writing. Urgent assessment redesign needed.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #ef4444;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="A-Level">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">A-Level</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#ef4444">⚡ Review needed</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Business Studies</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#ef4444;margin-bottom:6px">79%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:79%;height:100%;background:#ef4444;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">53k entries · <span style="color:var(--red)">↓ -2.3%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Management, Marketing, Finance, HR</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">High risk — pathways into roles being restructured by AI. Urgent need to embed AI literacy.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #ef4444;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="Year 12 / BTEC">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">Year 12 / BTEC</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#ef4444">⚡ Review needed</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Business (BTEC)</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#ef4444;margin-bottom:6px">78%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:78%;height:100%;background:#ef4444;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">63k entries · <span style="color:var(--red)">↓ -1.2%/yr</span> · <span style="color:var(--amber)">est.</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Business management, Retail management, Entrepreneurship</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">High risk — BTEC Business tasks are highly automatable.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #ef4444;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="GCSE">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">GCSE</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#ef4444">⚡ Review needed</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Art &amp; Design</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#ef4444;margin-bottom:6px">72%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:72%;height:100%;background:#ef4444;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">181k entries · <span style="color:var(--red)">↓ -3.4%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Creative industries, Design, Architecture</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">High risk for conventional output-based assessment. Curriculum must shift toward creative direction.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #f59e0b;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="A-Level">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">A-Level</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#f59e0b">🔒 Monitor</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Mathematics</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#f59e0b;margin-bottom:6px">71%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:71%;height:100%;background:#f59e0b;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">96k entries · <span style="color:var(--green)">↑ +3.2%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Actuaries, Data Scientists, Finance Analysts</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Mixed — AI automates computation but elevates demand for mathematical modelling skills.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #f59e0b;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="A-Level">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">A-Level</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#f59e0b">🔒 Monitor</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Computer Science</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#f59e0b;margin-bottom:6px">67%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:67%;height:100%;background:#f59e0b;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">42k entries · <span style="color:var(--green)">↑ +8.4%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Software Engineering, Cybersecurity, Data Engineering, AI/ML</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Paradox — AI writes code but also creates new roles. Curriculum must shift to systems thinking.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #f59e0b;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="GCSE">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">GCSE</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#f59e0b">🔒 Monitor</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Mathematics</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#f59e0b;margin-bottom:6px">64%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:64%;height:100%;background:#f59e0b;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">727k entries · <span style="color:var(--text3)">→ +0.4%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Foundation for STEM, Finance, Data pathways</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Medium risk — emphasis should shift from procedure to reasoning.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #f59e0b;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="A-Level">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">A-Level</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#f59e0b">🔒 Monitor</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Economics</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#f59e0b;margin-bottom:6px">62%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:62%;height:100%;background:#f59e0b;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">38k entries · <span style="color:var(--text3)">→ +0.9%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Economics, Finance, Policy, Consultancy</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Mixed — quantitative analysis faces automation, economic reasoning is durable.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #f59e0b;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="GCSE">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">GCSE</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#f59e0b">🔒 Monitor</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Computing</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#f59e0b;margin-bottom:6px">61%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:61%;height:100%;background:#f59e0b;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">92k entries · <span style="color:var(--green)">↑ +5.2%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Computer Science A-Level pathway → Tech careers</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Growing demand but changing skill requirements. Problem decomposition matters more than syntax.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #f59e0b;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="A-Level">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">A-Level</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#f59e0b">🔒 Monitor</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">History</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#f59e0b;margin-bottom:6px">58%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:57.99999999999999%;height:100%;background:#f59e0b;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">48k entries · <span style="color:var(--red)">↓ -1.8%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Law, Journalism, Civil Service, Education, Consultancy</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Medium risk — argument construction skills transferable but essay tasks face disruption.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #f59e0b;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="GCSE">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">GCSE</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#f59e0b">🔒 Monitor</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">History</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#f59e0b;margin-bottom:6px">56%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:56.00000000000001%;height:100%;background:#f59e0b;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">318k entries · <span style="color:var(--text3)">→ -0.8%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Humanities pathway — Law, Journalism, Civil Service</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Medium risk — assessment integrity is the immediate challenge for GCSE markers.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #3ecf8e;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="A-Level">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">A-Level</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#3ecf8e">🌱 Durable</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Biology</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#3ecf8e;margin-bottom:6px">38%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:38%;height:100%;background:#3ecf8e;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">82k entries · <span style="color:var(--green)">↑ +2.8%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Medicine, Nursing, Biomedical Science, Pharmacology</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Low risk — pathways into healthcare professions requiring physical presence and clinical judgment.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #3ecf8e;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="A-Level">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">A-Level</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#3ecf8e">🌱 Durable</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Psychology</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#3ecf8e;margin-bottom:6px">36%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:36%;height:100%;background:#3ecf8e;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">69k entries · <span style="color:var(--green)">↑ +1.4%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Clinical Psychology, Counselling, Social Work, HR</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Low risk for clinical pathways. Research/data analysis component has higher exposure.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #3ecf8e;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="Year 12 / BTEC">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">Year 12 / BTEC</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#3ecf8e">🌱 Durable</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Engineering (BTEC)</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#3ecf8e;margin-bottom:6px">34%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:34%;height:100%;background:#3ecf8e;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">28k entries · <span style="color:var(--green)">↑ +2.8%/yr</span> · <span style="color:var(--amber)">est.</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Civil Engineering, Manufacturing, Aerospace</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Low risk — practical engineering skills remain in demand.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #3ecf8e;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="GCSE">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">GCSE</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#3ecf8e">🌱 Durable</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Combined Science</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#3ecf8e;margin-bottom:6px">29%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:28.999999999999996%;height:100%;background:#3ecf8e;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">612k entries · <span style="color:var(--green)">↑ +1.1%/yr</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Gateway to Health, Engineering, Environmental science</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Low risk — science practical skills are durable.</div>
-          </div><div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #3ecf8e;border-radius:var(--r);padding:18px;transition:all 0.15s" data-level="Year 12 / BTEC">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <span style="font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)">Year 12 / BTEC</span>
-              <span style="font-size:0.72rem;font-weight:600;color:#3ecf8e">🌱 Durable</span>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px">Health &amp; Social Care (BTEC)</div>
-            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:500;color:#3ecf8e;margin-bottom:6px">22%<span style="font-size:0.72rem;color:var(--text3);font-weight:400;margin-left:6px">AI exposure</span></div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;margin-bottom:10px;overflow:hidden"><div style="width:22%;height:100%;background:#3ecf8e;border-radius:2px"></div></div>
-            <div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">48k entries · <span style="color:var(--green)">↑ +4.1%/yr</span> · <span style="color:var(--amber)">est.</span></div>
-            <div style="font-size:0.78rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:8px"><strong style="color:var(--text)">Pathways:</strong> Nursing, Social Work, Paramedic, Midwifery</div>
-            <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;font-style:italic">Low risk — vocational pathway into shortage professions.</div>
+            <span class="rec-badge rec-sunset">🌅 Sunset</span>
           </div>
-      </div></div>
+          <div class="card-name">Journalism &amp; Media</div>
+          <div class="card-code">CAH19-01-02</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#ef4444">0.82</div>
+              <div class="uncertainty-band">0.75–0.89</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:82.11862068965519%;background:#ef4444"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 79%</span><span>1.9yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">79%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">90%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">78%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-down">↓</span>
+            <span style="margin-left:4px;font-size:0.72rem">Steep decline</span>
+          </div>
+        </div><div class="card urgent" onclick="openDrawer('uk-accounting')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Business</span>
+              <span class="badge badge-critical">🚨 Critical</span>
+            </div>
+            <span class="rec-badge rec-urgent">⚡ Urgent Pivot</span>
+          </div>
+          <div class="card-name">Accounting &amp; Finance</div>
+          <div class="card-code">CAH17-01-01</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#fb7185">0.66</div>
+              <div class="uncertainty-band">0.60–0.73</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:66.26977011494253%;background:#fb7185"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 84%</span><span>1.7yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">84%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">92%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">76%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-down">↓</span>
+            <span style="margin-left:4px;font-size:0.72rem">Declining</span>
+          </div>
+        </div><div class="card urgent" onclick="openDrawer('uk-marketing')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Business</span>
+              <span class="badge badge-critical">🚨 Critical</span>
+            </div>
+            <span class="rec-badge rec-urgent">⚡ Urgent Pivot</span>
+          </div>
+          <div class="card-name">Marketing &amp; Communications</div>
+          <div class="card-code">CAH17-01-04</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#fb7185">0.60</div>
+              <div class="uncertainty-band">0.54–0.67</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:60.30574712643677%;background:#fb7185"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 76%</span><span>2.4yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">76%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">87%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">69%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-down">↓</span>
+            <span style="margin-left:4px;font-size:0.72rem">Declining</span>
+          </div>
+        </div><div class="card maintain" onclick="openDrawer('uk-finance')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Business</span>
+              <span class="badge badge-critical">🚨 Critical</span>
+            </div>
+            <span class="rec-badge rec-maintain">🔒 Maintain</span>
+          </div>
+          <div class="card-name">Finance (BSc)</div>
+          <div class="card-code">CAH17-01-02</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#f59e0b">0.55</div>
+              <div class="uncertainty-band">0.49–0.62</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:55.304137931034504%;background:#f59e0b"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 81%</span><span>2.1yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">81%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">89%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">72%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-flat">→</span>
+            <span style="margin-left:4px;font-size:0.72rem">Slight decline</span>
+          </div>
+        </div><div class="card maintain" onclick="openDrawer('uk-economics')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Social Sciences</span>
+              
+            </div>
+            <span class="rec-badge rec-maintain">🔒 Maintain</span>
+          </div>
+          <div class="card-name">Economics (BSc)</div>
+          <div class="card-code">CAH16-01-01</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#f59e0b">0.49</div>
+              <div class="uncertainty-band">0.43–0.55</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:48.61172413793103%;background:#f59e0b"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 69%</span><span>3.1yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">69%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">82%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">67%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-up">↑</span>
+            <span style="margin-left:4px;font-size:0.72rem">Stable</span>
+          </div>
+        </div><div class="card maintain" onclick="openDrawer('uk-law')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Law</span>
+              
+            </div>
+            <span class="rec-badge rec-maintain">🔒 Maintain</span>
+          </div>
+          <div class="card-name">Law (LLB)</div>
+          <div class="card-code">CAH14-01-01</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#f59e0b">0.48</div>
+              <div class="uncertainty-band">0.42–0.54</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:48.16103448275862%;background:#f59e0b"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 67%</span><span>3.8yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">67%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">77%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">71%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-flat">→</span>
+            <span style="margin-left:4px;font-size:0.72rem">Flat</span>
+          </div>
+        </div><div class="card maintain" onclick="openDrawer('uk-architecture')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Design</span>
+              
+            </div>
+            <span class="rec-badge rec-maintain">🔒 Maintain</span>
+          </div>
+          <div class="card-name">Architecture (BA/BSc)</div>
+          <div class="card-code">CAH13-01-01</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#f59e0b">0.44</div>
+              <div class="uncertainty-band">0.39–0.50</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:44.358620689655176%;background:#f59e0b"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 54%</span><span>4.8yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">54%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">70%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">58%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-flat">→</span>
+            <span style="margin-left:4px;font-size:0.72rem">Slightly declining</span>
+          </div>
+        </div><div class="card maintain" onclick="openDrawer('uk-cs')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Technology</span>
+              
+            </div>
+            <span class="rec-badge rec-maintain">🔒 Maintain</span>
+          </div>
+          <div class="card-name">Computer Science</div>
+          <div class="card-code">CAH11-01-01</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#f59e0b">0.43</div>
+              <div class="uncertainty-band">0.37–0.49</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:42.85448275862069%;background:#f59e0b"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 71%</span><span>3.2yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">71%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">81%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">42%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-up">↑</span>
+            <span style="margin-left:4px;font-size:0.72rem">Strong growth</span>
+          </div>
+        </div><div class="card maintain" onclick="openDrawer('uk-psychology')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Social Sciences</span>
+              
+            </div>
+            <span class="rec-badge rec-maintain">🔒 Maintain</span>
+          </div>
+          <div class="card-name">Psychology (BSc)</div>
+          <div class="card-code">CAH04-01-01</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#f59e0b">0.42</div>
+              <div class="uncertainty-band">0.36–0.47</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:41.68948275862069%;background:#f59e0b"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 44%</span><span>6.1yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">44%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">61%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">73%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-up">↑</span>
+            <span style="margin-left:4px;font-size:0.72rem">Growing</span>
+          </div>
+        </div><div class="card maintain" onclick="openDrawer('uk-biomedical')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Health</span>
+              
+            </div>
+            <span class="rec-badge rec-maintain">🔒 Maintain</span>
+          </div>
+          <div class="card-name">Biomedical Science (BSc)</div>
+          <div class="card-code">CAH02-03-01</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#a78bfa">0.40</div>
+              <div class="uncertainty-band">0.34–0.45</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:39.88689655172414%;background:#a78bfa"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 52%</span><span>5.1yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">52%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">68%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">56%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-up">↑</span>
+            <span style="margin-left:4px;font-size:0.72rem">Growing</span>
+          </div>
+        </div><div class="card maintain" onclick="openDrawer('uk-pharma')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Health</span>
+              
+            </div>
+            <span class="rec-badge rec-maintain">🔒 Maintain</span>
+          </div>
+          <div class="card-name">Pharmacy (MPharm)</div>
+          <div class="card-code">CAH02-01-03</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#a78bfa">0.40</div>
+              <div class="uncertainty-band">0.34–0.45</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:39.84241379310345%;background:#a78bfa"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 48%</span><span>5.3yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">48%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">67%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">64%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-up">↑</span>
+            <span style="margin-left:4px;font-size:0.72rem">Stable growth</span>
+          </div>
+        </div><div class="card maintain" onclick="openDrawer('uk-data-sci')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Technology</span>
+              
+            </div>
+            <span class="rec-badge rec-maintain">🔒 Maintain</span>
+          </div>
+          <div class="card-name">Data Science &amp; Analytics</div>
+          <div class="card-code">CAH11-01-03</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#a78bfa">0.40</div>
+              <div class="uncertainty-band">0.34–0.45</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:39.58551724137931%;background:#a78bfa"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 62%</span><span>3.6yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">62%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">79%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">48%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-up">↑</span>
+            <span style="margin-left:4px;font-size:0.72rem">Rapid growth</span>
+          </div>
+        </div><div class="card maintain" onclick="openDrawer('uk-teaching')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Education</span>
+              
+            </div>
+            <span class="rec-badge rec-maintain">🔒 Maintain</span>
+          </div>
+          <div class="card-name">Education / PGCE</div>
+          <div class="card-code">CAH23-01-01</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#a78bfa">0.36</div>
+              <div class="uncertainty-band">0.31–0.42</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:36.29137931034483%;background:#a78bfa"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 34%</span><span>7.8yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">34%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">50%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">79%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-up">↑</span>
+            <span style="margin-left:4px;font-size:0.72rem">Growing</span>
+          </div>
+        </div><div class="card maintain" onclick="openDrawer('uk-civil-eng')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Engineering</span>
+              
+            </div>
+            <span class="rec-badge rec-maintain">🔒 Maintain</span>
+          </div>
+          <div class="card-name">Civil Engineering (BEng)</div>
+          <div class="card-code">CAH10-01-03</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#a78bfa">0.32</div>
+              <div class="uncertainty-band">0.27–0.38</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:32.424827586206895%;background:#a78bfa"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 38%</span><span>7.2yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">38%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">54%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">62%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-up">↑</span>
+            <span style="margin-left:4px;font-size:0.72rem">Steady growth</span>
+          </div>
+        </div><div class="card invest" onclick="openDrawer('uk-social-work')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Health</span>
+              
+            </div>
+            <span class="rec-badge rec-invest">🌱 Invest &amp; Grow</span>
+          </div>
+          <div class="card-name">Social Work (BA)</div>
+          <div class="card-code">CAH02-02-01</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#3ecf8e">0.27</div>
+              <div class="uncertainty-band">0.22–0.33</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:27.43017241379311%;background:#3ecf8e"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 21%</span><span>11.2yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">21%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">26%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">81%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-up">↑</span>
+            <span style="margin-left:4px;font-size:0.72rem">Growing</span>
+          </div>
+        </div><div class="card invest" onclick="openDrawer('uk-nursing')">
+          <div class="card-top">
+            <div class="card-meta">
+              <span class="badge badge-field">Health</span>
+              
+            </div>
+            <span class="rec-badge rec-invest">🌱 Invest &amp; Grow</span>
+          </div>
+          <div class="card-name">Nursing (BSc)</div>
+          <div class="card-code">CAH02-01-01</div>
+          <div class="score-row">
+            <div>
+              <div class="score-big" style="color:#3ecf8e">0.24</div>
+              <div class="uncertainty-band">0.19–0.29</div>
+              <div class="score-label">composite risk</div>
+            </div>
+            <div class="score-bar-wrap">
+              <div class="score-bar-track"><div class="score-bar-fill" style="width:23.76551724137931%;background:#3ecf8e"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
+                <span>Exposure: 24%</span><span>9.4yr runway</span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-dims">
+            
+            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">24%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">39%</div></div>
+            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">59%</div></div>
+          </div>
+          <div class="enrol-trend">
+            <span class="trend-up">↑</span>
+            <span style="margin-left:4px;font-size:0.72rem">Growing</span>
+          </div>
+        </div>
+    </div></div></div>
+
+<div>
+  </div><div style="margin-top: 40px;">
+  </div>
 <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer"><div class="drawer-inner" id="drawerContent"><div class="drawer-close"><button class="close-btn" onclick="closeDrawer()">✕</button></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px"><span class="badge badge-field">Arts &amp; Humanities</span><span class="badge badge-confidence-b">Tier B confidence</span><span class="badge badge-critical">🚨 Critical Now</span><span class="rec-badge rec-sunset">🌅 Sunset</span></div><div class="drawer-name">Journalism &amp; Media</div><div class="drawer-code">CAH19-01-02 · HESA CAH · ONS LMI for All · Graduate Outcomes · Jisc</div><div class="composite-breakdown"><div class="cb-row"><span class="cb-label">Composite risk score</span><span class="cb-val cb-total" style="color:#ef4444">0.821</span></div><div class="cb-row"><span class="cb-label">Uncertainty band</span><span class="cb-val">0.75 – 0.89</span></div><div class="cb-row"><span class="cb-label">Raw AI exposure</span><span class="cb-val">79%</span></div><div class="cb-row"><span class="cb-label">Mechanism</span><span class="cb-val">AI Replaces core tasks</span></div></div><div class="dim-section"><div class="dim-section-title">Six dimensions <span style="font-size:0.68rem;color:var(--amber);font-weight:400;text-transform:none;letter-spacing:0">● amber dot = estimated value</span></div><div class="dim-row "><div class="dim-row-label">Task automation<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>✓ Sourced</strong><br>Eloundou et al. β score + Felten Princeton Index via SOC crosswalk. Directly sourced.</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:79%;background:#ef4444"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">79% tasks AI-replaceable</div></div><div class="dim-row-val">79%</div></div><div class="dim-row estimated"><div class="dim-row-label">Curriculum half-life<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>⚠ Estimated</strong><br>Estimated. O*NET task concentration + wage premium proxy. Based on Acemoglu &amp; Restrepo (2022).</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:90.3448275862069%;background:#f59e0b"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">1.9 years runway</div></div><div class="dim-row-val">90%</div><span class="est-tag">est.</span></div><div class="dim-row estimated"><div class="dim-row-label">Faculty readiness gap<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>⚠ Estimated</strong><br>Estimated. Jisc Digital Experience Insights (UK) / TIMSS educator surveys (GCC). Institutional variation is high.</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:78%;background:#f59e0b"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">22% AI-fluent faculty</div></div><div class="dim-row-val">78%</div><span class="est-tag">est.</span></div><div class="dim-row "><div class="dim-row-label">Regional labour market<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>✓ Sourced</strong><br>ONS ASHE regional employment data by SOC 2020. Directly sourced.</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:90.00000000000001%;background:#ef4444"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">0.84× national avg</div></div><div class="dim-row-val">90%</div></div><div class="dim-row "><div class="dim-row-label">Employment outlook<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>✓ Sourced</strong><br>ONS LMI for All (UK) / ILO ILOSTAT (GCC) / BLS OOH (US). Directly sourced.</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:80%;background:#ef4444"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">-12% 10-yr projection</div></div><div class="dim-row-val">80%</div></div><div class="dim-row "><div class="dim-row-label">Enrolment trajectory<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>✓ Sourced</strong><br>HESA Student Record 2021-2024 (UK) / UAE MOHESR (GCC). 3-year rolling average % change.</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:79.00000000000001%;background:#ef4444"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">↓ -7.9% avg enrolment</div></div><div class="dim-row-val">79%</div></div></div><div class="tasks-section"><div class="dim-section-title">Task breakdown</div><div class="task-item"><span class="task-type task-rep">Replaces</span><span class="task-name">Write news articles</span><span class="task-score">0.87</span></div><div class="task-item"><span class="task-type task-rep">Replaces</span><span class="task-name">Summarise press releases</span><span class="task-score">0.93</span></div><div class="task-item"><span class="task-type task-aug">Assists</span><span class="task-name">Investigate sources</span><span class="task-score">0.28</span></div><div class="task-item"><span class="task-type task-rep">Replaces</span><span class="task-name">Edit copy</span><span class="task-score">0.84</span></div><div class="task-item"><span class="task-type task-aug">Assists</span><span class="task-name">Produce broadcast content</span><span class="task-score">0.31</span></div><div style="font-size:0.74rem;color:var(--text3);margin-top:8px">Score = probability AI performs at human-level quality. Sources: O*NET / ISCO-08 task frameworks.</div></div><div class="dim-section"><div class="dim-section-title">Enrolment trajectory</div><div class="enrol-chart"><div class="enrol-bar" style="height:24.52747252747253px;background:var(--red);opacity:0.5"></div><div class="enrol-bar" style="height:33.23076923076923px;background:var(--red);opacity:0.6666666666666666"></div><div class="enrol-bar" style="height:36px;background:var(--red);opacity:0.8333333333333333"></div></div><div style="font-size:0.8rem;color:var(--text2);margin-top:6px">Steep decline — newsroom restructuring accelerating. HESA 2021-2024.</div></div><div class="tasks-section"><div class="dim-section-title">Recommended intervention</div><div class="intervention-box"><h4>🌅 Sunset</h4><p>The modal tasks in this programme are being <strong>substituted</strong> by AI. Graduate employer demand is projected to contract. Begin a structured wind-down review: assess student cohort impact, explore merger with adjacent programmes, and consult accreditation body on timeline implications.</p></div></div></div></div>
 <div class="modal-overlay" id="modalOverlay" onclick="closeMethodology(event)">
@@ -1233,4 +1751,4 @@ loadPrograms();updateHeroStats();renderGrid();
       </div>
       <button class="update-btn" id="liveRefreshBtn" onclick="runLiveRefresh()">⟳ Refresh live sources now</button>
     </div>
-  </div></div><div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 1; transition: opacity 0.3s ease-in-out; animation: 2s ease-in-out 0s infinite normal none running claude-pulse; box-shadow: rgba(217, 119, 87, 0.5) 0px 0px 10px inset, rgba(217, 119, 87, 0.3) 0px 0px 20px inset, rgba(217, 119, 87, 0.1) 0px 0px 30px inset;"></div></body></html>
+  </div></div><div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 1; transition: opacity 0.3s ease-in-out; animation: 2s ease-in-out 0s infinite normal none running claude-pulse; box-shadow: rgba(217, 119, 87, 0.5) 0px 0px 10px inset, rgba(217, 119, 87, 0.3) 0px 0px 20px inset, rgba(217, 119, 87, 0.1) 0px 0px 30px inset;"></div><div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 1; transition: opacity 0.3s ease-in-out; animation: 2s ease-in-out 0s infinite normal none running claude-pulse; box-shadow: rgba(217, 119, 87, 0.5) 0px 0px 10px inset, rgba(217, 119, 87, 0.3) 0px 0px 20px inset, rgba(217, 119, 87, 0.1) 0px 0px 30px inset;"></div></body></html>
