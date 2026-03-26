@@ -1,15 +1,19 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Canary — AI Risk Intelligence for Academic Programmes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0d0f14;--bg2:#13161e;--bg3:#1a1e28;--bg4:#212633;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--text:#e8eaf0;--text2:#8b90a0;--text3:#555b6e;--accent:#5b8def;--accent2:#3d6fd4;--green:#3ecf8e;--green-bg:rgba(62,207,142,0.1);--amber:#f59e0b;--amber-bg:rgba(245,158,11,0.1);--red:#ef4444;--red-bg:rgba(239,68,68,0.1);--purple:#a78bfa;--purple-bg:rgba(167,139,250,0.1);--coral:#fb7185;--coral-bg:rgba(251,113,133,0.1);--teal:#2dd4bf;--teal-bg:rgba(45,212,191,0.1);--font-display:'DM Serif Display',Georgia,serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--r:10px;--r-sm:6px;--shadow:0 4px 24px rgba(0,0,0,0.4)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:15px}
 body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+
+/* HEADER */
 header{position:sticky;top:0;z-index:100;background:rgba(13,15,20,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--font-display);font-size:1.3rem;color:var(--text);letter-spacing:-0.01em}
 .logo span{color:var(--accent)}
@@ -20,71 +24,131 @@ header{position:sticky;top:0;z-index:100;background:rgba(13,15,20,0.92);backdrop
 .region-btn.active{background:var(--accent);color:#fff}
 .region-btn .flag{font-size:14px}
 .stub-badge{font-size:9px;font-weight:600;letter-spacing:0.05em;background:var(--amber-bg);color:var(--amber);padding:1px 5px;border-radius:3px}
-.hero{padding:48px 32px 32px;max-width:1400px;margin:0 auto}
-.hero h1{font-family:var(--font-display);font-size:2.8rem;font-weight:400;line-height:1.15;letter-spacing:-0.02em;margin-bottom:12px}
+.icon-btn{width:36px;height:36px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s;font-size:0.85rem}
+.icon-btn:hover{border-color:var(--border2);color:var(--text)}
+
+/* TWO-TAB NAV */
+#mainTabBar{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 32px;display:flex;gap:0}
+.main-tab{padding:14px 24px;border:none;background:transparent;color:var(--text3);font-family:var(--font-body);font-size:0.9rem;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;margin-bottom:-1px;display:flex;align-items:center;gap:8px}
+.main-tab:hover{color:var(--text2)}
+.main-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.main-tab .tab-badge{font-size:0.68rem;font-weight:600;padding:2px 7px;border-radius:10px;background:var(--bg4);color:var(--text3);transition:all 0.15s}
+.main-tab.active .tab-badge{background:rgba(91,141,239,0.15);color:var(--accent)}
+
+/* HERO */
+.hero{padding:36px 32px 28px;max-width:1400px;margin:0 auto}
+.hero h1{font-family:var(--font-display);font-size:2.4rem;font-weight:400;line-height:1.15;letter-spacing:-0.02em;margin-bottom:10px}
 .hero h1 em{font-style:italic;color:var(--accent)}
-.hero p{color:var(--text2);font-size:0.95rem;max-width:560px;line-height:1.7}
-.hero-meta{display:flex;gap:32px;margin-top:28px;flex-wrap:wrap}
-.hero-stat .num{font-family:var(--font-mono);font-size:1.6rem;font-weight:500;color:var(--text);line-height:1}
-.hero-stat .label{font-size:0.78rem;color:var(--text3);margin-top:4px;letter-spacing:0.04em;text-transform:uppercase}
+.hero p{color:var(--text2);font-size:0.9rem;max-width:540px;line-height:1.7}
+.hero-meta{display:flex;gap:28px;margin-top:20px;flex-wrap:wrap}
+.hero-stat .num{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--text);line-height:1}
+.hero-stat .label{font-size:0.72rem;color:var(--text3);margin-top:3px;letter-spacing:0.04em;text-transform:uppercase}
 .divider-v{width:1px;background:var(--border);align-self:stretch}
-.controls{max-width:1400px;margin:0 auto;padding:0 32px 24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.search-wrap{position:relative;flex:1;min-width:240px;max-width:360px}
-.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;opacity:0.4}
-input[type="search"]{width:100%;padding:9px 12px 9px 36px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:var(--font-body);font-size:0.85rem;outline:none;transition:border-color 0.15s}
-input[type="search"]:focus{border-color:var(--accent)}
-input[type="search"]::placeholder{color:var(--text3)}
-.filter-group{display:flex;gap:6px;flex-wrap:wrap}
-.filter-btn{padding:7px 14px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);font-family:var(--font-body);font-size:0.8rem;font-weight:500;cursor:pointer;transition:all 0.15s;white-space:nowrap}
-.filter-btn:hover{border-color:var(--border2);color:var(--text)}
-.filter-btn.active{border-color:transparent;color:#fff}
-.filter-btn.f-urgent.active{background:var(--coral)}
-.filter-btn.f-invest.active{background:var(--green);color:#0a2a1c}
-.filter-btn.f-sunset.active{background:var(--amber);color:#1a0e00}
-.filter-btn.f-maintain.active{background:var(--accent)}
-.filter-btn.f-critical.active{background:var(--red)}
-.sort-select{padding:7px 12px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);font-family:var(--font-body);font-size:0.8rem;cursor:pointer;outline:none}
-.grid-wrap{max-width:1400px;margin:0 auto;padding:0 32px 80px}
-.program-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-.no-results{grid-column:1/-1;text-align:center;padding:64px 0;color:var(--text3)}
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px;cursor:pointer;transition:all 0.18s;position:relative;overflow:hidden}
+
+/* PATHWAY VIEW */
+#view-pathway{background:var(--bg2);border-bottom:2px solid var(--border)}
+#view-details{max-width:1400px;margin:0 auto;padding:28px 32px 80px}
+.pw-outer{max-width:1400px;margin:0 auto;padding:28px 32px 40px}
+
+/* GCSE PICKER */
+.pw-picker{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.pw-gcse-btn{padding:10px 18px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);font-family:var(--font-body);font-size:0.88rem;cursor:pointer;transition:all 0.15s;font-weight:500;display:inline-flex;align-items:center;gap:8px}
+.pw-gcse-btn:hover{border-color:var(--border2);color:var(--text);background:var(--bg4)}
+.pw-gcse-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pw-gcse-btn .pw-pill{font-size:0.7rem;padding:2px 7px;border-radius:4px;font-weight:600}
+.pw-gcse-btn.active .pw-pill{background:rgba(255,255,255,0.2);color:#fff}
+.pw-no-data{padding:40px;text-align:center;color:var(--text3);font-size:0.9rem;background:var(--bg3);border-radius:var(--r);border:1px solid var(--border)}
+
+/* PIPELINE */
+.pw-stages{display:grid;grid-template-columns:1fr 32px 1fr 32px 1fr 32px 1fr;align-items:center;margin-bottom:14px}
+.pw-stage-head{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px 14px;text-align:center}
+.pw-stage-head .stage-label{font-size:0.63rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
+.pw-stage-head .stage-name{font-family:var(--font-display);font-size:1.05rem;color:var(--text);line-height:1.2}
+.pw-stage-head .stage-sub{font-size:0.7rem;color:var(--text3);margin-top:2px}
+.pw-cols{display:grid;grid-template-columns:1fr 32px 1fr 32px 1fr 32px 1fr;align-items:start}
+.pw-col{display:flex;flex-direction:column;gap:10px}
+.pw-arrow{text-align:center;color:var(--text3);font-size:1.2rem;padding-top:26px}
+.pw-node{border-radius:var(--r-sm);padding:16px;border:1px solid var(--border);background:var(--bg3);transition:all 0.15s}
+.pw-node:hover{border-color:var(--border2)}
+.pw-node.selected{border-color:var(--accent);background:rgba(91,141,239,0.06)}
+.pw-node-score{font-family:var(--font-mono);font-size:1.6rem;font-weight:500;line-height:1;margin-bottom:4px}
+.pw-node-name{font-size:0.88rem;font-weight:500;color:var(--text);margin-bottom:8px;line-height:1.3}
+.pw-node-bar{height:5px;border-radius:3px;background:var(--bg4);margin:6px 0;overflow:hidden}
+.pw-node-bar-fill{height:100%;border-radius:3px}
+.pw-node-meta{font-size:0.73rem;color:var(--text3);line-height:1.5}
+.pw-fit-badge{font-size:0.65rem;font-weight:600;padding:2px 7px;border-radius:3px;text-transform:uppercase}
+.fit-required{background:rgba(62,207,142,0.15);color:var(--green)}
+.fit-preferred{background:rgba(91,141,239,0.12);color:var(--accent)}
+.fit-relevant{background:var(--bg4);color:var(--text3)}
+.pw-insight{margin-top:20px;padding:16px 20px;background:var(--bg3);border-radius:var(--r-sm);border-left:3px solid var(--accent);font-size:0.86rem;color:var(--text2);line-height:1.7}
+.pw-insight strong{color:var(--text)}
+.pw-chain{display:none}
+.pw-chain.visible{display:block}
+
+/* DETAILS — sub-tabs */
+.sub-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.sub-tab{padding:7px 16px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);font-family:var(--font-body);font-size:0.82rem;font-weight:500;cursor:pointer;transition:all 0.15s}
+.sub-tab:hover{border-color:var(--border2);color:var(--text)}
+.sub-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* DASHBOARD TILES */
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:24px}
+.dash-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;cursor:pointer;transition:all 0.18s}
+.dash-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.dash-card.active{border-color:var(--accent);background:rgba(91,141,239,0.08)}
+.dash-field-name{font-size:0.78rem;font-weight:500;color:var(--text2);margin-bottom:10px;line-height:1.3}
+.dash-score-num{font-family:var(--font-mono);font-size:1.4rem;font-weight:500;line-height:1}
+.dash-count{font-size:0.68rem;color:var(--text3);margin-top:4px}
+.dash-bar{height:3px;background:var(--bg4);border-radius:2px;margin-top:10px;overflow:hidden}
+.dash-bar-fill{height:100%;border-radius:2px}
+.dash-verdict{font-size:0.68rem;margin-top:6px;font-weight:500}
+.dash-clear{padding:5px 12px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);font-family:var(--font-body);font-size:0.78rem;cursor:pointer}
+.dash-clear:hover{border-color:var(--border2);color:var(--text)}
+
+/* HE PROGRAMME CARDS */
+.program-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:18px;cursor:pointer;transition:all 0.18s;position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity 0.18s}
 .card.urgent::before{background:var(--coral)}.card.invest::before{background:var(--green)}.card.sunset::before{background:var(--amber)}.card.maintain::before{background:var(--accent)}
 .card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--shadow)}
 .card:hover::before{opacity:1}
-.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
 .card-meta{display:flex;gap:6px;flex-wrap:wrap}
 .badge{padding:3px 9px;border-radius:4px;font-size:0.72rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
 .badge-field{background:var(--bg4);color:var(--text3)}
-.badge-confidence-a{background:rgba(62,207,142,0.15);color:var(--green)}
-.badge-confidence-b{background:var(--amber-bg);color:var(--amber)}
-.badge-confidence-c{background:var(--red-bg);color:var(--red)}
 .badge-critical{background:var(--red-bg);color:var(--red);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
 .rec-badge{padding:4px 10px;border-radius:var(--r-sm);font-size:0.75rem;font-weight:600;white-space:nowrap}
 .rec-urgent{background:var(--coral-bg);color:var(--coral)}.rec-invest{background:var(--green-bg);color:var(--green)}.rec-sunset{background:var(--amber-bg);color:var(--amber)}.rec-maintain{background:var(--purple-bg);color:var(--purple)}
-.card-name{font-family:var(--font-display);font-size:1.15rem;font-weight:400;margin-bottom:4px;line-height:1.2}
-.card-code{font-family:var(--font-mono);font-size:0.72rem;color:var(--text3);margin-bottom:14px}
-.score-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.card-name{font-family:var(--font-display);font-size:1.1rem;font-weight:400;margin-bottom:4px;line-height:1.2}
+.card-code{font-family:var(--font-mono);font-size:0.72rem;color:var(--text3);margin-bottom:12px}
+.score-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .score-big{font-family:var(--font-mono);font-size:1.8rem;font-weight:500;line-height:1}
 .score-label{font-size:0.72rem;color:var(--text3);line-height:1.3}
+.uncertainty-band{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);margin-top:2px}
 .score-bar-wrap{flex:1}
 .score-bar-track{height:6px;background:var(--bg4);border-radius:3px;overflow:hidden}
-.score-bar-fill{height:100%;border-radius:3px;transition:width 0.4s ease}
+.score-bar-fill{height:100%;border-radius:3px}
 .mini-dims{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
-.mini-dim{background:var(--bg3);border-radius:var(--r-sm);padding:7px 9px;position:relative}
-.mini-dim.estimated{opacity:0.55}
-.mini-dim-label{font-size:0.68rem;color:var(--text3);letter-spacing:0.03em;margin-bottom:3px}
+.mini-dim{background:var(--bg3);border-radius:var(--r-sm);padding:7px 9px}
+.mini-dim-label{font-size:0.68rem;color:var(--text3);margin-bottom:3px}
 .mini-dim-val{font-family:var(--font-mono);font-size:0.82rem;color:var(--text);font-weight:500}
-.estimated-dot{position:absolute;top:5px;right:6px;width:5px;height:5px;border-radius:50%;background:var(--amber);opacity:0.7}
-.enrol-trend{display:flex;align-items:center;gap:5px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:0.78rem;color:var(--text3)}
+.enrol-trend{display:flex;align-items:center;gap:5px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:0.75rem;color:var(--text3)}
 .trend-up{color:var(--green)}.trend-down{color:var(--red)}.trend-flat{color:var(--text3)}
+.no-results{grid-column:1/-1;text-align:center;padding:48px 0;color:var(--text3)}
+
+/* SORT SELECT / FILTER BTN */
+.sort-select{padding:7px 12px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);font-family:var(--font-body);font-size:0.8rem;cursor:pointer;outline:none}
+.filter-btn{padding:7px 14px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);font-family:var(--font-body);font-size:0.8rem;font-weight:500;cursor:pointer;transition:all 0.15s}
+.filter-btn:hover{border-color:var(--border2);color:var(--text)}
+
+/* DRAWER */
 .drawer-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity 0.25s}
 .drawer-overlay.open{opacity:1;pointer-events:all}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(680px,100vw);background:var(--bg2);border-left:1px solid var(--border);overflow-y:auto;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);z-index:201}
 .drawer.open{transform:translateX(0)}
 .drawer-inner{padding:32px}
-.drawer-close{position:sticky;top:0;z-index:10;display:flex;justify-content:flex-end;padding:16px 32px;background:var(--bg2);border-bottom:1px solid var(--border);margin:-32px -32px 28px}
+.drawer-close{position:sticky;top:0;z-index:10;display:flex;justify-content:flex-end;padding:16px 32px;background:var(--bg2);border-bottom:1px solid var(--border);margin:-32px -32px 24px}
 .close-btn{width:32px;height:32px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all 0.15s}
 .close-btn:hover{border-color:var(--border2);color:var(--text)}
 .drawer-name{font-family:var(--font-display);font-size:1.8rem;font-weight:400;line-height:1.15;margin-bottom:6px}
@@ -92,19 +156,14 @@ input[type="search"]::placeholder{color:var(--text3)}
 .dim-section{margin-bottom:28px}
 .dim-section-title{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .dim-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
-.dim-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding:10px 12px;background:var(--bg3);border-radius:var(--r-sm);position:relative;transition:opacity 0.15s}
+.dim-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding:10px 12px;background:var(--bg3);border-radius:var(--r-sm);position:relative}
 .dim-row.estimated{opacity:0.65;border:1px dashed rgba(245,158,11,0.25)}
 .dim-row-label{flex:0 0 160px;font-size:0.82rem;color:var(--text2)}
 .dim-row-bar{flex:1}
 .dim-row-track{height:5px;background:var(--bg4);border-radius:3px;overflow:hidden}
 .dim-row-fill{height:100%;border-radius:3px}
 .dim-row-val{flex:0 0 48px;text-align:right;font-family:var(--font-mono);font-size:0.82rem;color:var(--text)}
-.est-tag{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:0.68rem;color:var(--amber);opacity:0.8;background:var(--amber-bg);padding:1px 6px;border-radius:3px}
-.tooltip-wrap{position:relative;display:inline-block}
-.tooltip-icon{width:14px;height:14px;border-radius:50%;background:var(--bg4);color:var(--text3);font-size:0.65rem;display:inline-flex;align-items:center;justify-content:center;cursor:help;margin-left:4px}
-.tooltip-text{position:absolute;bottom:calc(100% + 6px);left:0;width:220px;padding:8px 10px;background:var(--bg4);border:1px solid var(--border2);border-radius:var(--r-sm);font-size:0.75rem;color:var(--text2);line-height:1.5;z-index:300;opacity:0;pointer-events:none;transition:opacity 0.15s;white-space:normal}
-.tooltip-wrap:hover .tooltip-text{opacity:1}
-.tasks-section{margin-bottom:28px}
+.est-tag{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:0.68rem;color:var(--amber);background:var(--amber-bg);padding:1px 6px;border-radius:3px}
 .task-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
 .task-item:last-child{border-bottom:none}
 .task-type{flex:0 0 62px;padding:2px 7px;border-radius:4px;font-size:0.68rem;font-weight:600;text-align:center;margin-top:2px}
@@ -115,12 +174,14 @@ input[type="search"]::placeholder{color:var(--text3)}
 .intervention-box h4{font-size:0.78rem;font-weight:600;color:var(--accent);margin-bottom:8px;letter-spacing:0.04em;text-transform:uppercase}
 .intervention-box p{font-size:0.84rem;color:var(--text2);line-height:1.6}
 .enrol-chart{margin:8px 0;display:flex;align-items:flex-end;gap:4px;height:40px}
-.enrol-bar{flex:1;border-radius:3px 3px 0 0;min-height:4px;transition:height 0.4s ease}
+.enrol-bar{flex:1;border-radius:3px 3px 0 0;min-height:4px}
 .composite-breakdown{background:var(--bg3);border-radius:var(--r);padding:16px;margin-bottom:20px}
 .cb-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:0.82rem}
 .cb-row:not(:last-child){border-bottom:1px solid var(--border)}
 .cb-label{color:var(--text2)}.cb-val{font-family:var(--font-mono);color:var(--text)}
-.cb-total{font-weight:600;color:var(--text)}.cb-total .cb-val{color:var(--accent)}
+.cb-total{font-weight:600}.cb-total .cb-val{color:var(--accent)}
+
+/* METHODOLOGY MODAL */
 .modal-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;padding:32px;width:min(700px,95vw);max-height:85vh;overflow-y:auto;transform:scale(0.96);transition:transform 0.2s}
@@ -136,1512 +197,107 @@ input[type="search"]::placeholder{color:var(--text3)}
 .weight-total.over span:last-child{color:var(--red)}
 .apply-btn{margin-top:16px;width:100%;padding:11px;background:var(--accent);border:none;border-radius:var(--r-sm);color:#fff;font-family:var(--font-body);font-size:0.9rem;font-weight:500;cursor:pointer;transition:background 0.15s}
 .apply-btn:hover{background:var(--accent2)}
-.icon-btn{width:36px;height:36px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--bg3);color:var(--text2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s;font-size:0.85rem}
-.icon-btn:hover{border-color:var(--border2);color:var(--text)}
-.uncertainty-band{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);margin-top:2px}
-@media(max-width:640px){header{padding:0 16px}.hero,.controls,.grid-wrap{padding-left:16px;padding-right:16px}.hero h1{font-size:2rem}.region-btn span:not(.flag){display:none}.stub-badge{display:none}}
+
+@media(max-width:860px){
+  header{padding:0 16px}
+  .hero{padding:24px 16px 20px}
+  .pw-outer{padding:20px 16px 28px}
+  #view-details{padding:20px 16px 60px}
+  .pw-stages,.pw-cols{grid-template-columns:1fr}
+  .pw-arrow{display:none}
+  .region-btn span:not(.flag){display:none}
+  .stub-badge{display:none}
+  #mainTabBar{padding:0 16px}
+}
 </style>
-<style id="claude-agent-animation-styles">
-      @keyframes claude-pulse {
-        0% {
-          box-shadow: 
-            inset 0 0 10px rgba(217, 119, 87, 0.5),
-            inset 0 0 20px rgba(217, 119, 87, 0.3),
-            inset 0 0 30px rgba(217, 119, 87, 0.1);
-        }
-        50% {
-          box-shadow: 
-            inset 0 0 15px rgba(217, 119, 87, 0.7),
-            inset 0 0 25px rgba(217, 119, 87, 0.5),
-            inset 0 0 35px rgba(217, 119, 87, 0.2);
-        }
-        100% {
-          box-shadow: 
-            inset 0 0 10px rgba(217, 119, 87, 0.5),
-            inset 0 0 20px rgba(217, 119, 87, 0.3),
-            inset 0 0 30px rgba(217, 119, 87, 0.1);
-        }
-      }
-    </style><style>
-.dashboard {
-  max-width:1400px; margin:0 auto; padding:0 32px 32px;
-}
-.dash-header {
-  display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;
-}
-.dash-title {
-  font-size:0.72rem; font-weight:600; letter-spacing:0.08em;
-  text-transform:uppercase; color:var(--text3);
-}
-.dash-sub { font-size:0.75rem; color:var(--text3); margin-top:2px; }
-.dash-clear {
-  padding:5px 12px; border-radius:var(--r-sm);
-  border:1px solid var(--border); background:var(--bg3);
-  color:var(--text2); font-family:var(--font-body); font-size:0.78rem;
-  cursor:pointer; transition:all 0.15s;
-}
-.dash-clear:hover { border-color:var(--border2); color:var(--text); }
-.dash-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
-  gap:10px;
-}
-.dash-card {
-  background:var(--bg2); border:1px solid var(--border);
-  border-radius:var(--r); padding:14px 16px; cursor:pointer;
-  transition:all 0.18s; position:relative; overflow:hidden;
-}
-.dash-card::after {
-  content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
-  border-radius:0 0 var(--r) var(--r);
-}
-.dash-card:hover { border-color:var(--border2); transform:translateY(-2px); }
-.dash-card.active { border-color:var(--accent); background:rgba(91,141,239,0.08); }
-.dash-field-name { font-size:0.78rem; font-weight:500; color:var(--text2); margin-bottom:10px; line-height:1.3; }
-.dash-score-num { font-family:var(--font-mono); font-size:1.4rem; font-weight:500; line-height:1; }
-.dash-count { font-size:0.68rem; color:var(--text3); margin-top:4px; }
-.dash-bar { height:3px; background:var(--bg4); border-radius:2px; margin-top:10px; overflow:hidden; }
-.dash-bar-fill { height:100%; border-radius:2px; }
-.dash-verdict { font-size:0.68rem; margin-top:6px; font-weight:500; }
-</style><style>
-.level-tabs {
-  background:var(--bg2); border-bottom:1px solid var(--border);
-  display:flex; gap:0; padding:0 32px;
-  max-width:none;
-}
-.level-tab {
-  padding:12px 20px; border:none; background:transparent;
-  color:var(--text3); font-family:var(--font-body); font-size:0.85rem;
-  font-weight:500; cursor:pointer; border-bottom:2px solid transparent;
-  transition:all 0.15s; margin-bottom:-1px;
-}
-.level-tab:hover { color:var(--text2); }
-.level-tab.active { color:var(--accent); border-bottom-color:var(--accent); }
-#schoolsView { display:none; }
-#heView { display:block; }
-.schools-hero { padding:40px 32px 24px; max-width:1400px; margin:0 auto; }
-.schools-hero h2 { font-family:var(--font-display); font-size:2rem; font-weight:400; margin-bottom:8px; }
-.schools-hero p { color:var(--text2); font-size:0.9rem; max-width:600px; line-height:1.7; }
-.source-chips { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
-.source-chip { padding:4px 12px; border-radius:20px; font-size:0.72rem; font-weight:500; background:var(--bg3); border:1px solid var(--border); color:var(--text3); }
-.source-chip.live { border-color:var(--green); color:var(--green); background:var(--green-bg); }
-.schools-grid { max-width:1400px; margin:0 auto; padding:0 32px 32px; display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; }
-.school-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:20px; position:relative; overflow:hidden; transition:all 0.18s; cursor:default; }
-.school-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
-.school-card.high::before { background:var(--red); }
-.school-card.med::before { background:var(--amber); }
-.school-card.low::before { background:var(--green); }
-.school-card:hover { border-color:var(--border2); transform:translateY(-2px); }
-.school-subject { font-family:var(--font-display); font-size:1.1rem; font-weight:400; margin-bottom:4px; }
-.school-level { font-size:0.72rem; color:var(--text3); margin-bottom:12px; font-family:var(--font-mono); }
-.school-metrics { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
-.school-metric { background:var(--bg3); border-radius:var(--r-sm); padding:8px 10px; }
-.school-metric-label { font-size:0.68rem; color:var(--text3); margin-bottom:3px; }
-.school-metric-val { font-family:var(--font-mono); font-size:0.9rem; color:var(--text); font-weight:500; }
-.school-pathway { font-size:0.78rem; color:var(--text2); line-height:1.5; padding-top:10px; border-top:1px solid var(--border); }
-.school-pathway strong { color:var(--text); }
-.school-trend-badge { display:inline-flex; align-items:center; gap:5px; padding:3px 9px; border-radius:4px; font-size:0.72rem; font-weight:600; margin-bottom:8px; }
-.trend-badge-up { background:var(--green-bg); color:var(--green); }
-.trend-badge-down { background:var(--red-bg); color:var(--red); }
-.trend-badge-flat { background:var(--bg4); color:var(--text3); }
-.data-note { max-width:1400px; margin:0 auto 24px; padding:0 32px; }
-.data-note-inner { background:var(--bg3); border:1px solid var(--border); border-radius:var(--r); padding:14px 18px; font-size:0.8rem; color:var(--text3); line-height:1.6; }
-.data-note-inner strong { color:var(--amber); }
-</style><style>
-.freshness-bar {
-  background: var(--bg2);
-  border-bottom: 1px solid var(--border);
-  padding: 0 32px;
-}
-.freshness-inner {
-  max-width: 1400px; margin: 0 auto;
-  display: flex; align-items: center; gap: 0;
-  overflow-x: auto;
-}
-.freshness-source {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 20px 10px 0; margin-right: 20px;
-  border-right: 1px solid var(--border);
-  flex-shrink: 0;
-}
-.freshness-source:last-child { border-right: none; }
-.freshness-dot {
-  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-}
-.dot-live    { background: var(--green); box-shadow: 0 0 6px rgba(62,207,142,0.6); animation: livepulse 2s infinite; }
-.dot-static  { background: var(--amber); }
-.dot-loading { background: var(--text3); animation: loadpulse 1s infinite; }
-.dot-stale   { background: var(--red); }
-@keyframes livepulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
-@keyframes loadpulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
-.freshness-info {}
-.freshness-name { font-size:0.72rem; font-weight:600; color:var(--text2); white-space:nowrap; }
-.freshness-date { font-size:0.68rem; color:var(--text3); white-space:nowrap; }
-.freshness-badge {
-  font-size:0.65rem; font-weight:600; padding:1px 6px; border-radius:3px;
-  white-space:nowrap;
-}
-.badge-live   { background:var(--green-bg); color:var(--green); }
-.badge-static { background:var(--amber-bg); color:var(--amber); }
-.badge-stale  { background:var(--red-bg); color:var(--red); }
-.badge-loading { background:var(--bg4); color:var(--text3); }
-
-/* Full data health modal */
-.health-modal-overlay {
-  position:fixed; inset:0; z-index:400;
-  background:rgba(0,0,0,0.75); backdrop-filter:blur(6px);
-  display:flex; align-items:center; justify-content:center;
-  opacity:0; pointer-events:none; transition:opacity 0.2s;
-}
-.health-modal-overlay.open { opacity:1; pointer-events:all; }
-.health-modal {
-  background:var(--bg2); border:1px solid var(--border2);
-  border-radius:14px; padding:32px;
-  width:min(800px,95vw); max-height:85vh; overflow-y:auto;
-  transform:scale(0.96); transition:transform 0.2s;
-}
-.health-modal-overlay.open .health-modal { transform:scale(1); }
-.health-table { width:100%; border-collapse:collapse; font-size:0.82rem; margin-top:16px; }
-.health-table th { text-align:left; padding:8px 12px; color:var(--text3); font-size:0.7rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; border-bottom:1px solid var(--border); }
-.health-table td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
-.health-table tr:last-child td { border-bottom:none; }
-.health-table tr:hover td { background:var(--bg3); }
-.progress-bar { height:4px; background:var(--bg4); border-radius:2px; margin-top:6px; overflow:hidden; width:100px; }
-.progress-fill { height:100%; border-radius:2px; transition:width 0.5s ease; }
-.freshness-trigger { cursor:pointer; text-decoration:underline; text-decoration-style:dotted; color:var(--accent); font-size:0.72rem; white-space:nowrap; margin-left:4px; }
-.live-value { font-family:var(--font-mono); font-size:0.78rem; color:var(--green); }
-.update-btn {
-  margin-top:16px; padding:8px 18px; background:var(--accent); border:none;
-  border-radius:var(--r-sm); color:#fff; font-family:var(--font-body); font-size:0.82rem;
-  font-weight:500; cursor:pointer; transition:background 0.15s;
-}
-.update-btn:hover { background:var(--accent2); }
-.update-btn:disabled { background:var(--bg4); color:var(--text3); cursor:not-allowed; }
-</style><style>
-#pathwaysView { max-width:1400px; margin:0 auto; padding:0 32px 80px; }
-.pw-hero { padding:40px 0 28px; }
-.pw-hero h2 { font-family:var(--font-display); font-size:2rem; font-weight:400; margin-bottom:8px; }
-.pw-hero p { color:var(--text2); font-size:0.9rem; max-width:580px; line-height:1.7; }
-
-.pw-picker { display:flex; gap:8px; flex-wrap:wrap; margin:20px 0 32px; }
-.pw-gcse-btn {
-  padding:8px 16px; border-radius:var(--r-sm);
-  border:1px solid var(--border); background:var(--bg2);
-  color:var(--text2); font-family:var(--font-body); font-size:0.82rem;
-  cursor:pointer; transition:all 0.15s; font-weight:500;
-}
-.pw-gcse-btn:hover { border-color:var(--border2); color:var(--text); }
-.pw-gcse-btn.active { background:var(--accent); color:#fff; border-color:var(--accent); }
-.pw-gcse-btn .pw-pill {
-  display:inline-block; font-size:0.65rem; padding:1px 5px;
-  border-radius:3px; margin-left:5px; font-weight:600;
-}
-
-.pw-chain { display:none; }
-.pw-chain.visible { display:block; }
-
-/* Stage header strip */
-.pw-stages {
-  display:grid; grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr;
-  align-items:center; gap:0; margin-bottom:24px;
-}
-.pw-stage-head {
-  background:var(--bg3); border:1px solid var(--border);
-  border-radius:var(--r-sm); padding:10px 14px; text-align:center;
-}
-.pw-stage-head .stage-label { font-size:0.68rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--text3); }
-.pw-stage-head .stage-name { font-family:var(--font-display); font-size:1rem; color:var(--text); margin-top:2px; }
-.pw-stage-head .stage-sub { font-size:0.72rem; color:var(--text3); margin-top:1px; }
-.pw-arrow { text-align:center; color:var(--text3); font-size:1.1rem; }
-
-/* Pipeline columns */
-.pw-cols {
-  display:grid; grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr;
-  gap:0; align-items:start;
-}
-.pw-col { display:flex; flex-direction:column; gap:8px; }
-.pw-connector-col { display:flex; flex-direction:column; justify-content:center; align-items:center; padding-top:8px; }
-
-/* Individual node cards */
-.pw-node {
-  border-radius:var(--r-sm); padding:12px 14px;
-  border:1px solid var(--border); background:var(--bg2);
-  position:relative; transition:all 0.15s;
-}
-.pw-node:hover { border-color:var(--border2); }
-.pw-node.selected { border-color:var(--accent); background:rgba(91,141,239,0.06); }
-.pw-node-name { font-size:0.85rem; font-weight:500; color:var(--text); margin-bottom:6px; }
-.pw-node-meta { font-size:0.72rem; color:var(--text3); line-height:1.5; }
-.pw-node-score {
-  font-family:var(--font-mono); font-size:1.1rem; font-weight:500;
-  margin-bottom:2px;
-}
-.pw-node-bar { height:4px; border-radius:2px; background:var(--bg4); margin:6px 0 4px; overflow:hidden; }
-.pw-node-bar-fill { height:100%; border-radius:2px; }
-.pw-fit-badge {
-  font-size:0.65rem; font-weight:600; padding:1px 6px; border-radius:3px;
-  letter-spacing:0.03em; text-transform:uppercase;
-}
-.fit-required { background:rgba(62,207,142,0.15); color:var(--green); }
-.fit-preferred { background:var(--accent-bg,rgba(91,141,239,0.12)); color:var(--accent); }
-.fit-relevant  { background:var(--bg4); color:var(--text3); }
-
-/* SVG connector lines between columns */
-.pw-svg-connectors { width:100%; overflow:visible; display:block; }
-
-/* Risk summary bar */
-.pw-risk-summary {
-  margin-top:32px; background:var(--bg3); border-radius:var(--r);
-  border:1px solid var(--border); padding:20px 24px;
-}
-.pw-risk-summary h4 {
-  font-size:0.72rem; font-weight:600; letter-spacing:0.08em;
-  text-transform:uppercase; color:var(--text3); margin-bottom:16px;
-}
-.pw-risk-row {
-  display:flex; align-items:center; gap:12px; margin-bottom:10px;
-}
-.pw-risk-row-label { flex:0 0 140px; font-size:0.82rem; color:var(--text2); }
-.pw-risk-row-bar { flex:1; height:8px; background:var(--bg4); border-radius:4px; overflow:hidden; }
-.pw-risk-row-fill { height:100%; border-radius:4px; transition:width 0.5s ease; }
-.pw-risk-row-val { flex:0 0 40px; text-align:right; font-family:var(--font-mono); font-size:0.82rem; }
-.pw-insight {
-  margin-top:16px; padding:14px 16px;
-  background:var(--bg2); border-radius:var(--r-sm);
-  border-left:3px solid var(--accent); font-size:0.84rem;
-  color:var(--text2); line-height:1.6;
-}
-
-@media(max-width:800px){
-  .pw-stages,.pw-cols { grid-template-columns:1fr; }
-  .pw-arrow,.pw-connector-col { display:none; }
-}
-</style><style>
-/* ── PATHWAY HERO SECTION ─────────────────────────────────── */
-#pathwaysView {
-  max-width: 100%;
-  padding: 0;
-  background: var(--bg2);
-  border-bottom: 1px solid var(--border);
-}
-
-.pw-outer {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 40px 32px 48px;
-}
-
-.pw-hero {
-  padding: 0 0 28px;
-}
-.pw-hero h2 {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 400;
-  margin-bottom: 6px;
-  color: var(--text);
-}
-.pw-hero p {
-  color: var(--text2);
-  font-size: 0.85rem;
-  line-height: 1.6;
-  max-width: 680px;
-}
-
-/* GCSE picker — larger pills */
-.pw-picker {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin: 0 0 28px;
-}
-.pw-gcse-btn {
-  padding: 10px 18px;
-  border-radius: var(--r-sm);
-  border: 1px solid var(--border);
-  background: var(--bg3);
-  color: var(--text2);
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  cursor: pointer;
-  transition: all 0.15s;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.pw-gcse-btn:hover { border-color: var(--border2); color: var(--text); background: var(--bg4); }
-.pw-gcse-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-.pw-gcse-btn .pw-pill {
-  font-size: 0.72rem;
-  padding: 2px 7px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-.pw-gcse-btn.active .pw-pill {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-}
-
-/* Stage headers — bolder, more spacious */
-.pw-stages {
-  display: grid;
-  grid-template-columns: 1fr 36px 1fr 36px 1fr 36px 1fr;
-  align-items: center;
-  gap: 0;
-  margin-bottom: 16px;
-}
-.pw-stage-head {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  padding: 12px 16px;
-  text-align: center;
-}
-.pw-stage-head .stage-label {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text3);
-  margin-bottom: 2px;
-}
-.pw-stage-head .stage-name {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--text);
-  line-height: 1.2;
-}
-.pw-stage-head .stage-sub {
-  font-size: 0.72rem;
-  color: var(--text3);
-  margin-top: 1px;
-}
-
-/* Pipeline columns — taller nodes */
-.pw-cols {
-  display: grid;
-  grid-template-columns: 1fr 36px 1fr 36px 1fr 36px 1fr;
-  gap: 0;
-  align-items: start;
-}
-.pw-col { display: flex; flex-direction: column; gap: 10px; }
-.pw-arrow {
-  text-align: center;
-  color: var(--text3);
-  font-size: 1.2rem;
-  padding-top: 28px;
-}
-
-/* Node cards — bigger */
-.pw-node {
-  border-radius: var(--r-sm);
-  padding: 16px 18px;
-  border: 1px solid var(--border);
-  background: var(--bg3);
-  position: relative;
-  transition: all 0.15s;
-}
-.pw-node:hover { border-color: var(--border2); }
-.pw-node.selected {
-  border-color: var(--accent);
-  background: rgba(91,141,239,0.07);
-}
-.pw-node-score {
-  font-family: var(--font-mono);
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.pw-node-name {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-.pw-node-bar {
-  height: 5px;
-  border-radius: 3px;
-  background: var(--bg4);
-  margin: 8px 0 6px;
-  overflow: hidden;
-}
-.pw-node-bar-fill { height: 100%; border-radius: 3px; }
-.pw-node-meta {
-  font-size: 0.75rem;
-  color: var(--text3);
-  line-height: 1.5;
-}
-
-/* Fit badges */
-.pw-fit-badge {
-  font-size: 0.68rem;
-  font-weight: 600;
-  padding: 2px 7px;
-  border-radius: 3px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-.fit-required { background: rgba(62,207,142,0.15); color: var(--green); }
-.fit-preferred { background: rgba(91,141,239,0.12); color: var(--accent); }
-.fit-relevant  { background: var(--bg4); color: var(--text3); }
-
-/* Insight box */
-.pw-insight {
-  margin-top: 20px;
-  padding: 16px 20px;
-  background: var(--bg2);
-  border-radius: var(--r-sm);
-  border-left: 3px solid var(--accent);
-  font-size: 0.88rem;
-  color: var(--text2);
-  line-height: 1.7;
-}
-.pw-insight strong { color: var(--text); }
-
-/* Section dividers for HE + Schools below */
-.section-divider {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 36px 32px 0;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.section-divider-title {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 400;
-  white-space: nowrap;
-  color: var(--text);
-}
-.section-divider-line {
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-.section-divider-badge {
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 4px;
-  background: var(--bg3);
-  color: var(--text3);
-  border: 1px solid var(--border);
-  white-space: nowrap;
-}
-
-@media(max-width:860px){
-  .pw-stages,.pw-cols { grid-template-columns:1fr; }
-  .pw-arrow { display:none; }
-  .pw-outer { padding:24px 16px 32px; }
-}
-</style><style id="two-tab-styles">
-/* Two-tab nav */
-#mainTabBar {
-  background: var(--bg2);
-  border-bottom: 1px solid var(--border);
-  padding: 0 32px;
-  display: flex;
-  gap: 0;
-}
-.main-tab {
-  padding: 14px 24px;
-  border: none;
-  background: transparent;
-  color: var(--text3);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: all 0.15s;
-  margin-bottom: -1px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.main-tab:hover { color: var(--text2); }
-.main-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-.main-tab .tab-badge {
-  font-size: 0.68rem; font-weight: 600;
-  padding: 2px 7px; border-radius: 10px;
-  background: var(--bg4); color: var(--text3);
-  transition: all 0.15s;
-}
-.main-tab.active .tab-badge { background: rgba(91,141,239,0.15); color: var(--accent); }
-
-/* Tab content areas */
-#view-pathway { display: block; }
-#view-details { display: none; }
-
-/* Pathway view — full-width bg panel */
-#view-pathway {
-  background: var(--bg2);
-  border-bottom: 2px solid var(--border);
-}
-.pw-outer {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 36px 32px 48px;
-}
-
-/* GCSE picker pills */
-.pw-gcse-btn {
-  padding: 10px 18px;
-  border-radius: var(--r-sm);
-  border: 1px solid var(--border);
-  background: var(--bg3);
-  color: var(--text2);
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  cursor: pointer;
-  transition: all 0.15s;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.pw-gcse-btn:hover { border-color: var(--border2); color: var(--text); background: var(--bg4); }
-.pw-gcse-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-.pw-gcse-btn .pw-pill {
-  font-size: 0.7rem; padding: 2px 7px; border-radius: 4px; font-weight: 600;
-}
-.pw-gcse-btn.active .pw-pill { background: rgba(255,255,255,0.2); color: #fff; }
-
-/* Pipeline stage headers */
-.pw-stages {
-  display: grid;
-  grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr;
-  align-items: center;
-  margin-bottom: 14px;
-}
-.pw-stage-head {
-  background: var(--bg3); border: 1px solid var(--border);
-  border-radius: var(--r-sm); padding: 12px 14px; text-align: center;
-}
-.pw-stage-head .stage-label {
-  font-size: 0.63rem; font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--text3); margin-bottom: 3px;
-}
-.pw-stage-head .stage-name {
-  font-family: var(--font-display); font-size: 1.05rem; color: var(--text); line-height: 1.2;
-}
-.pw-stage-head .stage-sub { font-size: 0.7rem; color: var(--text3); margin-top: 2px; }
-
-/* Pipeline columns */
-.pw-cols {
-  display: grid;
-  grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr;
-  align-items: start;
-}
-.pw-col { display: flex; flex-direction: column; gap: 10px; }
-.pw-arrow { text-align: center; color: var(--text3); font-size: 1.2rem; padding-top: 26px; }
-
-/* Pipeline node cards */
-.pw-node {
-  border-radius: var(--r-sm); padding: 16px 16px;
-  border: 1px solid var(--border); background: var(--bg3);
-  transition: all 0.15s;
-}
-.pw-node:hover { border-color: var(--border2); }
-.pw-node.selected { border-color: var(--accent); background: rgba(91,141,239,0.06); }
-.pw-node-score {
-  font-family: var(--font-mono); font-size: 1.6rem;
-  font-weight: 500; line-height: 1; margin-bottom: 4px;
-}
-.pw-node-name { font-size: 0.88rem; font-weight: 500; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
-.pw-node-bar { height: 5px; border-radius: 3px; background: var(--bg4); margin: 6px 0; overflow: hidden; }
-.pw-node-bar-fill { height: 100%; border-radius: 3px; }
-.pw-node-meta { font-size: 0.73rem; color: var(--text3); line-height: 1.5; }
-.pw-fit-badge {
-  font-size: 0.65rem; font-weight: 600; padding: 2px 7px;
-  border-radius: 3px; text-transform: uppercase;
-}
-.fit-required { background: rgba(62,207,142,0.15); color: var(--green); }
-.fit-preferred { background: rgba(91,141,239,0.12); color: var(--accent); }
-.fit-relevant  { background: var(--bg4); color: var(--text3); }
-.pw-insight {
-  margin-top: 20px; padding: 16px 20px;
-  background: var(--bg3); border-radius: var(--r-sm);
-  border-left: 3px solid var(--accent); font-size: 0.86rem;
-  color: var(--text2); line-height: 1.7;
-}
-.pw-insight strong { color: var(--text); }
-.pw-chain { display: none; }
-.pw-chain.visible { display: block; }
-
-/* Details view */
-#view-details { max-width: 1400px; margin: 0 auto; padding: 32px 32px 80px; }
-
-/* Subject dashboard tiles */
-.dash-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap:10px;
-  margin-bottom: 32px;
-}
-.dash-card {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: var(--r); padding: 14px 16px; cursor: pointer; transition: all 0.18s;
-}
-.dash-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-.dash-card.active { border-color: var(--accent); background: rgba(91,141,239,0.08); }
-.dash-field-name { font-size: 0.78rem; font-weight: 500; color: var(--text2); margin-bottom: 10px; line-height: 1.3; }
-.dash-score-num { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 500; line-height: 1; }
-.dash-count { font-size: 0.68rem; color: var(--text3); margin-top: 4px; }
-.dash-bar { height: 3px; background: var(--bg4); border-radius: 2px; margin-top: 10px; overflow: hidden; }
-.dash-bar-fill { height: 100%; border-radius: 2px; }
-.dash-verdict { font-size: 0.68rem; margin-top: 6px; font-weight: 500; }
-.dash-clear {
-  padding: 5px 12px; border-radius: var(--r-sm); border: 1px solid var(--border);
-  background: var(--bg3); color: var(--text2); font-family: var(--font-body);
-  font-size: 0.78rem; cursor: pointer;
-}
-.dash-clear:hover { border-color: var(--border2); color: var(--text); }
-
-/* Details sub-tabs for HE vs Schools */
-.sub-tabs {
-  display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;
-}
-.sub-tab {
-  padding: 7px 16px; border-radius: var(--r-sm); border: 1px solid var(--border);
-  background: var(--bg3); color: var(--text2); font-family: var(--font-body);
-  font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.15s;
-}
-.sub-tab:hover { border-color: var(--border2); color: var(--text); }
-.sub-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-
-@media(max-width:860px){
-  .pw-stages,.pw-cols { grid-template-columns:1fr; }
-  .pw-arrow { display:none; }
-  .pw-outer { padding:24px 16px 32px; }
-  #mainTabBar { padding:0 16px; }
-}
-</style></head>
+</head>
 <body>
 <header>
   <div class="logo">Canary<span>.</span></div>
   <div class="header-right">
     <div class="region-switcher" id="regionSwitcher">
-      <button class="region-btn" data-region="uk" onclick="switchRegion('uk')"><span class="flag">🇬🇧</span> <span>United Kingdom</span></button>
-      <button class="region-btn active" data-region="gcc" onclick="switchRegion('gcc')"><span class="flag">🇦🇪</span> <span>GCC / UAE</span></button>
-      <button class="region-btn" data-region="us" onclick="switchRegion('us')"><span class="flag">🇺🇸</span> <span>United States</span></button>
-      <button class="region-btn" data-region="eu" onclick="switchRegion('eu')"><span class="flag">🇪🇺</span> <span>Europe</span> <span class="stub-badge">STUB</span></button>
+      <button class="region-btn active" data-region="uk" onclick="switchRegion('uk')"><span class="flag">🇬🇧</span><span>UK</span></button>
+      <button class="region-btn" data-region="gcc" onclick="switchRegion('gcc')"><span class="flag">🇦🇪</span><span>GCC</span></button>
+      <button class="region-btn" data-region="us" onclick="switchRegion('us')"><span class="flag">🇺🇸</span><span>US</span></button>
+      <button class="region-btn" data-region="eu" onclick="switchRegion('eu')"><span class="flag">🇪🇺</span><span>EU</span><span class="stub-badge">STUB</span></button>
     </div>
-    <button class="icon-btn" onclick="openMethodology()" title="Methodology &amp; weights">⚙</button>
+    <button class="icon-btn" onclick="openMethodology()" title="Methodology & weights">⚙</button>
   </div>
-</header><div id="mainTabBar">
-    <button class="main-tab active" id="maintab-pathway" onclick="switchMainTab('pathway')">
-      🔗 Trace your pathway
-      <span class="tab-badge">8 GCSEs mapped</span>
-    </button>
-    <button class="main-tab" id="maintab-details" onclick="switchMainTab('details')">
-      📊 Subject risk details
-      <span class="tab-badge">33 subjects</span>
-    </button></div><div id="view-pathway" style="display: block;"><div id="pathwaysView" style="display: block;"><div class="pw-outer">
-    <div style="margin-bottom:24px">
-      <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Start here — pick a GCSE subject</div>
-      <p style="color:var(--text2);font-size:0.88rem;line-height:1.6;max-width:640px">Select a GCSE to trace the full pipeline: which A-Levels it leads to, which degrees those unlock, and the compounded AI risk score from age 14 to graduation.</p>
-    </div>
-    <div class="pw-picker" id="pwPicker" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px">
-      <button class="pw-gcse-btn active" onclick="selectGCSE('GCSE English')">
-          English
-          <span class="pw-pill" style="background:#ef444422;color:#ef4444">81%</span>
-        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Maths')">
-          Maths
-          <span class="pw-pill" style="background:#fb718522;color:#fb7185">64%</span>
-        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Biology')">
-          Biology
-          <span class="pw-pill" style="background:#3ecf8e22;color:#3ecf8e">29%</span>
-        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Computing')">
-          Computing
-          <span class="pw-pill" style="background:#fb718522;color:#fb7185">61%</span>
-        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Business')">
-          Business
-          <span class="pw-pill" style="background:#ef444422;color:#ef4444">79%</span>
-        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE History')">
-          History
-          <span class="pw-pill" style="background:#f59e0b22;color:#f59e0b">56%</span>
-        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Art &amp; Design')">
-          Art &amp; Design
-          <span class="pw-pill" style="background:#fb718522;color:#fb7185">72%</span>
-        </button><button class="pw-gcse-btn" onclick="selectGCSE('GCSE Comb. Science')">
-          Comb. Science
-          <span class="pw-pill" style="background:#3ecf8e22;color:#3ecf8e">29%</span>
-        </button>
-    </div>
-    <div id="pwChain" class="pw-chain visible">
-    <div class="pw-stages">
-      <div class="pw-stage-head"><div class="stage-label">Stage 1</div><div class="stage-name">GCSE</div><div class="stage-sub">Age 14–16</div></div>
-      <div class="pw-arrow">→</div>
-      <div class="pw-stage-head"><div class="stage-label">Stage 2</div><div class="stage-name">A-Level</div><div class="stage-sub">Age 16–18</div></div>
-      <div class="pw-arrow">→</div>
-      <div class="pw-stage-head"><div class="stage-label">Stage 3</div><div class="stage-name">Degree</div><div class="stage-sub">Age 18–21</div></div>
-      <div class="pw-arrow">→</div>
-      <div class="pw-stage-head"><div class="stage-label">Pipeline</div><div class="stage-name">AI risk</div><div class="stage-sub">Composite</div></div>
-    </div>
-    <div class="pw-cols">
-      <div class="pw-col">
-    <div class="pw-node selected">
-      <div class="pw-node-score" style="color:#ef4444">81%</div>
-      <div class="pw-node-name">GCSE English</div>
-      <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:81%;background:#ef4444"></div></div>
-      <div class="pw-node-meta">721k entries/yr</div>
-      <div class="pw-node-meta" style="color:var(--text3)">↑ +0.2%/yr</div>
-      <div class="pw-node-meta" style="margin-top:6px;font-style:italic;color:var(--text3);font-size:0.7rem">Most common humanities pathway. Strongest predictor of creative and comms degrees.</div>
+</header>
+
+<div id="mainTabBar">
+  <button class="main-tab active" id="maintab-pathway" onclick="switchMainTab('pathway')">
+    🔗 Trace your pathway <span class="tab-badge" id="pathwayBadge">8 GCSEs</span>
+  </button>
+  <button class="main-tab" id="maintab-details" onclick="switchMainTab('details')">
+    📊 Subject risk details <span class="tab-badge" id="detailsBadge">33 subjects</span>
+  </button>
+</div>
+
+<!-- TAB 1: PATHWAY EXPLORER -->
+<div id="view-pathway">
+  <div class="hero">
+    <h1>Which subjects put students<br>on a <em>high-risk AI path?</em></h1>
+    <p>Trace the full pipeline from GCSE to A-Level to degree — and see where AI exposure compounds. Switch region to explore UK, GCC, or US pathways.</p>
+    <div class="hero-meta">
+      <div class="hero-stat"><div class="num" id="statPrograms">—</div><div class="label">HE programmes</div></div>
+      <div class="divider-v"></div>
+      <div class="hero-stat"><div class="num" id="statGCSEs">—</div><div class="label">GCSE pathways</div></div>
+      <div class="divider-v"></div>
+      <div class="hero-stat"><div class="num" id="statRegion">🇬🇧 UK</div><div class="label">Region</div></div>
     </div>
   </div>
-      <div class="pw-arrow">→</div>
-      <div class="pw-col">
-    <div class="pw-node">
-        <div class="pw-node-score" style="color:#ef4444">84%</div>
-        <div class="pw-node-name">A-Level English</div>
-        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:84%;background:#ef4444"></div></div>
-        <div class="pw-node-meta">75k entries/yr</div>
-        <div class="pw-node-meta" style="color:var(--red)">↓ -4.1%/yr</div>
-      </div><div class="pw-node">
-        <div class="pw-node-score" style="color:#f59e0b">58%</div>
-        <div class="pw-node-name">A-Level History</div>
-        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:57.99999999999999%;background:#f59e0b"></div></div>
-        <div class="pw-node-meta">48k entries/yr</div>
-        <div class="pw-node-meta" style="color:var(--red)">↓ -1.8%/yr</div>
-      </div><div class="pw-node">
-        <div class="pw-node-score" style="color:#ef4444">79%</div>
-        <div class="pw-node-name">A-Level Business</div>
-        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:79%;background:#ef4444"></div></div>
-        <div class="pw-node-meta">53k entries/yr</div>
-        <div class="pw-node-meta" style="color:var(--red)">↓ -2.3%/yr</div>
-      </div>
+  <div id="pathwayContent" class="pw-outer"></div>
+</div>
+
+<!-- TAB 2: SUBJECT RISK DETAILS -->
+<div id="view-details" style="display:none">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+    <div>
+      <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3)">Risk by subject area</div>
+      <div style="font-size:0.75rem;color:var(--text3);margin-top:2px">Click a tile to filter programmes below</div>
+    </div>
+    <button class="dash-clear" id="dashClear" onclick="clearDetailFilter()" style="display:none">✕ Clear filter</button>
   </div>
-      <div class="pw-arrow">→</div>
-      <div class="pw-col">
-    <div class="pw-node">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-          <div class="pw-node-score" style="color:#ef4444">0.82</div>
-          <span class="pw-fit-badge fit-required">required</span>
-        </div>
-        <div class="pw-node-name">Journalism &amp; Media</div>
-        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:82.11862068965519%;background:#ef4444"></div></div>
-        <div class="pw-node-meta">Via: English, History</div>
-        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">Required by most journalism degrees (UCAS tariff data)</div>
-      </div><div class="pw-node">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-          <div class="pw-node-score" style="color:#f59e0b">0.48</div>
-          <span class="pw-fit-badge fit-preferred">preferred</span>
-        </div>
-        <div class="pw-node-name">Law (LLB)</div>
-        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:48.16103448275862%;background:#f59e0b"></div></div>
-        <div class="pw-node-meta">Via: English, History</div>
-        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">40% of law entrants have English A-Level (UCAS 2023)</div>
-      </div><div class="pw-node">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-          <div class="pw-node-score" style="color:#fb7185">0.60</div>
-          <span class="pw-fit-badge fit-preferred">preferred</span>
-        </div>
-        <div class="pw-node-name">Marketing &amp; Communications</div>
-        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:60.30574712643677%;background:#fb7185"></div></div>
-        <div class="pw-node-meta">Via: English, Business</div>
-        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">Content and comms skills valued</div>
-      </div><div class="pw-node">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-          <div class="pw-node-score" style="color:#a78bfa">0.36</div>
-          <span class="pw-fit-badge fit-preferred">preferred</span>
-        </div>
-        <div class="pw-node-name">Education / PGCE</div>
-        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:36.29137931034483%;background:#a78bfa"></div></div>
-        <div class="pw-node-meta">Via: English, History</div>
-        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">English specialism PGCE pathway</div>
-      </div><div class="pw-node">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-          <div class="pw-node-score" style="color:#fb7185">0.66</div>
-          <span class="pw-fit-badge fit-preferred">preferred</span>
-        </div>
-        <div class="pw-node-name">Accounting &amp; Finance</div>
-        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:66.26977011494253%;background:#fb7185"></div></div>
-        <div class="pw-node-meta">Via: Business</div>
-        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">Common pathway for accounting technician route</div>
-      </div><div class="pw-node">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-          <div class="pw-node-score" style="color:#f59e0b">0.49</div>
-          <span class="pw-fit-badge fit-relevant">relevant</span>
-        </div>
-        <div class="pw-node-name">Economics (BSc)</div>
-        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:48.61172413793103%;background:#f59e0b"></div></div>
-        <div class="pw-node-meta">Via: Business</div>
-        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">Applied business understanding</div>
-      </div><div class="pw-node">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-          <div class="pw-node-score" style="color:#f59e0b">0.55</div>
-          <span class="pw-fit-badge fit-relevant">relevant</span>
-        </div>
-        <div class="pw-node-name">Finance (BSc)</div>
-        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:55.304137931034504%;background:#f59e0b"></div></div>
-        <div class="pw-node-meta">Via: Business</div>
-        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">Background knowledge useful</div>
-      </div>
-  </div>
-      <div class="pw-arrow">→</div>
-      <div class="pw-col">
-    <div class="pw-node" style="border-left:3px solid #fb7185;border-radius:0 var(--r-sm) var(--r-sm) 0">
-      <div class="pw-node-score" style="color:#fb7185">0.74</div>
-      <div class="pw-node-name">Pipeline risk</div>
-      <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:74.03333333333333%;background:#fb7185"></div></div>
-      <div class="pw-node-meta" style="font-weight:500;color:#fb7185;margin-top:4px">High risk</div>
-      <div class="pw-node-meta" style="margin-top:4px">7 degrees reachable</div>
-    </div>
-    <div class="pw-node">
-      <div style="font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);margin-bottom:10px">Risk by stage</div>
-      
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-        <span style="flex:0 0 72px;font-size:0.7rem;color:var(--text3)">GCSE</span>
-        <div style="flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
-          <div style="width:81%;height:100%;border-radius:3px;background:#ef4444"></div>
-        </div>
-        <span style="font-family:var(--font-mono);font-size:0.7rem;color:#ef4444;flex:0 0 30px;text-align:right">81%</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-        <span style="flex:0 0 72px;font-size:0.7rem;color:var(--text3)">A-Level avg</span>
-        <div style="flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
-          <div style="width:73.66666666666667%;height:100%;border-radius:3px;background:#fb7185"></div>
-        </div>
-        <span style="font-family:var(--font-mono);font-size:0.7rem;color:#fb7185;flex:0 0 30px;text-align:right">74%</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-        <span style="flex:0 0 72px;font-size:0.7rem;color:var(--text3)">Degree avg</span>
-        <div style="flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
-          <div style="width:70%;height:100%;border-radius:3px;background:#fb7185"></div>
-        </div>
-        <span style="font-family:var(--font-mono);font-size:0.7rem;color:#fb7185;flex:0 0 30px;text-align:right">70%</span>
-      </div>
-    </div>
-  </div>
-    </div>
-    <div class="pw-insight"><strong>High risk compounds across all three stages.</strong> Students who take GCSE English and follow the most common A-Level route face one of the most AI-disrupted pipelines in UK education. The exposure starts high and stays high through to graduation — early subject choice has outsized impact here.</div>
-    <div style="margin-top:8px;font-size:0.68rem;color:var(--text3)">Sources: UCAS 2023 · DfE LEO · JCQ 2024 · Eloundou et al. arXiv:2303.10130 · ONS LMI for All</div></div>
-  </div></div></div><div id="view-details" style="display: none;"><div style="margin-bottom: 28px;">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-      <div>
-        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3)">Risk by subject area</div>
-        <div style="font-size:0.75rem;color:var(--text3);margin-top:2px">Click to filter programmes below</div>
-      </div>
-      <button class="dash-clear" id="dashClear" onclick="clearDetailFilter()" style="display:none">✕ Clear filter</button>
-    </div>
-    <div class="dash-grid" id="dashGrid"><div class="dash-card " onclick="toggleDetailField('Arts &amp; Humanities')">
-      <div class="dash-field-name">Arts &amp; Humanities</div>
-      <div class="dash-score-num" style="color:#f59e0b">0.82</div>
-      <div class="dash-count">1 prog · <span style="color:var(--red)">🚨1</span></div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:82.11862068965519%;background:#f59e0b"></div></div>
-      <div class="dash-verdict" style="color:#f59e0b">Sunset risk</div>
-    </div><div class="dash-card " onclick="toggleDetailField('Business')">
-      <div class="dash-field-name">Business</div>
-      <div class="dash-score-num" style="color:#fb7185">0.61</div>
-      <div class="dash-count">3 progs · <span style="color:var(--red)">🚨3</span></div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:60.62655172413793%;background:#fb7185"></div></div>
-      <div class="dash-verdict" style="color:#fb7185">Needs pivoting</div>
-    </div><div class="dash-card " onclick="toggleDetailField('Law')">
-      <div class="dash-field-name">Law</div>
-      <div class="dash-score-num" style="color:#a78bfa">0.48</div>
-      <div class="dash-count">1 prog</div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:48.16103448275862%;background:#a78bfa"></div></div>
-      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
-    </div><div class="dash-card " onclick="toggleDetailField('Social Sciences')">
-      <div class="dash-field-name">Social Sciences</div>
-      <div class="dash-score-num" style="color:#a78bfa">0.45</div>
-      <div class="dash-count">2 progs</div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:45.15060344827586%;background:#a78bfa"></div></div>
-      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
-    </div><div class="dash-card " onclick="toggleDetailField('Design')">
-      <div class="dash-field-name">Design</div>
-      <div class="dash-score-num" style="color:#a78bfa">0.44</div>
-      <div class="dash-count">1 prog</div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:44.358620689655176%;background:#a78bfa"></div></div>
-      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
-    </div><div class="dash-card " onclick="toggleDetailField('Technology')">
-      <div class="dash-field-name">Technology</div>
-      <div class="dash-score-num" style="color:#a78bfa">0.41</div>
-      <div class="dash-count">2 progs</div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:41.22%;background:#a78bfa"></div></div>
-      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
-    </div><div class="dash-card " onclick="toggleDetailField('Education')">
-      <div class="dash-field-name">Education</div>
-      <div class="dash-score-num" style="color:#a78bfa">0.36</div>
-      <div class="dash-count">1 prog</div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:36.29137931034483%;background:#a78bfa"></div></div>
-      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
-    </div><div class="dash-card " onclick="toggleDetailField('Health')">
-      <div class="dash-field-name">Health</div>
-      <div class="dash-score-num" style="color:#a78bfa">0.33</div>
-      <div class="dash-count">4 progs</div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:32.73125%;background:#a78bfa"></div></div>
-      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
-    </div><div class="dash-card " onclick="toggleDetailField('Engineering')">
-      <div class="dash-field-name">Engineering</div>
-      <div class="dash-score-num" style="color:#a78bfa">0.32</div>
-      <div class="dash-count">1 prog</div>
-      <div class="dash-bar"><div class="dash-bar-fill" style="width:32.424827586206895%;background:#a78bfa"></div></div>
-      <div class="dash-verdict" style="color:#a78bfa">Monitor</div>
-    </div></div></div><div class="sub-tabs">
-    <button class="sub-tab active" id="subtab-he" onclick="switchSubTab('he')">🎓 Higher Education <span style="font-size:0.72rem;opacity:0.7">16 programmes</span></button>
-    <button class="sub-tab" id="subtab-schools" onclick="switchSubTab('schools')">🏫 Schools <span style="font-size:0.72rem;opacity:0.7">17 subjects</span></button>
+  <div class="dash-grid" id="dashGrid"></div>
+  <div class="sub-tabs">
+    <button class="sub-tab active" id="subtab-he" onclick="switchSubTab('he')">🎓 Higher Education</button>
+    <button class="sub-tab" id="subtab-schools" onclick="switchSubTab('schools')">🏫 Schools</button>
     <div style="flex:1"></div>
-    <select class="sort-select" onchange="renderDetailGrid()" id="detailSort" style="font-size:0.8rem">
+    <select class="sort-select" onchange="renderDetailGrid()" id="detailSort">
       <option value="risk-desc">Highest risk first</option>
       <option value="risk-asc">Lowest risk first</option>
       <option value="exposure">Highest exposure</option>
       <option value="enrol-down">Declining enrolment</option>
-    </select></div><div id="detailContent"><div class="program-grid">
-      <div class="card sunset" onclick="openDrawer('uk-journalism')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Arts &amp; Humanities</span>
-              <span class="badge badge-critical">🚨 Critical</span>
-            </div>
-            <span class="rec-badge rec-sunset">🌅 Sunset</span>
-          </div>
-          <div class="card-name">Journalism &amp; Media</div>
-          <div class="card-code">CAH19-01-02</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#ef4444">0.82</div>
-              <div class="uncertainty-band">0.75–0.89</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:82.11862068965519%;background:#ef4444"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 79%</span><span>1.9yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">79%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">90%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">78%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-down">↓</span>
-            <span style="margin-left:4px;font-size:0.72rem">Steep decline</span>
-          </div>
-        </div><div class="card urgent" onclick="openDrawer('uk-accounting')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Business</span>
-              <span class="badge badge-critical">🚨 Critical</span>
-            </div>
-            <span class="rec-badge rec-urgent">⚡ Urgent Pivot</span>
-          </div>
-          <div class="card-name">Accounting &amp; Finance</div>
-          <div class="card-code">CAH17-01-01</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#fb7185">0.66</div>
-              <div class="uncertainty-band">0.60–0.73</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:66.26977011494253%;background:#fb7185"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 84%</span><span>1.7yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">84%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">92%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">76%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-down">↓</span>
-            <span style="margin-left:4px;font-size:0.72rem">Declining</span>
-          </div>
-        </div><div class="card urgent" onclick="openDrawer('uk-marketing')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Business</span>
-              <span class="badge badge-critical">🚨 Critical</span>
-            </div>
-            <span class="rec-badge rec-urgent">⚡ Urgent Pivot</span>
-          </div>
-          <div class="card-name">Marketing &amp; Communications</div>
-          <div class="card-code">CAH17-01-04</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#fb7185">0.60</div>
-              <div class="uncertainty-band">0.54–0.67</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:60.30574712643677%;background:#fb7185"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 76%</span><span>2.4yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">76%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">87%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">69%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-down">↓</span>
-            <span style="margin-left:4px;font-size:0.72rem">Declining</span>
-          </div>
-        </div><div class="card maintain" onclick="openDrawer('uk-finance')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Business</span>
-              <span class="badge badge-critical">🚨 Critical</span>
-            </div>
-            <span class="rec-badge rec-maintain">🔒 Maintain</span>
-          </div>
-          <div class="card-name">Finance (BSc)</div>
-          <div class="card-code">CAH17-01-02</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#f59e0b">0.55</div>
-              <div class="uncertainty-band">0.49–0.62</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:55.304137931034504%;background:#f59e0b"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 81%</span><span>2.1yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">81%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">89%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">72%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-flat">→</span>
-            <span style="margin-left:4px;font-size:0.72rem">Slight decline</span>
-          </div>
-        </div><div class="card maintain" onclick="openDrawer('uk-economics')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Social Sciences</span>
-              
-            </div>
-            <span class="rec-badge rec-maintain">🔒 Maintain</span>
-          </div>
-          <div class="card-name">Economics (BSc)</div>
-          <div class="card-code">CAH16-01-01</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#f59e0b">0.49</div>
-              <div class="uncertainty-band">0.43–0.55</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:48.61172413793103%;background:#f59e0b"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 69%</span><span>3.1yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">69%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">82%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">67%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-up">↑</span>
-            <span style="margin-left:4px;font-size:0.72rem">Stable</span>
-          </div>
-        </div><div class="card maintain" onclick="openDrawer('uk-law')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Law</span>
-              
-            </div>
-            <span class="rec-badge rec-maintain">🔒 Maintain</span>
-          </div>
-          <div class="card-name">Law (LLB)</div>
-          <div class="card-code">CAH14-01-01</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#f59e0b">0.48</div>
-              <div class="uncertainty-band">0.42–0.54</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:48.16103448275862%;background:#f59e0b"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 67%</span><span>3.8yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">67%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">77%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">71%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-flat">→</span>
-            <span style="margin-left:4px;font-size:0.72rem">Flat</span>
-          </div>
-        </div><div class="card maintain" onclick="openDrawer('uk-architecture')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Design</span>
-              
-            </div>
-            <span class="rec-badge rec-maintain">🔒 Maintain</span>
-          </div>
-          <div class="card-name">Architecture (BA/BSc)</div>
-          <div class="card-code">CAH13-01-01</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#f59e0b">0.44</div>
-              <div class="uncertainty-band">0.39–0.50</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:44.358620689655176%;background:#f59e0b"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 54%</span><span>4.8yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">54%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">70%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">58%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-flat">→</span>
-            <span style="margin-left:4px;font-size:0.72rem">Slightly declining</span>
-          </div>
-        </div><div class="card maintain" onclick="openDrawer('uk-cs')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Technology</span>
-              
-            </div>
-            <span class="rec-badge rec-maintain">🔒 Maintain</span>
-          </div>
-          <div class="card-name">Computer Science</div>
-          <div class="card-code">CAH11-01-01</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#f59e0b">0.43</div>
-              <div class="uncertainty-band">0.37–0.49</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:42.85448275862069%;background:#f59e0b"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 71%</span><span>3.2yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">71%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">81%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">42%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-up">↑</span>
-            <span style="margin-left:4px;font-size:0.72rem">Strong growth</span>
-          </div>
-        </div><div class="card maintain" onclick="openDrawer('uk-psychology')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Social Sciences</span>
-              
-            </div>
-            <span class="rec-badge rec-maintain">🔒 Maintain</span>
-          </div>
-          <div class="card-name">Psychology (BSc)</div>
-          <div class="card-code">CAH04-01-01</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#f59e0b">0.42</div>
-              <div class="uncertainty-band">0.36–0.47</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:41.68948275862069%;background:#f59e0b"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 44%</span><span>6.1yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">44%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">61%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">73%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-up">↑</span>
-            <span style="margin-left:4px;font-size:0.72rem">Growing</span>
-          </div>
-        </div><div class="card maintain" onclick="openDrawer('uk-biomedical')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Health</span>
-              
-            </div>
-            <span class="rec-badge rec-maintain">🔒 Maintain</span>
-          </div>
-          <div class="card-name">Biomedical Science (BSc)</div>
-          <div class="card-code">CAH02-03-01</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#a78bfa">0.40</div>
-              <div class="uncertainty-band">0.34–0.45</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:39.88689655172414%;background:#a78bfa"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 52%</span><span>5.1yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">52%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">68%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">56%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-up">↑</span>
-            <span style="margin-left:4px;font-size:0.72rem">Growing</span>
-          </div>
-        </div><div class="card maintain" onclick="openDrawer('uk-pharma')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Health</span>
-              
-            </div>
-            <span class="rec-badge rec-maintain">🔒 Maintain</span>
-          </div>
-          <div class="card-name">Pharmacy (MPharm)</div>
-          <div class="card-code">CAH02-01-03</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#a78bfa">0.40</div>
-              <div class="uncertainty-band">0.34–0.45</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:39.84241379310345%;background:#a78bfa"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 48%</span><span>5.3yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">48%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">67%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">64%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-up">↑</span>
-            <span style="margin-left:4px;font-size:0.72rem">Stable growth</span>
-          </div>
-        </div><div class="card maintain" onclick="openDrawer('uk-data-sci')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Technology</span>
-              
-            </div>
-            <span class="rec-badge rec-maintain">🔒 Maintain</span>
-          </div>
-          <div class="card-name">Data Science &amp; Analytics</div>
-          <div class="card-code">CAH11-01-03</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#a78bfa">0.40</div>
-              <div class="uncertainty-band">0.34–0.45</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:39.58551724137931%;background:#a78bfa"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 62%</span><span>3.6yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">62%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">79%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">48%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-up">↑</span>
-            <span style="margin-left:4px;font-size:0.72rem">Rapid growth</span>
-          </div>
-        </div><div class="card maintain" onclick="openDrawer('uk-teaching')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Education</span>
-              
-            </div>
-            <span class="rec-badge rec-maintain">🔒 Maintain</span>
-          </div>
-          <div class="card-name">Education / PGCE</div>
-          <div class="card-code">CAH23-01-01</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#a78bfa">0.36</div>
-              <div class="uncertainty-band">0.31–0.42</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:36.29137931034483%;background:#a78bfa"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 34%</span><span>7.8yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">34%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">50%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">79%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-up">↑</span>
-            <span style="margin-left:4px;font-size:0.72rem">Growing</span>
-          </div>
-        </div><div class="card maintain" onclick="openDrawer('uk-civil-eng')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Engineering</span>
-              
-            </div>
-            <span class="rec-badge rec-maintain">🔒 Maintain</span>
-          </div>
-          <div class="card-name">Civil Engineering (BEng)</div>
-          <div class="card-code">CAH10-01-03</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#a78bfa">0.32</div>
-              <div class="uncertainty-band">0.27–0.38</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:32.424827586206895%;background:#a78bfa"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 38%</span><span>7.2yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">38%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">54%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">62%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-up">↑</span>
-            <span style="margin-left:4px;font-size:0.72rem">Steady growth</span>
-          </div>
-        </div><div class="card invest" onclick="openDrawer('uk-social-work')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Health</span>
-              
-            </div>
-            <span class="rec-badge rec-invest">🌱 Invest &amp; Grow</span>
-          </div>
-          <div class="card-name">Social Work (BA)</div>
-          <div class="card-code">CAH02-02-01</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#3ecf8e">0.27</div>
-              <div class="uncertainty-band">0.22–0.33</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:27.43017241379311%;background:#3ecf8e"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 21%</span><span>11.2yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">21%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">26%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">81%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-up">↑</span>
-            <span style="margin-left:4px;font-size:0.72rem">Growing</span>
-          </div>
-        </div><div class="card invest" onclick="openDrawer('uk-nursing')">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge badge-field">Health</span>
-              
-            </div>
-            <span class="rec-badge rec-invest">🌱 Invest &amp; Grow</span>
-          </div>
-          <div class="card-name">Nursing (BSc)</div>
-          <div class="card-code">CAH02-01-01</div>
-          <div class="score-row">
-            <div>
-              <div class="score-big" style="color:#3ecf8e">0.24</div>
-              <div class="uncertainty-band">0.19–0.29</div>
-              <div class="score-label">composite risk</div>
-            </div>
-            <div class="score-bar-wrap">
-              <div class="score-bar-track"><div class="score-bar-fill" style="width:23.76551724137931%;background:#3ecf8e"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px">
-                <span>Exposure: 24%</span><span>9.4yr runway</span>
-              </div>
-            </div>
-          </div>
-          <div class="mini-dims">
-            
-            <div class="mini-dim"><div class="mini-dim-label">Task AI</div><div class="mini-dim-val">24%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Runway</div><div class="mini-dim-val">39%</div></div>
-            <div class="mini-dim"><div class="mini-dim-label">Faculty</div><div class="mini-dim-val">59%</div></div>
-          </div>
-          <div class="enrol-trend">
-            <span class="trend-up">↑</span>
-            <span style="margin-left:4px;font-size:0.72rem">Growing</span>
-          </div>
-        </div>
-    </div></div></div>
-
-<div>
-  </div><div style="margin-top: 40px;">
+    </select>
   </div>
+  <div id="detailContent"></div>
+</div>
+
+<!-- DRAWER -->
 <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
-<div class="drawer" id="drawer"><div class="drawer-inner" id="drawerContent"><div class="drawer-close"><button class="close-btn" onclick="closeDrawer()">✕</button></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px"><span class="badge badge-field">Arts &amp; Humanities</span><span class="badge badge-confidence-b">Tier B confidence</span><span class="badge badge-critical">🚨 Critical Now</span><span class="rec-badge rec-sunset">🌅 Sunset</span></div><div class="drawer-name">Journalism &amp; Media</div><div class="drawer-code">CAH19-01-02 · HESA CAH · ONS LMI for All · Graduate Outcomes · Jisc</div><div class="composite-breakdown"><div class="cb-row"><span class="cb-label">Composite risk score</span><span class="cb-val cb-total" style="color:#ef4444">0.821</span></div><div class="cb-row"><span class="cb-label">Uncertainty band</span><span class="cb-val">0.75 – 0.89</span></div><div class="cb-row"><span class="cb-label">Raw AI exposure</span><span class="cb-val">79%</span></div><div class="cb-row"><span class="cb-label">Mechanism</span><span class="cb-val">AI Replaces core tasks</span></div></div><div class="dim-section"><div class="dim-section-title">Six dimensions <span style="font-size:0.68rem;color:var(--amber);font-weight:400;text-transform:none;letter-spacing:0">● amber dot = estimated value</span></div><div class="dim-row "><div class="dim-row-label">Task automation<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>✓ Sourced</strong><br>Eloundou et al. β score + Felten Princeton Index via SOC crosswalk. Directly sourced.</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:79%;background:#ef4444"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">79% tasks AI-replaceable</div></div><div class="dim-row-val">79%</div></div><div class="dim-row estimated"><div class="dim-row-label">Curriculum half-life<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>⚠ Estimated</strong><br>Estimated. O*NET task concentration + wage premium proxy. Based on Acemoglu &amp; Restrepo (2022).</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:90.3448275862069%;background:#f59e0b"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">1.9 years runway</div></div><div class="dim-row-val">90%</div><span class="est-tag">est.</span></div><div class="dim-row estimated"><div class="dim-row-label">Faculty readiness gap<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>⚠ Estimated</strong><br>Estimated. Jisc Digital Experience Insights (UK) / TIMSS educator surveys (GCC). Institutional variation is high.</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:78%;background:#f59e0b"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">22% AI-fluent faculty</div></div><div class="dim-row-val">78%</div><span class="est-tag">est.</span></div><div class="dim-row "><div class="dim-row-label">Regional labour market<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>✓ Sourced</strong><br>ONS ASHE regional employment data by SOC 2020. Directly sourced.</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:90.00000000000001%;background:#ef4444"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">0.84× national avg</div></div><div class="dim-row-val">90%</div></div><div class="dim-row "><div class="dim-row-label">Employment outlook<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>✓ Sourced</strong><br>ONS LMI for All (UK) / ILO ILOSTAT (GCC) / BLS OOH (US). Directly sourced.</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:80%;background:#ef4444"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">-12% 10-yr projection</div></div><div class="dim-row-val">80%</div></div><div class="dim-row "><div class="dim-row-label">Enrolment trajectory<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>✓ Sourced</strong><br>HESA Student Record 2021-2024 (UK) / UAE MOHESR (GCC). 3-year rolling average % change.</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:79.00000000000001%;background:#ef4444"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">↓ -7.9% avg enrolment</div></div><div class="dim-row-val">79%</div></div></div><div class="tasks-section"><div class="dim-section-title">Task breakdown</div><div class="task-item"><span class="task-type task-rep">Replaces</span><span class="task-name">Write news articles</span><span class="task-score">0.87</span></div><div class="task-item"><span class="task-type task-rep">Replaces</span><span class="task-name">Summarise press releases</span><span class="task-score">0.93</span></div><div class="task-item"><span class="task-type task-aug">Assists</span><span class="task-name">Investigate sources</span><span class="task-score">0.28</span></div><div class="task-item"><span class="task-type task-rep">Replaces</span><span class="task-name">Edit copy</span><span class="task-score">0.84</span></div><div class="task-item"><span class="task-type task-aug">Assists</span><span class="task-name">Produce broadcast content</span><span class="task-score">0.31</span></div><div style="font-size:0.74rem;color:var(--text3);margin-top:8px">Score = probability AI performs at human-level quality. Sources: O*NET / ISCO-08 task frameworks.</div></div><div class="dim-section"><div class="dim-section-title">Enrolment trajectory</div><div class="enrol-chart"><div class="enrol-bar" style="height:24.52747252747253px;background:var(--red);opacity:0.5"></div><div class="enrol-bar" style="height:33.23076923076923px;background:var(--red);opacity:0.6666666666666666"></div><div class="enrol-bar" style="height:36px;background:var(--red);opacity:0.8333333333333333"></div></div><div style="font-size:0.8rem;color:var(--text2);margin-top:6px">Steep decline — newsroom restructuring accelerating. HESA 2021-2024.</div></div><div class="tasks-section"><div class="dim-section-title">Recommended intervention</div><div class="intervention-box"><h4>🌅 Sunset</h4><p>The modal tasks in this programme are being <strong>substituted</strong> by AI. Graduate employer demand is projected to contract. Begin a structured wind-down review: assess student cohort impact, explore merger with adjacent programmes, and consult accreditation body on timeline implications.</p></div></div></div></div>
+<div class="drawer" id="drawer"><div class="drawer-inner" id="drawerContent"></div></div>
+
+<!-- METHODOLOGY MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeMethodology(event)">
   <div class="modal" onclick="event.stopPropagation()">
     <h2>Scoring methodology</h2>
-    <p class="sub">Adjust dimension weights. Changes recalculate all programme scores in real time. Weights must sum to 100%.</p>
-    <div id="weightSliders"><div class="weight-row"><div class="weight-label">Task automation potential<br><span style="font-size:0.7rem;color:var(--text3)">Eloundou β + Felten via SOC crosswalk</span></div><input type="range" class="weight-slider" id="w-task" min="0" max="60" step="1" value="33" oninput="updateWeightDisplay()"><div class="weight-val" id="wv-task">33%</div></div><div class="weight-row"><div class="weight-label">Curriculum half-life<br><span style="font-size:0.7rem;color:var(--text3)">O*NET task frequency + Epoch AI compute timeline</span></div><input type="range" class="weight-slider" id="w-halfLife" min="0" max="60" step="1" value="17" oninput="updateWeightDisplay()"><div class="weight-val" id="wv-halfLife">17%</div></div><div class="weight-row"><div class="weight-label">Faculty readiness gap<br><span style="font-size:0.7rem;color:var(--text3)">Jisc / TIMSS educator surveys (estimated)</span></div><input type="range" class="weight-slider" id="w-faculty" min="0" max="60" step="1" value="12" oninput="updateWeightDisplay()"><div class="weight-val" id="wv-faculty">12%</div></div><div class="weight-row"><div class="weight-label">Regional labour market<br><span style="font-size:0.7rem;color:var(--text3)">ONS ASHE / ILO ILOSTAT regional employment</span></div><input type="range" class="weight-slider" id="w-regional" min="0" max="60" step="1" value="11" oninput="updateWeightDisplay()"><div class="weight-val" id="wv-regional">11%</div></div><div class="weight-row"><div class="weight-label">Employment outlook<br><span style="font-size:0.7rem;color:var(--text3)">ONS LMI for All / ILO ILOSTAT / BLS OOH</span></div><input type="range" class="weight-slider" id="w-employment" min="0" max="60" step="1" value="10" oninput="updateWeightDisplay()"><div class="weight-val" id="wv-employment">10%</div></div><div class="weight-row"><div class="weight-label">Enrolment trajectory<br><span style="font-size:0.7rem;color:var(--text3)">HESA Student Record / UAE MOHESR (new in v2)</span></div><input type="range" class="weight-slider" id="w-enrolment" min="0" max="60" step="1" value="17" oninput="updateWeightDisplay()"><div class="weight-val" id="wv-enrolment">17%</div></div></div>
+    <p class="sub">Adjust dimension weights. Changes recalculate all scores in real time. Must sum to 100%.</p>
+    <div id="weightSliders"></div>
     <div class="weight-total" id="weightTotal"><span>Total weight</span><span id="weightSum">100%</span></div>
     <button class="apply-btn" onclick="applyWeights()">Apply &amp; recalculate</button>
-    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border)">
-      <p style="font-size:0.82rem;color:var(--text3);line-height:1.7"><strong style="color:var(--text2)">Greyed-out dimensions</strong> indicate values estimated rather than directly sourced. Hover the amber dot on any dimension for the source note.</p>
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+      <p style="font-size:0.82rem;color:var(--text3);line-height:1.7"><strong style="color:var(--text2)">Greyed-out dimensions</strong> indicate estimated values. Hover the amber dot for the source note.</p>
     </div>
   </div>
 </div><script>
+// ═══════════════════════════════════════════════════════════
+// DATA LAYER
+// ═══════════════════════════════════════════════════════════
+
 const DATA_UK=[
 {id:'uk-accounting',name:'Accounting & Finance',field:'Business',code:'CAH17-01-01',exposure:0.84,halfLife:1.7,facultyReady:24,region:0.92,empOut:-0.03,mechanism:'aug',enrolTrend:[-2.1,-3.4,-1.8],enrolNote:'Declining — EY/KPMG graduate intake automation signals. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Prepare financial statements',type:'rep',score:0.92},{name:'Process accounts payable',type:'rep',score:0.89},{name:'Advise on tax planning',type:'aug',score:0.54},{name:'Audit internal controls',type:'aug',score:0.47},{name:'Build financial models',type:'rep',score:0.81}]},
-{id:'uk-cs',name:'Computer Science',field:'Technology',code:'CAH11-01-01',exposure:0.71,halfLife:3.2,facultyReady:58,region:1.18,empOut:0.14,mechanism:'aug',enrolTrend:[8.2,11.4,9.7],enrolNote:'Strong growth — graduates will work alongside AI from day one. HESA 2021-2024.',estimatedDims:['facultyReady'],tasks:[{name:'Write and test code',type:'rep',score:0.78},{name:'Design system architecture',type:'aug',score:0.41},{name:'Debug legacy systems',type:'rep',score:0.72},{name:'Lead technical decisions',type:'aug',score:0.22},{name:'Review code contributions',type:'aug',score:0.55}]},
+{id:'uk-cs',name:'Computer Science',field:'Technology',code:'CAH11-01-01',exposure:0.71,halfLife:3.2,facultyReady:58,region:1.18,empOut:0.14,mechanism:'aug',enrolTrend:[8.2,11.4,9.7],enrolNote:'Strong growth — graduates work alongside AI from day one. HESA 2021-2024.',estimatedDims:['facultyReady'],tasks:[{name:'Write and test code',type:'rep',score:0.78},{name:'Design system architecture',type:'aug',score:0.41},{name:'Debug legacy systems',type:'rep',score:0.72},{name:'Lead technical decisions',type:'aug',score:0.22},{name:'Review code contributions',type:'aug',score:0.55}]},
 {id:'uk-nursing',name:'Nursing (BSc)',field:'Health',code:'CAH02-01-01',exposure:0.24,halfLife:9.4,facultyReady:41,region:1.12,empOut:0.18,mechanism:'aug',enrolTrend:[3.1,4.2,5.8],enrolNote:'Growing — NHS Long Term Workforce Plan driving funded places. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Administer medications',type:'aug',score:0.09},{name:'Document patient records',type:'rep',score:0.71},{name:'Assess patient condition',type:'aug',score:0.18},{name:'Patient education',type:'aug',score:0.14},{name:'Coordinate care pathways',type:'aug',score:0.27}]},
 {id:'uk-law',name:'Law (LLB)',field:'Law',code:'CAH14-01-01',exposure:0.67,halfLife:3.8,facultyReady:29,region:1.04,empOut:0.02,mechanism:'aug',enrolTrend:[1.2,0.8,-0.4],enrolNote:'Flat — AI threat to paralegal pipeline. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Draft contracts',type:'rep',score:0.85},{name:'Legal research',type:'rep',score:0.79},{name:'Advise on legal strategy',type:'aug',score:0.31},{name:'Represent clients',type:'aug',score:0.08},{name:'Due diligence review',type:'rep',score:0.82}]},
 {id:'uk-journalism',name:'Journalism & Media',field:'Arts & Humanities',code:'CAH19-01-02',exposure:0.79,halfLife:1.9,facultyReady:22,region:0.84,empOut:-0.12,mechanism:'rep',enrolTrend:[-6.2,-8.4,-9.1],enrolNote:'Steep decline — newsroom restructuring accelerating. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Write news articles',type:'rep',score:0.87},{name:'Summarise press releases',type:'rep',score:0.93},{name:'Investigate sources',type:'aug',score:0.28},{name:'Edit copy',type:'rep',score:0.84},{name:'Produce broadcast content',type:'aug',score:0.31}]},
@@ -1657,98 +313,402 @@ const DATA_UK=[
 {id:'uk-teaching',name:'Education / PGCE',field:'Education',code:'CAH23-01-01',exposure:0.34,halfLife:7.8,facultyReady:21,region:0.94,empOut:0.11,mechanism:'aug',enrolTrend:[4.4,6.2,7.1],enrolNote:'Growing — DfE shortage subject bursaries. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Lesson planning',type:'rep',score:0.68},{name:'Classroom instruction',type:'aug',score:0.13},{name:'Mark student work',type:'rep',score:0.72},{name:'Pastoral care',type:'aug',score:0.06},{name:'Parent communication',type:'aug',score:0.27}]},
 {id:'uk-biomedical',name:'Biomedical Science (BSc)',field:'Health',code:'CAH02-03-01',exposure:0.52,halfLife:5.1,facultyReady:44,region:1.04,empOut:0.13,mechanism:'aug',enrolTrend:[3.8,4.9,5.4],enrolNote:'Growing — life sciences sector expansion. HESA 2021-2024.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Laboratory data analysis',type:'rep',score:0.78},{name:'Run diagnostic assays',type:'aug',score:0.31},{name:'Research report writing',type:'rep',score:0.82},{name:'Quality control',type:'rep',score:0.67},{name:'Interpret pathology results',type:'aug',score:0.39}]}
 ];
+
 const DATA_GCC=[
-{id:'gcc-business-admin',name:'Business Administration (BBA)',field:'Business',code:'ISCED-0413',exposure:0.77,halfLife:2.3,facultyReady:19,region:0.88,empOut:0.04,mechanism:'aug',enrolTrend:[3.1,2.4,1.8],enrolNote:'Slowing growth — market saturation approaching. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Prepare management reports',type:'rep',score:0.88},{name:'Analyse business data',type:'rep',score:0.82},{name:'Lead strategy sessions',type:'aug',score:0.29},{name:'Manage stakeholder relationships',type:'aug',score:0.18},{name:'Draft business proposals',type:'rep',score:0.85}]},
-{id:'gcc-engineering-civil',name:'Civil & Infrastructure Engineering',field:'Engineering',code:'ISCED-0732',exposure:0.41,halfLife:6.8,facultyReady:31,region:1.24,empOut:0.22,mechanism:'aug',enrolTrend:[8.4,11.2,13.1],enrolNote:'High growth — UAE/KSA megaproject pipeline. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Structural design calculations',type:'rep',score:0.71},{name:'BIM modelling',type:'rep',score:0.75},{name:'Site inspection',type:'aug',score:0.08},{name:'Project cost estimation',type:'rep',score:0.68},{name:'Regulatory compliance',type:'aug',score:0.37}]},
-{id:'gcc-islamic-finance',name:'Islamic Finance & Banking',field:'Business',code:'ISCED-0412',exposure:0.69,halfLife:3.4,facultyReady:16,region:1.08,empOut:0.11,mechanism:'aug',enrolTrend:[4.2,5.1,6.8],enrolNote:'Growing — strong regional employer pull. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Shariah compliance review',type:'aug',score:0.42},{name:'Prepare Islamic instruments',type:'rep',score:0.79},{name:'Client advisory on halal investing',type:'aug',score:0.31},{name:'AAOIFI regulatory reporting',type:'rep',score:0.81},{name:'Sukuk structuring',type:'rep',score:0.73}]},
-{id:'gcc-cs',name:'Computer Science & AI',field:'Technology',code:'ISCED-0613',exposure:0.68,halfLife:3.1,facultyReady:41,region:1.31,empOut:0.28,mechanism:'aug',enrolTrend:[24.1,29.4,31.2],enrolNote:'Explosive growth — UAE AI Strategy 2031. UAE MOHESR 2022-2024.',estimatedDims:['facultyReady','region'],tasks:[{name:'Develop software applications',type:'rep',score:0.76},{name:'Build ML models',type:'aug',score:0.52},{name:'System architecture design',type:'aug',score:0.38},{name:'Cybersecurity implementation',type:'aug',score:0.34},{name:'Code review',type:'rep',score:0.71}]},
-{id:'gcc-petroleum-eng',name:'Petroleum Engineering',field:'Engineering',code:'ISCED-0715',exposure:0.44,halfLife:6.2,facultyReady:34,region:1.42,empOut:0.06,mechanism:'aug',enrolTrend:[-2.4,-4.1,-5.8],enrolNote:'Declining — energy transition dampening applications despite employer demand. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Reservoir simulation',type:'rep',score:0.74},{name:'Well planning & drilling',type:'rep',score:0.66},{name:'On-site operations',type:'aug',score:0.12},{name:'Environmental impact assessment',type:'rep',score:0.69},{name:'Project management',type:'aug',score:0.33}]},
-{id:'gcc-hospitality',name:'Hospitality & Tourism Management',field:'Business',code:'ISCED-1015',exposure:0.53,halfLife:4.6,facultyReady:14,region:1.18,empOut:0.19,mechanism:'aug',enrolTrend:[6.8,9.2,11.4],enrolNote:'Strong growth — UAE Tourism Strategy 2031. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Manage reservations',type:'rep',score:0.84},{name:'Revenue optimisation',type:'rep',score:0.81},{name:'Guest experience management',type:'aug',score:0.12},{name:'Event planning',type:'aug',score:0.31},{name:'Staff training',type:'aug',score:0.22}]},
-{id:'gcc-medicine',name:'Medicine (MBBS / MD)',field:'Health',code:'ISCED-0912',exposure:0.32,halfLife:8.4,facultyReady:29,region:1.11,empOut:0.24,mechanism:'aug',enrolTrend:[4.1,4.8,5.2],enrolNote:'Steady growth — UAE/KSA healthcare nationalisation targets. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Diagnose from imaging',type:'aug',score:0.54},{name:'Patient clinical examination',type:'aug',score:0.09},{name:'Medical record documentation',type:'rep',score:0.74},{name:'Treatment planning',type:'aug',score:0.28},{name:'Surgical procedures',type:'aug',score:0.04}]},
-{id:'gcc-arabic-media',name:'Arabic Media & Communications',field:'Arts & Humanities',code:'ISCED-0321',exposure:0.72,halfLife:2.6,facultyReady:12,region:0.76,empOut:-0.08,mechanism:'rep',enrolTrend:[-3.8,-5.2,-6.4],enrolNote:'Declining — Arabic LLM capability accelerating faster than English equivalents. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Write Arabic news content',type:'rep',score:0.88},{name:'Translate & localise content',type:'rep',score:0.91},{name:'Social media management',type:'rep',score:0.86},{name:'Investigate stories',type:'aug',score:0.24},{name:'On-screen presentation',type:'aug',score:0.17}]},
-{id:'gcc-logistics',name:'Logistics & Supply Chain',field:'Business',code:'ISCED-0414',exposure:0.64,halfLife:3.8,facultyReady:18,region:1.28,empOut:0.17,mechanism:'aug',enrolTrend:[9.4,12.1,14.8],enrolNote:'Strong growth — Dubai Logistics Strategy, Jebel Ali expansion. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Demand forecasting',type:'rep',score:0.83},{name:'Route optimisation',type:'rep',score:0.87},{name:'Supplier negotiation',type:'aug',score:0.34},{name:'Inventory management',type:'rep',score:0.79},{name:'Cross-border compliance',type:'aug',score:0.44}]},
-{id:'gcc-architecture',name:'Architecture & Urban Design',field:'Design',code:'ISCED-0731',exposure:0.56,halfLife:4.4,facultyReady:28,region:1.16,empOut:0.21,mechanism:'aug',enrolTrend:[7.2,8.4,9.8],enrolNote:'Strong growth — GCC smart city and construction boom. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Parametric design',type:'rep',score:0.74},{name:'Technical documentation',type:'rep',score:0.78},{name:'Client brief development',type:'aug',score:0.29},{name:'Planning navigation',type:'aug',score:0.34},{name:'Construction oversight',type:'aug',score:0.11}]},
-{id:'gcc-data-analytics',name:'Data Science & Analytics',field:'Technology',code:'ISCED-0612',exposure:0.61,halfLife:3.4,facultyReady:38,region:1.26,empOut:0.31,mechanism:'aug',enrolTrend:[19.2,24.4,28.1],enrolNote:'Explosive growth — UAE national AI strategy and Smart Dubai. UAE MOHESR 2022-2024.',estimatedDims:['facultyReady','region'],tasks:[{name:'Data cleaning & transformation',type:'rep',score:0.84},{name:'Build dashboards',type:'rep',score:0.78},{name:'Statistical modelling',type:'aug',score:0.52},{name:'Present insights',type:'aug',score:0.31},{name:'Write analytical reports',type:'rep',score:0.81}]},
-{id:'gcc-nursing',name:'Nursing (BSc)',field:'Health',code:'ISCED-0913',exposure:0.26,halfLife:9.1,facultyReady:22,region:1.08,empOut:0.29,mechanism:'aug',enrolTrend:[8.1,9.4,10.2],enrolNote:'Strong growth — Saudisation/Emiratisation healthcare targets. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Patient monitoring',type:'aug',score:0.14},{name:'Clinical documentation',type:'rep',score:0.68},{name:'Medication administration',type:'aug',score:0.08},{name:'Patient education',type:'aug',score:0.11},{name:'Coordinate care',type:'aug',score:0.24}]}
+{id:'gcc-business',name:'Business Administration (BBA)',field:'Business',code:'ISCED-0413',exposure:0.77,halfLife:2.3,facultyReady:19,region:0.88,empOut:0.04,mechanism:'aug',enrolTrend:[3.1,2.4,1.8],enrolNote:'Slowing — market saturation approaching. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Prepare management reports',type:'rep',score:0.88},{name:'Analyse business data',type:'rep',score:0.82},{name:'Lead strategy sessions',type:'aug',score:0.29},{name:'Manage stakeholder relationships',type:'aug',score:0.18}]},
+{id:'gcc-civil-eng',name:'Civil & Infrastructure Engineering',field:'Engineering',code:'ISCED-0732',exposure:0.41,halfLife:6.8,facultyReady:31,region:1.24,empOut:0.22,mechanism:'aug',enrolTrend:[8.4,11.2,13.1],enrolNote:'High growth — UAE/KSA megaproject pipeline. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Structural design calculations',type:'rep',score:0.71},{name:'BIM modelling',type:'rep',score:0.75},{name:'Site inspection',type:'aug',score:0.08},{name:'Project cost estimation',type:'rep',score:0.68}]},
+{id:'gcc-islamic-finance',name:'Islamic Finance & Banking',field:'Business',code:'ISCED-0412',exposure:0.69,halfLife:3.4,facultyReady:16,region:1.08,empOut:0.11,mechanism:'aug',enrolTrend:[4.2,5.1,6.8],enrolNote:'Growing — strong regional employer pull. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Shariah compliance review',type:'aug',score:0.42},{name:'Prepare Islamic instruments',type:'rep',score:0.79},{name:'AAOIFI regulatory reporting',type:'rep',score:0.81},{name:'Sukuk structuring',type:'rep',score:0.73}]},
+{id:'gcc-cs',name:'Computer Science & AI',field:'Technology',code:'ISCED-0613',exposure:0.68,halfLife:3.1,facultyReady:41,region:1.31,empOut:0.28,mechanism:'aug',enrolTrend:[24.1,29.4,31.2],enrolNote:'Explosive growth — UAE AI Strategy 2031. UAE MOHESR 2022-2024.',estimatedDims:['facultyReady','region'],tasks:[{name:'Develop software',type:'rep',score:0.76},{name:'Build ML models',type:'aug',score:0.52},{name:'System architecture',type:'aug',score:0.38},{name:'Cybersecurity',type:'aug',score:0.34}]},
+{id:'gcc-petroleum',name:'Petroleum Engineering',field:'Engineering',code:'ISCED-0715',exposure:0.44,halfLife:6.2,facultyReady:34,region:1.42,empOut:0.06,mechanism:'aug',enrolTrend:[-2.4,-4.1,-5.8],enrolNote:'Declining — energy transition dampening applications. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Reservoir simulation',type:'rep',score:0.74},{name:'Well planning',type:'rep',score:0.66},{name:'On-site operations',type:'aug',score:0.12},{name:'Environmental impact',type:'rep',score:0.69}]},
+{id:'gcc-hospitality',name:'Hospitality & Tourism',field:'Business',code:'ISCED-1015',exposure:0.53,halfLife:4.6,facultyReady:14,region:1.18,empOut:0.19,mechanism:'aug',enrolTrend:[6.8,9.2,11.4],enrolNote:'Strong growth — UAE Tourism Strategy 2031. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Manage reservations',type:'rep',score:0.84},{name:'Revenue optimisation',type:'rep',score:0.81},{name:'Guest experience',type:'aug',score:0.12},{name:'Event planning',type:'aug',score:0.31}]},
+{id:'gcc-medicine',name:'Medicine (MBBS / MD)',field:'Health',code:'ISCED-0912',exposure:0.32,halfLife:8.4,facultyReady:29,region:1.11,empOut:0.24,mechanism:'aug',enrolTrend:[4.1,4.8,5.2],enrolNote:'Steady growth — UAE/KSA healthcare nationalisation targets.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Diagnose from imaging',type:'aug',score:0.54},{name:'Patient examination',type:'aug',score:0.09},{name:'Medical documentation',type:'rep',score:0.74},{name:'Surgical procedures',type:'aug',score:0.04}]},
+{id:'gcc-arabic-media',name:'Arabic Media & Communications',field:'Arts & Humanities',code:'ISCED-0321',exposure:0.72,halfLife:2.6,facultyReady:12,region:0.76,empOut:-0.08,mechanism:'rep',enrolTrend:[-3.8,-5.2,-6.4],enrolNote:'Declining — Arabic LLM capability accelerating. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Write Arabic news content',type:'rep',score:0.88},{name:'Translate content',type:'rep',score:0.91},{name:'Social media management',type:'rep',score:0.86},{name:'Investigate stories',type:'aug',score:0.24}]},
+{id:'gcc-logistics',name:'Logistics & Supply Chain',field:'Business',code:'ISCED-0414',exposure:0.64,halfLife:3.8,facultyReady:18,region:1.28,empOut:0.17,mechanism:'aug',enrolTrend:[9.4,12.1,14.8],enrolNote:'Strong growth — Dubai Logistics Strategy. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Demand forecasting',type:'rep',score:0.83},{name:'Route optimisation',type:'rep',score:0.87},{name:'Supplier negotiation',type:'aug',score:0.34},{name:'Inventory management',type:'rep',score:0.79}]},
+{id:'gcc-architecture',name:'Architecture & Urban Design',field:'Design',code:'ISCED-0731',exposure:0.56,halfLife:4.4,facultyReady:28,region:1.16,empOut:0.21,mechanism:'aug',enrolTrend:[7.2,8.4,9.8],enrolNote:'Strong growth — GCC smart city boom. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Parametric design',type:'rep',score:0.74},{name:'Technical documentation',type:'rep',score:0.78},{name:'Client brief development',type:'aug',score:0.29},{name:'Construction oversight',type:'aug',score:0.11}]},
+{id:'gcc-data-sci',name:'Data Science & Analytics',field:'Technology',code:'ISCED-0612',exposure:0.61,halfLife:3.4,facultyReady:38,region:1.26,empOut:0.31,mechanism:'aug',enrolTrend:[19.2,24.4,28.1],enrolNote:'Explosive growth — UAE national AI strategy. UAE MOHESR 2022-2024.',estimatedDims:['facultyReady','region'],tasks:[{name:'Data cleaning',type:'rep',score:0.84},{name:'Build dashboards',type:'rep',score:0.78},{name:'Statistical modelling',type:'aug',score:0.52},{name:'Present insights',type:'aug',score:0.31}]},
+{id:'gcc-nursing',name:'Nursing (BSc)',field:'Health',code:'ISCED-0913',exposure:0.26,halfLife:9.1,facultyReady:22,region:1.08,empOut:0.29,mechanism:'aug',enrolTrend:[8.1,9.4,10.2],enrolNote:'Strong growth — Emiratisation healthcare targets. UAE MOHESR 2022-2024.',estimatedDims:['halfLife','facultyReady','region'],tasks:[{name:'Patient monitoring',type:'aug',score:0.14},{name:'Clinical documentation',type:'rep',score:0.68},{name:'Medication administration',type:'aug',score:0.08},{name:'Coordinate care',type:'aug',score:0.24}]}
 ];
+
 const DATA_US=[
-{id:'us-accounting',name:'Accounting',field:'Business',code:'CIP 52.0301',exposure:0.83,halfLife:1.8,facultyReady:22,region:0.90,empOut:-0.02,mechanism:'aug',enrolTrend:[-3.1,-4.2,-2.8],enrolNote:'Declining — CPA exam changes and AI perception reducing applications.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Prepare financial statements',type:'rep',score:0.91},{name:'Process journal entries',type:'rep',score:0.94},{name:'Tax preparation',type:'rep',score:0.88},{name:'Advise on financial strategy',type:'aug',score:0.44},{name:'Internal audit',type:'aug',score:0.51}]},
-{id:'us-cs',name:'Computer Science',field:'Technology',code:'CIP 11.0701',exposure:0.69,halfLife:3.4,facultyReady:61,region:1.21,empOut:0.17,mechanism:'aug',enrolTrend:[11.2,14.1,10.4],enrolNote:'Strong but slowing — market saturation concern emerging.',estimatedDims:['facultyReady'],tasks:[{name:'Write & test code',type:'rep',score:0.79},{name:'Design software architecture',type:'aug',score:0.42},{name:'Code review & debugging',type:'rep',score:0.74},{name:'Technical leadership',type:'aug',score:0.19},{name:'Requirements analysis',type:'aug',score:0.37}]},
-{id:'us-nursing',name:'Nursing (BSN)',field:'Health',code:'CIP 51.3801',exposure:0.22,halfLife:10.2,facultyReady:44,region:1.14,empOut:0.21,mechanism:'aug',enrolTrend:[4.8,5.2,6.1],enrolNote:'Growing — persistent national nursing shortage.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Patient assessment',type:'aug',score:0.11},{name:'Clinical documentation',type:'rep',score:0.69},{name:'Medication administration',type:'aug',score:0.07},{name:'Patient education',type:'aug',score:0.13},{name:'Care coordination',type:'aug',score:0.22}]},
-{id:'us-journalism',name:'Journalism',field:'Arts & Humanities',code:'CIP 09.0401',exposure:0.81,halfLife:1.9,facultyReady:21,region:0.82,empOut:-0.14,mechanism:'rep',enrolTrend:[-8.4,-10.1,-11.2],enrolNote:'Steep decline — industry structural collapse accelerating.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Write news articles',type:'rep',score:0.88},{name:'Edit and proofread copy',type:'rep',score:0.86},{name:'Investigative reporting',type:'aug',score:0.24},{name:'Conduct interviews',type:'aug',score:0.21},{name:'Social media management',type:'rep',score:0.83}]},
-{id:'us-data-sci',name:'Data Science',field:'Technology',code:'CIP 11.0401',exposure:0.60,halfLife:3.7,facultyReady:54,region:1.24,empOut:0.24,mechanism:'aug',enrolTrend:[22.4,28.1,21.8],enrolNote:'Strong growth — but shows signs of plateauing.',estimatedDims:['facultyReady'],tasks:[{name:'Data wrangling',type:'rep',score:0.83},{name:'Build ML models',type:'aug',score:0.54},{name:'Statistical analysis',type:'rep',score:0.78},{name:'Communicate findings',type:'aug',score:0.32},{name:'Write technical documentation',type:'rep',score:0.79}]}
+{id:'us-accounting',name:'Accounting',field:'Business',code:'CIP 52.0301',exposure:0.83,halfLife:1.8,facultyReady:22,region:0.90,empOut:-0.02,mechanism:'aug',enrolTrend:[-3.1,-4.2,-2.8],enrolNote:'Declining — CPA exam changes and AI perception reducing applications.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Prepare financial statements',type:'rep',score:0.91},{name:'Process journal entries',type:'rep',score:0.94},{name:'Tax preparation',type:'rep',score:0.88},{name:'Audit',type:'aug',score:0.51}]},
+{id:'us-cs',name:'Computer Science',field:'Technology',code:'CIP 11.0701',exposure:0.69,halfLife:3.4,facultyReady:61,region:1.21,empOut:0.17,mechanism:'aug',enrolTrend:[11.2,14.1,10.4],enrolNote:'Strong but slowing — market saturation emerging.',estimatedDims:['facultyReady'],tasks:[{name:'Write and test code',type:'rep',score:0.79},{name:'Design architecture',type:'aug',score:0.42},{name:'Code review',type:'rep',score:0.74},{name:'Requirements analysis',type:'aug',score:0.37}]},
+{id:'us-nursing',name:'Nursing (BSN)',field:'Health',code:'CIP 51.3801',exposure:0.22,halfLife:10.2,facultyReady:44,region:1.14,empOut:0.21,mechanism:'aug',enrolTrend:[4.8,5.2,6.1],enrolNote:'Growing — persistent national nursing shortage.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Patient assessment',type:'aug',score:0.11},{name:'Clinical documentation',type:'rep',score:0.69},{name:'Medication administration',type:'aug',score:0.07},{name:'Care coordination',type:'aug',score:0.22}]},
+{id:'us-journalism',name:'Journalism',field:'Arts & Humanities',code:'CIP 09.0401',exposure:0.81,halfLife:1.9,facultyReady:21,region:0.82,empOut:-0.14,mechanism:'rep',enrolTrend:[-8.4,-10.1,-11.2],enrolNote:'Steep decline — industry structural collapse accelerating.',estimatedDims:['halfLife','facultyReady'],tasks:[{name:'Write news articles',type:'rep',score:0.88},{name:'Edit copy',type:'rep',score:0.86},{name:'Investigative reporting',type:'aug',score:0.24},{name:'Social media management',type:'rep',score:0.83}]},
+{id:'us-data-sci',name:'Data Science',field:'Technology',code:'CIP 11.0401',exposure:0.60,halfLife:3.7,facultyReady:54,region:1.24,empOut:0.24,mechanism:'aug',enrolTrend:[22.4,28.1,21.8],enrolNote:'Strong growth — showing signs of plateauing.',estimatedDims:['facultyReady'],tasks:[{name:'Data wrangling',type:'rep',score:0.83},{name:'Build ML models',type:'aug',score:0.54},{name:'Statistical analysis',type:'rep',score:0.78},{name:'Communicate findings',type:'aug',score:0.32}]}
 ];
+
 const DATA_EU=[{id:'eu-stub',name:'EU data — coming in v2',field:'—',code:'—',exposure:0,halfLife:8,facultyReady:50,region:1,empOut:0,mechanism:'aug',enrolTrend:[0,0,0],enrolNote:'Stub — Cedefop + Eurostat NUTS-2 in development.',estimatedDims:['halfLife','facultyReady','region','empOut','enrolment'],tasks:[]}];
+
 const REGION_DATA={uk:DATA_UK,gcc:DATA_GCC,us:DATA_US,eu:DATA_EU};
-const REGION_META={uk:{name:'United Kingdom',flag:'🇬🇧',confidence:'B+ avg',dataNote:'HESA CAH · ONS LMI for All · Graduate Outcomes · Jisc'},gcc:{name:'GCC / UAE',flag:'🇦🇪',confidence:'B avg',dataNote:'ISCED · ILO ILOSTAT · UAE Vision 2031 · ISCO-08 crosswalk'},us:{name:'United States',flag:'🇺🇸',confidence:'A avg',dataNote:'NCES CIP · BLS OOH · O*NET · Educause'},eu:{name:'Europe',flag:'🇪🇺',confidence:'Stub',dataNote:'v2 — Cedefop · Eurostat NUTS-2'}};
+const REGION_META={
+  uk:{name:'United Kingdom',flag:'🇬🇧',confidence:'B+ avg',dataNote:'HESA CAH · ONS LMI · Graduate Outcomes'},
+  gcc:{name:'GCC / UAE',flag:'🇦🇪',confidence:'B avg',dataNote:'ISCED · ILO ILOSTAT · UAE Vision 2031'},
+  us:{name:'United States',flag:'🇺🇸',confidence:'A avg',dataNote:'NCES CIP · BLS OOH · O*NET'},
+  eu:{name:'Europe',flag:'🇪🇺',confidence:'Stub',dataNote:'v2 — Cedefop · Eurostat NUTS-2'}
+};
+
+const SCHOOLS_DATA=[
+{id:'al-english',subject:'English Lit & Language',level:'A-Level',riskTier:'high',entries2024:75420,entryTrend:-4.1,aiExposure:0.84,topCareers:'Journalism, Copywriting, PR, Marketing',aiOutlook:'High risk — core writing and editing tasks are AI-replaceable.',source:'JCQ 2024 · Eloundou 2023',estimatedAI:false},
+{id:'al-business',subject:'Business Studies',level:'A-Level',riskTier:'high',entries2024:52640,entryTrend:-2.3,aiExposure:0.79,topCareers:'Management, Marketing, Finance, HR',aiOutlook:'High risk — core tasks being restructured by AI. Urgent AI literacy needed.',source:'JCQ 2024 · Eloundou 2023',estimatedAI:false},
+{id:'al-maths',subject:'Mathematics',level:'A-Level',riskTier:'med',entries2024:95840,entryTrend:+3.2,aiExposure:0.71,topCareers:'Actuaries, Data Scientists, Finance Analysts',aiOutlook:'Mixed — AI automates computation but elevates demand for mathematical modelling.',source:'JCQ 2024 · Eloundou 2023',estimatedAI:false},
+{id:'al-cs',subject:'Computer Science',level:'A-Level',riskTier:'med',entries2024:42180,entryTrend:+8.4,aiExposure:0.67,topCareers:'Software Engineering, Cybersecurity, AI/ML',aiOutlook:'Paradox — AI writes code but also creates new roles requiring higher-level thinking.',source:'JCQ 2024 · Eloundou 2023',estimatedAI:false},
+{id:'al-economics',subject:'Economics',level:'A-Level',riskTier:'med',entries2024:38140,entryTrend:+0.9,aiExposure:0.62,topCareers:'Economics, Finance, Policy, Consultancy',aiOutlook:'Mixed — quantitative tasks face automation, economic reasoning is durable.',source:'JCQ 2024 · Eloundou 2023',estimatedAI:false},
+{id:'al-history',subject:'History',level:'A-Level',riskTier:'med',entries2024:48230,entryTrend:-1.8,aiExposure:0.58,topCareers:'Law, Journalism, Civil Service, Education',aiOutlook:'Medium risk — critical analysis skills durable but essay-writing tasks disrupted.',source:'JCQ 2024 · Eloundou 2023',estimatedAI:false},
+{id:'al-biology',subject:'Biology',level:'A-Level',riskTier:'low',entries2024:82310,entryTrend:+2.8,aiExposure:0.38,topCareers:'Medicine, Nursing, Biomedical Science',aiOutlook:'Low risk — clinical and lab skills resist automation.',source:'JCQ 2024 · Eloundou 2023',estimatedAI:false},
+{id:'al-psychology',subject:'Psychology',level:'A-Level',riskTier:'low',entries2024:68920,entryTrend:+1.4,aiExposure:0.36,topCareers:'Clinical Psychology, Counselling, Social Work',aiOutlook:'Low risk for clinical pathways.',source:'JCQ 2024 · Eloundou 2023',estimatedAI:false},
+{id:'gcse-english',subject:'English Language & Literature',level:'GCSE',riskTier:'high',entries2024:721400,entryTrend:+0.2,aiExposure:0.81,topCareers:'Foundation for most career paths',aiOutlook:'721k students/yr certified in skills AI can replicate. Urgent assessment redesign needed.',source:'JCQ 2024 · Ofqual 2024',estimatedAI:false},
+{id:'gcse-art',subject:'Art & Design',level:'GCSE',riskTier:'high',entries2024:181300,entryTrend:-3.4,aiExposure:0.72,topCareers:'Creative industries, Design, Architecture',aiOutlook:'High risk — curriculum must shift toward creative direction and AI tool use.',source:'JCQ 2024 · Ofqual 2024',estimatedAI:false},
+{id:'gcse-maths',subject:'Mathematics',level:'GCSE',riskTier:'med',entries2024:726800,entryTrend:+0.4,aiExposure:0.64,topCareers:'Foundation for STEM, Finance, Data pathways',aiOutlook:'Emphasis should shift from procedure to mathematical reasoning.',source:'JCQ 2024 · Ofqual 2024',estimatedAI:false},
+{id:'gcse-computing',subject:'Computing',level:'GCSE',riskTier:'med',entries2024:92400,entryTrend:+5.2,aiExposure:0.61,topCareers:'Computer Science A-Level → Tech careers',aiOutlook:'Problem decomposition matters more than syntax now.',source:'JCQ 2024 · Ofqual 2024',estimatedAI:false},
+{id:'gcse-history',subject:'History',level:'GCSE',riskTier:'med',entries2024:318200,entryTrend:-0.8,aiExposure:0.56,topCareers:'Law, Journalism, Civil Service',aiOutlook:'Assessment integrity is the immediate challenge for markers.',source:'JCQ 2024 · Ofqual 2024',estimatedAI:false},
+{id:'gcse-combined-sci',subject:'Combined Science',level:'GCSE',riskTier:'low',entries2024:612000,entryTrend:+1.1,aiExposure:0.29,topCareers:'Health, Engineering, Environmental science',aiOutlook:'Low risk — practical science skills are durable.',source:'JCQ 2024 · Ofqual 2024',estimatedAI:false},
+{id:'yr12-business',subject:'Business (BTEC)',level:'Year 12',riskTier:'high',entries2024:62800,entryTrend:-1.2,aiExposure:0.78,topCareers:'Business management, Retail, Entrepreneurship',aiOutlook:'High risk — BTEC tasks highly automatable.',source:'JCQ/BTEC 2024',estimatedAI:true},
+{id:'yr12-health',subject:'Health & Social Care (BTEC)',level:'Year 12',riskTier:'low',entries2024:48200,entryTrend:+4.1,aiExposure:0.22,topCareers:'Nursing, Social Work, Paramedic',aiOutlook:'Low risk — vocational pathway into shortage professions.',source:'JCQ/BTEC 2024',estimatedAI:true},
+{id:'yr12-engineering',subject:'Engineering (BTEC)',level:'Year 12',riskTier:'low',entries2024:28400,entryTrend:+2.8,aiExposure:0.34,topCareers:'Civil Engineering, Manufacturing, Aerospace',aiOutlook:'Low risk — practical engineering skills remain in demand.',source:'JCQ/BTEC 2024',estimatedAI:true},
+];
+// ═══════════════════════════════════════════════════════════
+// CROSSWALK — UK only (GCC/US/EU don't have school systems)
+// ═══════════════════════════════════════════════════════════
+const CROSSWALK_UK={
+  gcseToALevel:{
+    'GCSE English':      {leads:['A-Level English','A-Level History','A-Level Business'],note:'Most common humanities pathway. Strongest predictor of creative and comms degrees.'},
+    'GCSE Maths':        {leads:['A-Level Maths','A-Level Economics','A-Level Computer Science'],note:'Gateway to STEM and quantitative social sciences.'},
+    'GCSE Biology':      {leads:['A-Level Biology','A-Level Psychology'],note:'Core science pathway. Grade 6+ typically required for A-Level Biology.'},
+    'GCSE Computing':    {leads:['A-Level Computer Science','A-Level Maths'],note:'68% of GCSE Computing students take A-Level CS. DfE data.'},
+    'GCSE Business':     {leads:['A-Level Business','A-Level Economics'],note:'Vocational pathway. LEO data shows strong correlation with business degrees.'},
+    'GCSE History':      {leads:['A-Level History','A-Level English'],note:'Humanities backbone. Common entry for Law, PPE, social sciences.'},
+    'GCSE Art & Design': {leads:['A-Level Art & Design'],note:'Creative pathway. Leads to Architecture, Fine Art, Design.'},
+    'GCSE Comb. Science':{leads:['A-Level Biology','A-Level Chemistry'],note:'Prerequisite for most science A-Levels. Grade 6-6 minimum.'},
+  },
+  aLevelToDegree:{
+    'A-Level English':        {leads:[{id:'uk-journalism',fit:'required',note:'Required by most journalism degrees (UCAS tariff data)'},{id:'uk-law',fit:'preferred',note:'40% of law entrants hold English A-Level (UCAS 2023)'},{id:'uk-marketing',fit:'preferred',note:'Content and comms skills valued'},{id:'uk-teaching',fit:'preferred',note:'English specialism PGCE pathway'}]},
+    'A-Level Maths':          {leads:[{id:'uk-economics',fit:'required',note:'Required by 89% of Russell Group economics programmes'},{id:'uk-data-sci',fit:'required',note:'Required by 94% of data science programmes'},{id:'uk-cs',fit:'preferred',note:'Required by 71% of CS programmes'},{id:'uk-accounting',fit:'preferred',note:'Strong predictor of ACA completion'},{id:'uk-finance',fit:'preferred',note:'Preferred by 83% of finance programmes'}]},
+    'A-Level Biology':        {leads:[{id:'uk-nursing',fit:'required',note:'Required or preferred by 91% of nursing programmes'},{id:'uk-pharma',fit:'required',note:'Required by all MPharm programmes alongside Chemistry'},{id:'uk-biomedical',fit:'required',note:'Core entry requirement'},{id:'uk-psychology',fit:'preferred',note:'38% of psychology entrants hold Biology A-Level'},{id:'uk-social-work',fit:'relevant',note:'Health-oriented social work pathway'}]},
+    'A-Level Computer Science':{leads:[{id:'uk-cs',fit:'required',note:'Preferred or required by 78% of CS programmes'},{id:'uk-data-sci',fit:'preferred',note:'52% of data science entrants hold CS A-Level'}]},
+    'A-Level Business':       {leads:[{id:'uk-accounting',fit:'preferred',note:'Common pathway for accounting technician route'},{id:'uk-marketing',fit:'preferred',note:'58% of marketing entrants hold Business A-Level'},{id:'uk-economics',fit:'relevant',note:'Applied business understanding'},{id:'uk-finance',fit:'relevant',note:'Background knowledge useful'}]},
+    'A-Level Economics':      {leads:[{id:'uk-economics',fit:'preferred',note:'71% of economics undergrads hold Economics A-Level'},{id:'uk-finance',fit:'preferred',note:'Strong quantitative grounding'},{id:'uk-accounting',fit:'relevant',note:'Useful macro context'}]},
+    'A-Level History':        {leads:[{id:'uk-law',fit:'preferred',note:'34% of law entrants hold History A-Level'},{id:'uk-journalism',fit:'preferred',note:'Research and narrative skills'},{id:'uk-teaching',fit:'preferred',note:'History PGCE — shortage subject'}]},
+    'A-Level Psychology':     {leads:[{id:'uk-psychology',fit:'required',note:'Most psychology degrees prefer A-Level Psychology'},{id:'uk-social-work',fit:'preferred',note:'41% of SW entrants hold Psychology'},{id:'uk-nursing',fit:'relevant',note:'Mental health nursing pathway'}]},
+    'A-Level Chemistry':      {leads:[{id:'uk-pharma',fit:'required',note:'Required alongside Biology for MPharm'},{id:'uk-biomedical',fit:'preferred',note:'Strong science foundation'}]},
+    'A-Level Art & Design':   {leads:[{id:'uk-architecture',fit:'preferred',note:'Portfolio + Art A-Level common entry route'}]},
+  },
+  aLevelRisk:{
+    'A-Level English':         {exposure:0.84,entries:75420,trend:-4.1},
+    'A-Level Maths':           {exposure:0.71,entries:95840,trend:+3.2},
+    'A-Level Biology':         {exposure:0.38,entries:82310,trend:+2.8},
+    'A-Level Computer Science':{exposure:0.67,entries:42180,trend:+8.4},
+    'A-Level Business':        {exposure:0.79,entries:52640,trend:-2.3},
+    'A-Level Economics':       {exposure:0.62,entries:38140,trend:+0.9},
+    'A-Level History':         {exposure:0.58,entries:48230,trend:-1.8},
+    'A-Level Psychology':      {exposure:0.36,entries:68920,trend:+1.4},
+    'A-Level Chemistry':       {exposure:0.41,entries:62100,trend:+1.2},
+    'A-Level Art & Design':    {exposure:0.72,entries:39200,trend:-2.1},
+  },
+  gcseRisk:{
+    'GCSE English':      {exposure:0.81,entries:721400,trend:+0.2},
+    'GCSE Maths':        {exposure:0.64,entries:726800,trend:+0.4},
+    'GCSE Biology':      {exposure:0.29,entries:96000, trend:+1.1},
+    'GCSE Computing':    {exposure:0.61,entries:92400, trend:+5.2},
+    'GCSE Business':     {exposure:0.79,entries:52000, trend:-0.8},
+    'GCSE History':      {exposure:0.56,entries:318200,trend:-0.8},
+    'GCSE Art & Design': {exposure:0.72,entries:181300,trend:-3.4},
+    'GCSE Comb. Science':{exposure:0.29,entries:612000,trend:+1.1},
+  },
+};
+
+// ═══════════════════════════════════════════════════════════
+// SCORING ENGINE
+// ═══════════════════════════════════════════════════════════
 let weights={task:0.33,halfLife:0.17,faculty:0.12,regional:0.11,employment:0.10,enrolment:0.17};
-let activeRegion='uk',activeFilters=new Set(),programs=[];
-function normalise(p){const task=p.exposure;const hl=Math.min(1,Math.max(0,1-(p.halfLife-0.5)/14.5));const fac=1-(p.facultyReady/100);const reg=Math.max(0,1-(p.region-0.8)/0.4);const emp=Math.max(0,Math.min(1,-p.empOut/0.15));const avgT=p.enrolTrend.reduce((a,b)=>a+b,0)/p.enrolTrend.length;const enrol=Math.max(0,Math.min(1,-avgT/10));return{task,hl,fac,reg,emp,enrol}}
-function computeScore(p){const n=normalise(p);return(n.task*weights.task)+(n.hl*weights.halfLife)+(n.fac*weights.faculty)+(n.reg*weights.regional)+(n.emp*weights.employment)+(n.enrol*weights.enrolment)}
-function classify(p,score){if(p.mechanism==='rep'&&score>0.67)return'sunset';if(score>0.57)return'urgent';if(score<0.30)return'invest';return'maintain'}
+let activeRegion='uk', activeFilters=new Set(), programs=[];
+
+function normalise(p){
+  const task=p.exposure;
+  const hl=Math.min(1,Math.max(0,1-(p.halfLife-0.5)/14.5));
+  const fac=1-(p.facultyReady/100);
+  const reg=Math.max(0,1-(p.region-0.8)/0.4);
+  const emp=Math.max(0,Math.min(1,-p.empOut/0.15));
+  const avgT=p.enrolTrend.reduce((a,b)=>a+b,0)/p.enrolTrend.length;
+  const enrol=Math.max(0,Math.min(1,-avgT/10));
+  return{task,hl,fac,reg,emp,enrol};
+}
+function computeScore(p){
+  const n=normalise(p);
+  return n.task*weights.task+n.hl*weights.halfLife+n.fac*weights.faculty+n.reg*weights.regional+n.emp*weights.employment+n.enrol*weights.enrolment;
+}
+function classify(p,score){
+  if(p.mechanism==='rep'&&score>0.67)return'sunset';
+  if(score>0.57)return'urgent';
+  if(score<0.30)return'invest';
+  return'maintain';
+}
 function isCritical(p){return p.exposure>=0.65&&p.halfLife<=3.0&&p.facultyReady<=35}
-function uncertaintyBand(s){const m=0.04+(s*0.04);return[Math.max(0,s-m).toFixed(2),Math.min(1,s+m).toFixed(2)]}
-function confidenceTier(p){const e=p.estimatedDims.length;if(e<=1)return'a';if(e<=3)return'b';return'c'}
-function scoreColor(s){if(s>=0.68)return'#ef4444';if(s>=0.57)return'#fb7185';if(s>=0.40)return'#f59e0b';if(s>=0.30)return'#a78bfa';return'#3ecf8e'}
+function scoreColor(e){return e>=0.75?'#ef4444':e>=0.60?'#fb7185':e>=0.45?'#f59e0b':e>=0.30?'#a78bfa':'#3ecf8e'}
+function riskLabel(e){return e>=0.75?'Very high risk':e>=0.60?'High risk':e>=0.45?'Medium risk':e>=0.30?'Lower risk':'Low risk'}
+function uncBand(s){const m=0.04+(s*0.04);return[Math.max(0,s-m).toFixed(2),Math.min(1,s+m).toFixed(2)]}
+function confTier(p){return p.estimatedDims.length<=1?'a':p.estimatedDims.length<=3?'b':'c'}
 function recLabel(r){return{urgent:'⚡ Urgent Pivot',invest:'🌱 Invest & Grow',sunset:'🌅 Sunset',maintain:'🔒 Maintain'}[r]}
-function trendIcon(v){const a=v.reduce((x,y)=>x+y,0)/v.length;if(a>2)return{icon:'↑',cls:'trend-up',label:'+'+a.toFixed(1)+'% avg enrolment'};if(a<-2)return{icon:'↓',cls:'trend-down',label:a.toFixed(1)+'% avg enrolment'};return{icon:'→',cls:'trend-flat',label:'Stable enrolment'}}
-function switchRegion(r){activeRegion=r;activeFilters.clear();document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.region-btn').forEach(b=>b.classList.toggle('active',b.dataset.region===r));loadPrograms();renderGrid();updateHeroStats()}
-function loadPrograms(){const raw=REGION_DATA[activeRegion]||[];programs=raw.map(p=>{const score=computeScore(p);return{...p,score,rec:classify(p,score),critical:isCritical(p)}})}
-function updateHeroStats(){const m=REGION_META[activeRegion];const fields=new Set(programs.map(p=>p.field)).size;document.getElementById('statPrograms').textContent=programs.length;document.getElementById('statFields').textContent=fields;document.getElementById('statConfidence').textContent=m.confidence;document.getElementById('statRegion').textContent=m.flag+' '+m.name}
-function toggleFilter(key,btn){if(activeFilters.has(key)){activeFilters.delete(key);btn.classList.remove('active')}else{activeFilters.add(key);btn.classList.add('active')}renderGrid()}
-function renderGrid(){const query=document.getElementById('searchInput').value.toLowerCase();const sort=document.getElementById('sortSelect').value;let list=[...programs];if(query)list=list.filter(p=>p.name.toLowerCase().includes(query)||p.field.toLowerCase().includes(query));if(activeFilters.size)list=list.filter(p=>{if(activeFilters.has('critical'))return p.critical;return activeFilters.has(p.rec)});if(sort==='score-desc')list.sort((a,b)=>b.score-a.score);else if(sort==='score-asc')list.sort((a,b)=>a.score-b.score);else if(sort==='exposure')list.sort((a,b)=>b.exposure-a.exposure);else if(sort==='halflife')list.sort((a,b)=>a.halfLife-b.halfLife);else if(sort==='enrol-down')list.sort((a,b)=>{const aA=a.enrolTrend.reduce((x,y)=>x+y,0)/a.enrolTrend.length;const bA=b.enrolTrend.reduce((x,y)=>x+y,0)/b.enrolTrend.length;return aA-bA});else list.sort((a,b)=>b.score-a.score);const grid=document.getElementById('programGrid');if(!list.length){grid.innerHTML='<div class="no-results">No programmes match your filters.</div>';return}
-grid.innerHTML=list.map(p=>{const col=scoreColor(p.score);const[lo,hi]=uncertaintyBand(p.score);const trend=trendIcon(p.enrolTrend);const conf=confidenceTier(p);const n=normalise(p);const dims=[{label:'Task AI',val:n.task,est:p.estimatedDims.includes('task')},{label:'Runway',val:n.hl,est:p.estimatedDims.includes('halfLife')},{label:'Faculty',val:n.fac,est:p.estimatedDims.includes('facultyReady')}];return `<div class="card ${p.rec}" onclick="openDrawer('${p.id}')"><div class="card-top"><div class="card-meta"><span class="badge badge-field">${p.field}</span><span class="badge badge-confidence-${conf}">Tier ${conf.toUpperCase()}</span>${p.critical?'<span class="badge badge-critical">🚨 Critical</span>':''}</div><span class="rec-badge rec-${p.rec}">${recLabel(p.rec)}</span></div><div class="card-name">${p.name}</div><div class="card-code">${p.code}</div><div class="score-row"><div><div class="score-big" style="color:${col}">${p.score.toFixed(2)}</div><div class="uncertainty-band">${lo}–${hi} range</div><div class="score-label">composite risk</div></div><div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" style="width:${p.score*100}%;background:${col}"></div></div><div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text3);margin-top:3px"><span>AI exposure: ${(p.exposure*100).toFixed(0)}%</span><span>${p.halfLife}yr runway</span></div></div></div><div class="mini-dims">${dims.map(d=>`<div class="mini-dim ${d.est?'estimated':''}">${d.est?'<div class="estimated-dot"></div>':''}<div class="mini-dim-label">${d.label}</div><div class="mini-dim-val">${(d.val*100).toFixed(0)}%</div></div>`).join('')}</div><div class="enrol-trend"><span class="${trend.cls}">${trend.icon}</span><span>${trend.label}</span><span style="margin-left:auto;font-size:0.72rem;color:var(--text3)">${p.enrolNote.split('—')[0]}</span></div></div>`}).join('')}
-function openDrawer(id){const p=programs.find(x=>x.id===id);if(!p)return;const n=normalise(p);const[lo,hi]=uncertaintyBand(p.score);const col=scoreColor(p.score);const trend=trendIcon(p.enrolTrend);const conf=confidenceTier(p);
-const dimDefs=[{label:'Task automation',val:n.task,raw:(p.exposure*100).toFixed(0)+'% tasks AI-replaceable',est:false,tooltip:'Eloundou et al. β score + Felten Princeton Index via SOC crosswalk. Directly sourced.'},{label:'Curriculum half-life',val:n.hl,raw:p.halfLife+' years runway',est:p.estimatedDims.includes('halfLife'),tooltip:'Estimated. O*NET task concentration + wage premium proxy. Based on Acemoglu & Restrepo (2022).'},{label:'Faculty readiness gap',val:n.fac,raw:p.facultyReady+'% AI-fluent faculty',est:p.estimatedDims.includes('facultyReady'),tooltip:'Estimated. Jisc Digital Experience Insights (UK) / TIMSS educator surveys (GCC). Institutional variation is high.'},{label:'Regional labour market',val:n.reg,raw:p.region+'× national avg',est:p.estimatedDims.includes('region'),tooltip:p.estimatedDims.includes('region')?'Estimated. ILO regional data at 1-digit group level. Treat as directional.':'ONS ASHE regional employment data by SOC 2020. Directly sourced.'},{label:'Employment outlook',val:n.emp,raw:(p.empOut>=0?'+':'')+(p.empOut*100).toFixed(0)+'% 10-yr projection',est:false,tooltip:'ONS LMI for All (UK) / ILO ILOSTAT (GCC) / BLS OOH (US). Directly sourced.'},{label:'Enrolment trajectory',val:n.enrol,raw:trend.icon+' '+trend.label,est:p.estimatedDims.includes('enrolment'),tooltip:'HESA Student Record 2021-2024 (UK) / UAE MOHESR (GCC). 3-year rolling average % change.'}];
-const repTasks=p.tasks.filter(t=>t.type==='rep');const topRep=repTasks.sort((a,b)=>b.score-a.score)[0];let intervention='';
-if(p.rec==='sunset')intervention='<p>The modal tasks in this programme are being <strong>substituted</strong> by AI. Graduate employer demand is projected to contract. Begin a structured wind-down review: assess student cohort impact, explore merger with adjacent programmes, and consult accreditation body on timeline implications.</p>';
-else if(p.rec==='urgent'){if(topRep&&(topRep.name.includes('report')||topRep.name.includes('writ')||topRep.name.includes('draft')))intervention='<p>The highest-risk tasks are <strong>document generation and written outputs</strong>. Shift curriculum emphasis from producing documents to <em>commissioning, evaluating, and critically editing</em> AI-generated outputs. Add structured AI audit modules and human-in-the-loop assessment design.</p>';else if(topRep&&(topRep.name.includes('data')||topRep.name.includes('model')||topRep.name.includes('analy')))intervention='<p>The highest-risk tasks are <strong>data processing and quantitative analysis</strong>. Shift curriculum emphasis from executing analysis to <em>problem framing, methodology selection, and results interpretation</em>. Introduce AI tool proficiency as a core assessed competency.</p>';else intervention='<p>Core tasks face significant AI substitution risk. Redesign the curriculum around <em>task direction, oversight, and quality assurance</em> of AI outputs. Faculty development is the critical constraint — '+p.facultyReady+'% AI fluency is insufficient to lead this change without a structured CPD programme.</p>';}
-else if(p.rec==='invest')intervention='<p>This programme trains students for work AI cannot easily replicate. <strong>Grow capacity</strong> where possible. Add targeted AI fluency modules to future-proof graduates without wholesale redesign. This is a strategic asset worth protecting.</p>';
-else intervention='<p>Moderate AI exposure — the field will change but is unlikely to be reshaped fundamentally in the near term. <strong>Monitor annually</strong>. Add AI fluency as optional enrichment modules. Reserve major curriculum investment for the next cycle pending updated data.</p>';
-const maxE=Math.max(...p.enrolTrend.map(Math.abs),1);const enrolBars=p.enrolTrend.map((v,i)=>{const h=Math.max(4,Math.abs(v)/maxE*36);const c=v>0?'var(--green)':v<0?'var(--red)':'var(--text3)';return `<div class="enrol-bar" style="height:${h}px;background:${c};opacity:${0.5+0.5*(i/p.enrolTrend.length)}"></div>`}).join('');
-document.getElementById('drawerContent').innerHTML=`<div class="drawer-close"><button class="close-btn" onclick="closeDrawer()">✕</button></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px"><span class="badge badge-field">${p.field}</span><span class="badge badge-confidence-${conf}">Tier ${conf.toUpperCase()} confidence</span>${p.critical?'<span class="badge badge-critical">🚨 Critical Now</span>':''}<span class="rec-badge rec-${p.rec}">${recLabel(p.rec)}</span></div><div class="drawer-name">${p.name}</div><div class="drawer-code">${p.code} · ${REGION_META[activeRegion].dataNote}</div><div class="composite-breakdown"><div class="cb-row"><span class="cb-label">Composite risk score</span><span class="cb-val cb-total" style="color:${col}">${p.score.toFixed(3)}</span></div><div class="cb-row"><span class="cb-label">Uncertainty band</span><span class="cb-val">${lo} – ${hi}</span></div><div class="cb-row"><span class="cb-label">Raw AI exposure</span><span class="cb-val">${(p.exposure*100).toFixed(0)}%</span></div><div class="cb-row"><span class="cb-label">Mechanism</span><span class="cb-val">${p.mechanism==='rep'?'AI Replaces core tasks':'AI Augments core tasks'}</span></div></div><div class="dim-section"><div class="dim-section-title">Six dimensions <span style="font-size:0.68rem;color:var(--amber);font-weight:400;text-transform:none;letter-spacing:0">● amber dot = estimated value</span></div>${dimDefs.map(d=>`<div class="dim-row ${d.est?'estimated':''}"><div class="dim-row-label">${d.label}<div class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-text"><strong>${d.est?'⚠ Estimated':'✓ Sourced'}</strong><br>${d.tooltip}</span></div></div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:${d.val*100}%;background:${d.est?'#f59e0b':scoreColor(d.val)}"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">${d.raw}</div></div><div class="dim-row-val">${(d.val*100).toFixed(0)}%</div>${d.est?'<span class="est-tag">est.</span>':''}</div>`).join('')}</div><div class="tasks-section"><div class="dim-section-title">Task breakdown</div>${p.tasks.map(t=>`<div class="task-item"><span class="task-type ${t.type==='rep'?'task-rep':'task-aug'}">${t.type==='rep'?'Replaces':'Assists'}</span><span class="task-name">${t.name}</span><span class="task-score">${t.score.toFixed(2)}</span></div>`).join('')}<div style="font-size:0.74rem;color:var(--text3);margin-top:8px">Score = probability AI performs at human-level quality. Sources: O*NET / ISCO-08 task frameworks.</div></div><div class="dim-section"><div class="dim-section-title">Enrolment trajectory</div><div class="enrol-chart">${enrolBars}</div><div style="font-size:0.8rem;color:var(--text2);margin-top:6px">${p.enrolNote}</div></div><div class="tasks-section"><div class="dim-section-title">Recommended intervention</div><div class="intervention-box"><h4>${recLabel(p.rec)}</h4>${intervention}</div></div>`;
-document.getElementById('drawerOverlay').classList.add('open');document.getElementById('drawer').classList.add('open')}
-function closeDrawer(){document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawer').classList.remove('open')}
-const weightMeta=[{key:'task',label:'Task automation potential',tooltip:'Eloundou β + Felten via SOC crosswalk'},{key:'halfLife',label:'Curriculum half-life',tooltip:'O*NET task frequency + Epoch AI compute timeline'},{key:'faculty',label:'Faculty readiness gap',tooltip:'Jisc / TIMSS educator surveys (estimated)'},{key:'regional',label:'Regional labour market',tooltip:'ONS ASHE / ILO ILOSTAT regional employment'},{key:'employment',label:'Employment outlook',tooltip:'ONS LMI for All / ILO ILOSTAT / BLS OOH'},{key:'enrolment',label:'Enrolment trajectory',tooltip:'HESA Student Record / UAE MOHESR (new in v2)'}];
-function openMethodology(){const c=document.getElementById('weightSliders');c.innerHTML=weightMeta.map(w=>`<div class="weight-row"><div class="weight-label">${w.label}<br><span style="font-size:0.7rem;color:var(--text3)">${w.tooltip}</span></div><input type="range" class="weight-slider" id="w-${w.key}" min="0" max="60" step="1" value="${Math.round(weights[w.key]*100)}" oninput="updateWeightDisplay()"><div class="weight-val" id="wv-${w.key}">${Math.round(weights[w.key]*100)}%</div></div>`).join('');updateWeightDisplay();document.getElementById('modalOverlay').classList.add('open')}
-function updateWeightDisplay(){let t=0;weightMeta.forEach(w=>{const v=parseInt(document.getElementById('w-'+w.key).value);document.getElementById('wv-'+w.key).textContent=v+'%';t+=v});const el=document.getElementById('weightTotal');document.getElementById('weightSum').textContent=t+'%';el.classList.toggle('over',t!==100)}
-function applyWeights(){let t=0;weightMeta.forEach(w=>{t+=parseInt(document.getElementById('w-'+w.key).value)});if(t!==100)return;weightMeta.forEach(w=>{weights[w.key]=parseInt(document.getElementById('w-'+w.key).value)/100});loadPrograms();renderGrid();closeMethodology()}
-function closeMethodology(e){if(!e||e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('open')}
-loadPrograms();updateHeroStats();renderGrid();
-</script><div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 1; transition: opacity 0.3s ease-in-out; animation: 2s ease-in-out 0s infinite normal none running claude-pulse; box-shadow: rgba(217, 119, 87, 0.5) 0px 0px 10px inset, rgba(217, 119, 87, 0.3) 0px 0px 20px inset, rgba(217, 119, 87, 0.1) 0px 0px 30px inset;"></div><div id="claude-agent-stop-container" style="position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; align-items: center; pointer-events: none; z-index: 2147483647;"><button id="claude-agent-stop-button" style="position: relative; transform: translateY(0px); padding: 12px 16px; background: rgb(250, 249, 245); color: rgb(20, 20, 19); border: 0.5px solid rgba(31, 30, 29, 0.4); border-radius: 12px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: rgba(217, 119, 87, 0.24) 0px 40px 80px, rgba(217, 119, 87, 0.24) 0px 4px 14px; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); opacity: 1; user-select: none; pointer-events: auto; white-space: nowrap; margin: 0px auto;">
-      <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="margin-right: 12px; vertical-align: middle;">
-        <path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm40-112v56a12,12,0,0,1-12,12H100a12,12,0,0,1-12-12V100a12,12,0,0,1,12-12h56A12,12,0,0,1,168,100Z"></path>
-      </svg>
-      <span style="vertical-align: middle;">Stop Claude</span>
-    </button></div><div class="health-modal-overlay" id="healthModalOverlay">
-  <div class="health-modal">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
-      <div>
-        <h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:400">Data health report</h2>
-        <p style="color:var(--text3);font-size:0.82rem;margin-top:4px">Last checked: <span id="healthCheckTime">—</span></p>
-      </div>
-      <button onclick="closeHealthModal()" style="width:32px;height:32px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center">✕</button>
+function trendIcon(v){const a=v.reduce((x,y)=>x+y,0)/v.length;if(a>2)return{icon:'↑',cls:'trend-up'};if(a<-2)return{icon:'↓',cls:'trend-down'};return{icon:'→',cls:'trend-flat'}}
+const fmt=n=>n>=1000?(n/1000).toFixed(0)+'k':n;
+const tStr=t=>t>0?'↑ +'+t.toFixed(1)+'%/yr':t<0?'↓ '+t.toFixed(1)+'%/yr':'→ Stable';
+const tCol=t=>t>1?'var(--green)':t<-1?'var(--red)':'var(--text3)';
+
+function loadPrograms(){
+  const raw=REGION_DATA[activeRegion]||[];
+  programs=raw.map(p=>{const score=computeScore(p);return{...p,score,rec:classify(p,score),critical:isCritical(p)}});
+}
+
+// ═══════════════════════════════════════════════════════════
+// UI FUNCTIONS
+// ═══════════════════════════════════════════════════════════
+
+function updateHeroStats(){
+  const m=REGION_META[activeRegion];
+  const p=document.getElementById('statPrograms');
+  const r=document.getElementById('statRegion');
+  const g=document.getElementById('statGCSEs');
+  if(p)p.textContent=programs.length;
+  if(r&&m)r.textContent=m.flag+' '+m.name;
+  if(g)g.textContent=activeRegion==='uk'?Object.keys(CROSSWALK_UK.gcseToALevel).length:'—';
+  // Update tab badges
+  const pb=document.getElementById('pathwayBadge');
+  const db=document.getElementById('detailsBadge');
+  if(pb)pb.textContent=activeRegion==='uk'?'8 GCSEs':m?m.name+' data':'—';
+  if(db)db.textContent=programs.length+' programmes';
+}
+
+// ── REGION SWITCH ────────────────────────────────────────────
+function switchRegion(r){
+  activeRegion=r;
+  activeFilters.clear();
+  document.querySelectorAll('.region-btn').forEach(b=>b.classList.toggle('active',b.dataset.region===r));
+  loadPrograms();
+  updateHeroStats();
+  // Refresh whichever tab is active
+  const onPathway=document.getElementById('view-pathway').style.display!=='none';
+  const onDetails=document.getElementById('view-details').style.display!=='none';
+  if(onPathway) renderPathwayTab();
+  if(onDetails){window._detailsRendered=false;renderDetailsTab();}
+}
+
+// ── MAIN TAB SWITCH ──────────────────────────────────────────
+function switchMainTab(tab){
+  document.querySelectorAll('.main-tab').forEach(b=>b.classList.toggle('active',b.id==='maintab-'+tab));
+  document.getElementById('view-pathway').style.display=tab==='pathway'?'block':'none';
+  document.getElementById('view-details').style.display=tab==='details'?'block':'none';
+  if(tab==='details'&&!window._detailsRendered){renderDetailsTab();window._detailsRendered=true;}
+}
+
+// ═══════════════════════════════════════════════════════════
+// TAB 1: PATHWAY EXPLORER
+// ═══════════════════════════════════════════════════════════
+
+function renderPathwayTab(){
+  const el=document.getElementById('pathwayContent');
+  if(!el)return;
+
+  if(activeRegion!=='uk'){
+    el.innerHTML=`<div class="pw-no-data">
+      <div style="font-size:2rem;margin-bottom:12px">🔗</div>
+      <div style="font-size:1rem;font-weight:500;color:var(--text);margin-bottom:8px">Pathway explorer — UK only</div>
+      <div>The GCSE → A-Level → Degree pipeline is specific to the England, Wales and Northern Ireland qualifications framework.</div>
+      <div style="margin-top:12px">For <strong style="color:var(--text)">${REGION_META[activeRegion]?.name}</strong>, use the <strong style="color:var(--text)">Subject risk details</strong> tab to explore ${programs.length} programmes by field and risk score.</div>
+      <button class="main-tab" style="margin-top:16px;background:var(--accent);color:#fff;border-radius:var(--r-sm);border:none;padding:10px 20px;cursor:pointer" onclick="switchMainTab('details')">📊 Go to Subject risk details</button>
+    </div>`;
+    return;
+  }
+
+  const gcses=Object.keys(CROSSWALK_UK.gcseToALevel);
+  el.innerHTML=`
+    <div style="margin-bottom:20px">
+      <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Pick a GCSE subject to trace the full pipeline</div>
+      <p style="color:var(--text2);font-size:0.85rem;line-height:1.6;max-width:640px">See which A-Levels it leads to, which degrees those unlock, and the compounded AI risk from age 14 to graduation.</p>
     </div>
-    <div id="healthTableContainer">
-      <table class="health-table">
-        <thead>
-          <tr>
-            <th>Source</th>
-            <th>Status</th>
-            <th>Last updated</th>
-            <th>Next update</th>
-            <th>Feeds</th>
-            <th>Auto-fetch</th>
-          </tr>
-        </thead>
-        <tbody id="healthTableBody"></tbody>
-      </table>
+    <div class="pw-picker" id="pwPicker">
+      ${gcses.map(g=>{
+        const risk=CROSSWALK_UK.gcseRisk[g];
+        const col=scoreColor(risk.exposure);
+        return `<button class="pw-gcse-btn" onclick="selectGCSE('${g.replace(/'/g,"\\'")}')">
+          ${g.replace('GCSE ','')}
+          <span class="pw-pill" style="background:${col}22;color:${col}">${(risk.exposure*100).toFixed(0)}%</span>
+        </button>`;
+      }).join('')}
     </div>
-    <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
-      <div style="font-size:0.78rem;color:var(--text3);line-height:1.6;max-width:480px">
-        <strong style="color:var(--text2)">Auto-fetch</strong> sources are called live on every page load from public APIs. 
-        <strong style="color:var(--text2)">Static</strong> sources require a manual data refresh — run <code style="background:var(--bg4);padding:1px 6px;border-radius:3px;font-family:var(--font-mono);font-size:0.75rem">node fetch-all.js</code> in the repo and push.
-      </div>
-      <button class="update-btn" id="liveRefreshBtn" onclick="runLiveRefresh()">⟳ Refresh live sources now</button>
+    <div id="pwChain" class="pw-chain"></div>`;
+
+  // Auto-select English
+  setTimeout(()=>selectGCSE('GCSE English'),80);
+}
+
+function selectGCSE(gcse){
+  document.querySelectorAll('.pw-gcse-btn').forEach(b=>
+    b.classList.toggle('active',b.textContent.trim().startsWith(gcse.replace('GCSE ','')))
+  );
+  const chain=document.getElementById('pwChain');
+  if(!chain)return;
+  chain.className='pw-chain visible';
+
+  const gcseData=CROSSWALK_UK.gcseRisk[gcse];
+  const aLevels=CROSSWALK_UK.gcseToALevel[gcse].leads;
+  const gcseNote=CROSSWALK_UK.gcseToALevel[gcse].note;
+
+  const degreeMap={};
+  aLevels.forEach(al=>{
+    (CROSSWALK_UK.aLevelToDegree[al]?.leads||[]).forEach(link=>{
+      if(!degreeMap[link.id]){degreeMap[link.id]={...link,viaALevels:[al]};}
+      else{
+        if(!degreeMap[link.id].viaALevels.includes(al))degreeMap[link.id].viaALevels.push(al);
+        if(link.fit==='required'){degreeMap[link.id].fit='required';degreeMap[link.id].note=link.note;}
+      }
+    });
+  });
+  const degrees=Object.values(degreeMap).sort((a,b)=>({'required':0,'preferred':1,'relevant':2}[a.fit])-({'required':0,'preferred':1,'relevant':2}[b.fit]));
+  // UK programs only for pathway
+  const ukProgs=REGION_DATA.uk.map(p=>{const score=computeScore(p);return{...p,score,rec:classify(p,score),critical:isCritical(p)}});
+
+  const gcseExp=gcseData.exposure;
+  const alExps=aLevels.map(al=>CROSSWALK_UK.aLevelRisk[al]?.exposure||0.5);
+  const alAvg=alExps.reduce((s,v)=>s+v,0)/alExps.length;
+  const degExps=degrees.map(d=>ukProgs.find(p=>p.id===d.id)?.exposure||0);
+  const degAvg=degExps.length?degExps.reduce((s,v)=>s+v,0)/degExps.length:0;
+  const pipeline=gcseExp*0.25+alAvg*0.35+degAvg*0.40;
+
+  const insight=pipeline>=0.70
+    ?`<strong>High risk compounds across all three stages.</strong> Students following ${gcse} face one of the most AI-disrupted pipelines in UK education. The exposure starts high at GCSE and stays high through to graduation — early subject choice has outsized impact.`
+    :pipeline>=0.50
+    ?`<strong>Mixed exposure — A-Level choice is the critical fork.</strong> This GCSE doesn't lock students in, but the most common A-Level routes carry significant AI exposure. A lower-risk A-Level combination (e.g. Biology or Psychology) can substantially reduce degree-level risk.`
+    :`<strong>Low pipeline risk overall.</strong> Students on this pathway are better positioned than average for post-AI labour market resilience. Downstream degrees involve physical, clinical, or interpersonal skills AI cannot easily replicate.`;
+
+  const gcseCol=`<div class="pw-col">
+    <div class="pw-node selected">
+      <div class="pw-node-score" style="color:${scoreColor(gcseExp)}">${(gcseExp*100).toFixed(0)}%</div>
+      <div class="pw-node-name">${gcse}</div>
+      <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:${gcseExp*100}%;background:${scoreColor(gcseExp)}"></div></div>
+      <div class="pw-node-meta">${fmt(gcseData.entries)} entries/yr</div>
+      <div class="pw-node-meta" style="color:${tCol(gcseData.trend)}">${tStr(gcseData.trend)}</div>
+      <div class="pw-node-meta" style="margin-top:6px;font-style:italic;font-size:0.7rem">${gcseNote}</div>
     </div>
-  </div></div><div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 1; transition: opacity 0.3s ease-in-out; animation: 2s ease-in-out 0s infinite normal none running claude-pulse; box-shadow: rgba(217, 119, 87, 0.5) 0px 0px 10px inset, rgba(217, 119, 87, 0.3) 0px 0px 20px inset, rgba(217, 119, 87, 0.1) 0px 0px 30px inset;"></div><div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 1; transition: opacity 0.3s ease-in-out; animation: 2s ease-in-out 0s infinite normal none running claude-pulse; box-shadow: rgba(217, 119, 87, 0.5) 0px 0px 10px inset, rgba(217, 119, 87, 0.3) 0px 0px 20px inset, rgba(217, 119, 87, 0.1) 0px 0px 30px inset;"></div></body></html>
+  </div>`;
+
+  const alCol=`<div class="pw-col">
+    ${aLevels.map(al=>{
+      const r=CROSSWALK_UK.aLevelRisk[al];if(!r)return'';
+      return `<div class="pw-node">
+        <div class="pw-node-score" style="color:${scoreColor(r.exposure)}">${(r.exposure*100).toFixed(0)}%</div>
+        <div class="pw-node-name">${al}</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:${r.exposure*100}%;background:${scoreColor(r.exposure)}"></div></div>
+        <div class="pw-node-meta">${fmt(r.entries)} entries/yr · <span style="color:${tCol(r.trend)}">${tStr(r.trend)}</span></div>
+      </div>`;
+    }).join('')}
+  </div>`;
+
+  const degCol=`<div class="pw-col">
+    ${degrees.map(d=>{
+      const prog=ukProgs.find(p=>p.id===d.id);if(!prog)return'';
+      const col=scoreColor(prog.score);
+      return `<div class="pw-node">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <div class="pw-node-score" style="color:${col}">${prog.score.toFixed(2)}</div>
+          <span class="pw-fit-badge fit-${d.fit}">${d.fit}</span>
+        </div>
+        <div class="pw-node-name">${prog.name}</div>
+        <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:${prog.score*100}%;background:${col}"></div></div>
+        <div class="pw-node-meta">Via: ${d.viaALevels.map(a=>a.replace('A-Level ','')).join(', ')}</div>
+        <div class="pw-node-meta" style="margin-top:3px;font-style:italic;font-size:0.7rem">${d.note}</div>
+      </div>`;
+    }).join('')}
+  </div>`;
+
+  const sumCol=`<div class="pw-col">
+    <div class="pw-node" style="border-left:3px solid ${scoreColor(pipeline)};border-radius:0 var(--r-sm) var(--r-sm) 0">
+      <div class="pw-node-score" style="color:${scoreColor(pipeline)}">${pipeline.toFixed(2)}</div>
+      <div class="pw-node-name">Pipeline risk</div>
+      <div class="pw-node-bar"><div class="pw-node-bar-fill" style="width:${pipeline*100}%;background:${scoreColor(pipeline)}"></div></div>
+      <div class="pw-node-meta" style="font-weight:500;color:${scoreColor(pipeline)};margin-top:4px">${riskLabel(pipeline)}</div>
+      <div class="pw-node-meta" style="margin-top:4px">${degrees.length} degrees reachable</div>
+    </div>
+    <div class="pw-node">
+      <div style="font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);margin-bottom:10px">Risk by stage</div>
+      ${[{l:'GCSE',v:gcseExp},{l:'A-Level avg',v:alAvg},{l:'Degree avg',v:degAvg}].map(r=>`
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="flex:0 0 72px;font-size:0.7rem;color:var(--text3)">${r.l}</span>
+        <div style="flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
+          <div style="width:${r.v*100}%;height:100%;border-radius:3px;background:${scoreColor(r.v)}"></div>
+        </div>
+        <span style="font-family:var(--font-mono);font-size:0.7rem;color:${scoreColor(r.v)};flex:0 0 30px;text-align:right">${(r.v*100).toFixed(0)}%</span>
+      </div>`).join('')}
+    </div>
+  </div>`;
+
+  chain.innerHTML=`
+    <div class="pw-stages">
+      <div class="pw-stage-head"><div class="stage-label">Stage 1</div><div class="stage-name">GCSE</div><div class="stage-sub">Age 14–16</div></div>
+      <div class="pw-arrow">→</div>
+      <div class="pw-stage-head"><div class="stage-label">Stage 2</div><div class="stage-name">A-Level</div><div class="stage-sub">Age 16–18</div></div>
+      <div class="pw-arrow">→</div>
+      <div class="pw-stage-head"><div class="stage-label">Stage 3</div><div class="stage-name">Degree</div><div class="stage-sub">Age 18–21</div></div>
+      <div class="pw-arrow">→</div>
+      <div class="pw-stage-head"><div class="stage-label">Pipeline</div><div class="stage-name">AI risk</div><div class="stage-sub">Composite</div></div>
+    </div>
+    <div class="pw-cols">
+      ${gcseCol}
+      <div class="pw-arrow">→</div>
+      ${alCol}
+      <div class="pw-arrow">→</div>
+      ${degCol}
+      <div class="pw-arrow">→</div>
+      ${sumCol}
+    </div>
+    <div class="pw-insight">${insight}</div>
+    <div style="margin-top:8px;font-size:0.68rem;color:var(--text3)">Sources: UCAS 2023 · DfE LEO · JCQ 2024 · Eloundou et al. arXiv:2303.10130 · ONS LMI for All</div>`;
+}
+
+// DRAWER
+function openDrawer(id){
+  const p=programs.find(x=>x.id===id);if(!p)return;
+  const n=normalise(p);
+  const[lo,hi]=uncBand(p.score);
+  const col=scoreColor(p.score);
+  const tr=trendIcon(p.enrolTrend);
+  let intervention='';
+  if(p.rec==='sunset')intervention='<p>The modal tasks are being <strong>substituted</strong> by AI. Begin a structured wind-down review: assess student cohort impact, explore mergers with adjacent programmes, and consult accreditation body on timeline.</p>';
+  else if(p.rec==='urgent')intervention='<p>Core tasks face significant AI substitution risk. Redesign the curriculum around task direction and oversight of AI outputs. Faculty development is the critical constraint — '+p.facultyReady+'% AI fluency is insufficient without a structured CPD programme.</p>';
+  else if(p.rec==='invest')intervention='<p>This programme trains students for work AI cannot easily replicate. <strong>Grow capacity</strong> where possible. Add targeted AI fluency modules to future-proof graduates.</p>';
+  else intervention='<p>Moderate AI exposure. The field will change but is unlikely to be reshaped fundamentally in the near term. <strong>Monitor annually</strong> and add AI fluency as optional enrichment.</p>';
+  const maxE=Math.max(...p.enrolTrend.map(Math.abs),1);
+  const enrolBars=p.enrolTrend.map((v,i)=>{const h=Math.max(4,Math.abs(v)/maxE*36);const c=v>0?'var(--green)':v<0?'var(--red)':'var(--text3)';return '<div class="enrol-bar" style="height:'+h+'px;background:'+c+';opacity:'+(0.5+0.5*(i/p.enrolTrend.length))+'"></div>';}).join('');
+  const dimDefs=[
+    {label:'Task automation',val:n.task,raw:(p.exposure*100).toFixed(0)+'% AI-replaceable',est:false,tip:'Eloundou et al. beta + Felten Princeton Index via SOC crosswalk.'},
+    {label:'Curriculum half-life',val:n.hl,raw:p.halfLife+' years runway',est:p.estimatedDims.includes('halfLife'),tip:'Estimated via O*NET task concentration + wage premium proxy.'},
+    {label:'Faculty readiness gap',val:n.fac,raw:p.facultyReady+'% AI-fluent',est:p.estimatedDims.includes('facultyReady'),tip:'Estimated. Jisc Digital Experience Insights / TIMSS educator surveys.'},
+    {label:'Regional labour market',val:n.reg,raw:p.region+'x national avg',est:p.estimatedDims.includes('region'),tip:'ONS ASHE regional employment data by SOC 2020.'},
+    {label:'Employment outlook',val:n.emp,raw:(p.empOut>=0?'+':'')+(p.empOut*100).toFixed(0)+'% 10-yr',est:false,tip:'ONS LMI for All / ILO ILOSTAT / BLS OOH.'},
+    {label:'Enrolment trajectory',val:n.enrol,raw:tr.icon+' '+p.enrolNote.split('—')[0],est:p.estimatedDims.includes('enrolment'),tip:'HESA Student Record 2021-2024. 3-year rolling avg.'},
+  ];
+  const dimsHtml=dimDefs.map(d=>'<div class="dim-row'+(d.est?' estimated':'')+'"><div class="dim-row-label">'+d.label+'</div><div class="dim-row-bar"><div class="dim-row-track"><div class="dim-row-fill" style="width:'+(d.val*100)+'%;background:'+(d.est?'#f59e0b':scoreColor(d.val))+'"></div></div><div style="font-size:0.7rem;color:var(--text3);margin-top:2px">'+d.raw+'</div></div><div class="dim-row-val">'+(d.val*100).toFixed(0)+'%</div>'+(d.est?'<span class="est-tag">est.</span>':'')+'</div>').join('');
+  const tasksHtml=p.tasks.map(t=>'<div class="task-item"><span class="task-type '+(t.type==='rep'?'task-rep':'task-aug')+'">'+(t.type==='rep'?'Replaces':'Assists')+'</span><span class="task-name">'+t.name+'</span><span class="task-score">'+t.score.toFixed(2)+'</span></div>').join('');
+  document.getElementById('drawerContent').innerHTML='<div class="drawer-close"><button class="close-btn" onclick="closeDrawer()">&#x2715;</button></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"><span class="badge badge-field">'+p.field+'</span>'+(p.critical?'<span class="badge badge-critical">🚨 Critical Now</span>':'')+'<span class="rec-badge rec-'+p.rec+'">'+recLabel(p.rec)+'</span></div><div class="drawer-name">'+p.name+'</div><div class="drawer-code">'+p.code+' &middot; '+(REGION_META[activeRegion]?.dataNote||'')+'</div><div class="composite-breakdown"><div class="cb-row"><span class="cb-label">Composite risk score</span><span class="cb-val" style="color:'+col+'">'+p.score.toFixed(3)+'</span></div><div class="cb-row"><span class="cb-label">Uncertainty band</span><span class="cb-val">'+lo+' &ndash; '+hi+'</span></div><div class="cb-row"><span class="cb-label">AI exposure</span><span class="cb-val">'+(p.exposure*100).toFixed(0)+'%</span></div><div class="cb-row"><span class="cb-label">Mechanism</span><span class="cb-val">'+(p.mechanism==='rep'?'AI Replaces tasks':'AI Augments tasks')+'</span></div></div><div class="dim-section"><div class="dim-section-title">Six dimensions <span style="font-size:0.68rem;color:var(--amber);font-weight:400;text-transform:none">&#9679; amber = estimated</span></div>'+dimsHtml+'</div><div class="dim-section"><div class="dim-section-title">Task breakdown</div>'+tasksHtml+'</div><div class="dim-section"><div class="dim-section-title">Enrolment trajectory</div><div class="enrol-chart">'+enrolBars+'</div><div style="font-size:0.8rem;color:var(--text2);margin-top:6px">'+p.enrolNote+'</div></div><div class="dim-section"><div class="dim-section-title">Recommended intervention</div><div class="intervention-box"><h4>'+recLabel(p.rec)+'</h4>'+intervention+'</div></div>';
+  document.getElementById('drawerOverlay').classList.add('open');
+  document.getElementById('drawer').classList.add('open');
+}
+function closeDrawer(){document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawer').classList.remove('open');}
+
+// METHODOLOGY
+const weightMeta=[{key:'task',label:'Task automation potential',tooltip:'Eloundou beta + Felten via SOC crosswalk'},{key:'halfLife',label:'Curriculum half-life',tooltip:'O*NET task frequency + Epoch AI compute timeline'},{key:'faculty',label:'Faculty readiness gap',tooltip:'Jisc / TIMSS educator surveys (estimated)'},{key:'regional',label:'Regional labour market',tooltip:'ONS ASHE / ILO ILOSTAT regional employment'},{key:'employment',label:'Employment outlook',tooltip:'ONS LMI for All / ILO ILOSTAT / BLS OOH'},{key:'enrolment',label:'Enrolment trajectory',tooltip:'HESA Student Record / UAE MOHESR'}];
+function openMethodology(){
+  const c=document.getElementById('weightSliders');
+  c.innerHTML=weightMeta.map(w=>'<div class="weight-row"><div class="weight-label">'+w.label+'<br><span style="font-size:0.7rem;color:var(--text3)">'+w.tooltip+'</span></div><input type="range" class="weight-slider" id="w-'+w.key+'" min="0" max="60" step="1" value="'+Math.round(weights[w.key]*100)+'" oninput="updateWeightDisplay()"><div class="weight-val" id="wv-'+w.key+'">'+Math.round(weights[w.key]*100)+'%</div></div>').join('');
+  updateWeightDisplay();
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function updateWeightDisplay(){let t=0;weightMeta.forEach(w=>{const v=parseInt(document.getElementById('w-'+w.key).value);document.getElementById('wv-'+w.key).textContent=v+'%';t+=v;});const el=document.getElementById('weightTotal');document.getElementById('weightSum').textContent=t+'%';el.classList.toggle('over',t!==100);}
+function applyWeights(){let t=0;weightMeta.forEach(w=>{t+=parseInt(document.getElementById('w-'+w.key).value);});if(t!==100)return;weightMeta.forEach(w=>{weights[w.key]=parseInt(document.getElementById('w-'+w.key).value)/100;});loadPrograms();renderPathwayTab();if(window._detailsRendered){renderDetailsTab();}document.getElementById('modalOverlay').classList.remove('open');}
+function closeMethodology(e){if(!e||e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('open');}
+
+// BOOT
+loadPrograms();
+updateHeroStats();
+renderPathwayTab();
+</script>
+</body>
+</html>
